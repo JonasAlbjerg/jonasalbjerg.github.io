@@ -99,7 +99,7 @@ section {
 .hero-banner {
   position: relative;
   height: 100vh; /* Adjust the height as needed */
-  background-image: url('images/hero-background.svg'); /* Replace with the actual image path */
+  background-image: url('images/hero-background3.svg'); /* Replace with the actual image path */
   background-size: cover;
   background-position: center;
   color: #fff;
