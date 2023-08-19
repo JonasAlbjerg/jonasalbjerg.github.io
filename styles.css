@@ -55,10 +55,12 @@ nav {
   align-items: center;
 }
 
-.logo {
-  font-size: 24px;
-  margin-right: 20px;
-  color: #ff8c00; /* Orange color for the logo */
+#homeLink {
+  background: url('images/logo.png') no-repeat center/contain;
+  width: 120px; /* Set the desired width */
+  height: 50px; /* Set the desired height */
+  display: block; /* Ensure the link takes the size of the background image */
+  text-indent: -9999px; /* Hide text content if any */
 }
 
 .navbar-links {
@@ -338,4 +340,13 @@ footer {
 
 footer p {
   margin: 0; /* Remove default margin to center the text vertically */
+  padding-top: 60px;
+}
+
+.footer-logo {
+  width: 150px; /* Set the desired width */
+  height: 45px; /* Set the desired height */
+  display: block; /* Ensure the logo takes up space */
+  margin: 20px auto 0; /* Add margin for spacing and center the logo horizontally */
+  filter: grayscale(100%); /* Apply grayscale filter */
 }
