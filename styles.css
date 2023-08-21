@@ -56,7 +56,7 @@ nav {
 }
 
 #homeLink {
-  background: url('images/logo.png') no-repeat center/contain;
+  background: url('images/logo.svg') no-repeat center/contain;
   width: 120px; /* Set the desired width */
   height: 50px; /* Set the desired height */
   display: block; /* Ensure the link takes the size of the background image */
