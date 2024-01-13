@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonas' Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" type="image/jpg" href="images/profile.jpg"/>
+  <!-- SITE TITEL -->
+  <title>Jonas Hartmann Albjergs portfolio</title>
+
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <a id="homeLink" href="#home"></a>
+      </div>
+      <ul class="navbar-links">
+        <li><a id="projectsLink" href="#projects">PORTFOLIO</a></li>
+        <li><a id="aboutLink" href="#about">CV</a></li>
+        <li><a id="contactLink" href="#contact">KONTAKT</a></li>
+      </ul>
+          
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="hero-banner">
+      <h1 style="font-size: 60px;">JONAS ALBJERG</h1>
+      <h3>KREATIVER OG GRAFISKE PROJEKTER</h3>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>PORTFOLIO</h2>
+
+    <div class="filter-buttons">
+      <button onclick="filterProjects('alle')">Alle</button>
+      <button onclick="filterProjects('webudvikling')">Webudvikling</button>
+      <button onclick="filterProjects('grafisk-design')">Grafisk design</button>
+      <button onclick="filterProjects('video')">Video</button>
+      <button onclick="filterProjects('ux-design')">UX design</button>
+      <button onclick="filterProjects('some')">Sociale medier</button>
+      <button onclick="filterProjects('lyd')">Lyd</button>
+      <button onclick="filterProjects('print')">Print</button>
+      <!-- Add more buttons for other categories -->
+    </div>
+
+    <div class="grid-container">
+
+      <!-- project 11 -->
+      <div class="card" data-categories="ux-design,grafisk-design" onclick="showProjectDetails('SCAN-OG-BETAL', [
+      { type: 'text', value: 'En prototype som simplificerer anvendelsen af Scan-og-betal i Netto, Føtex og Bilka.' },
+      { type: 'image', value: 'images/projekt11/1.jpg' },
+      { type: 'text', value: 'Scan-og-betal er en funktion som de seneste år er blevet en integreret del af dagligvarehandel i mange danske supermarkeder. Salling Groups butikker Netto, Føtex og Bilka har alle apps, som i forskellige grader inkorporerer scan-og-betal-konceptet. ' },
+      { type: 'image', value: 'images/projekt11/2.jpg' },
+      { type: 'text', value: 'Det overordnede design i de tre supermarkeders mobilapps er det samme - dog er der alligevel markante forskelle i, hvilke funktioner de enkelte apps har. Derfor har jeg i dette projekt samlet alle apps under én.  ' },
+      { type: 'image', value: 'images/projekt11/3.jpg' },
+      { type: 'text', value: 'På tværs af de tre supermarkedskæder er der ikke mindre end 9 forskellige apps. Dog kan flere af dem de samme ting. For at konkretisere dette, lavede jeg en tabel for at vise applikationernes funktioner.' },
+      { type: 'image', value: 'images/projekt11/4.jpg' },
+      { type: 'text', value: 'Udover at undersøge applikationernes UI og funktioner, valgte jeg også at optage en kundes anvendelse af Nettos Scan-og-betal-system, for at få eksempler på, hvad der fungerer og hvad der ikke fungerer.' },
+      { type: 'text', value: 'Ved at optage en kunde ville jeg have konkret data at gå ud fra, når prototypen af en ny app skulle designes.' },
+      { type: 'image', value: 'images/projekt11/5.jpg' },
+      { type: 'text', value: 'I designet af en ny app har jeg lagt vægt på at brugeren kan tilgå alle funktioner i en app, fremfor 9 forskellige som brugeren skal have installeret på sin mobil.' },
+    ], 'Programmer anvendt: Photoshop, XD.',)">
+      <img src="images/projekt11/thumbnail.jpg" alt="scan-og-betal">
+      <h3>SCAN-OG-BETAL</h3>
+      <p>Redesign af Salling Groups scan-og-betal-koncept.</p>
+      <h5>UX</h5>
+      <h5>Grafisk design</h5>
+    </div>
+
+    <!-- project 12 -->
+    <div class="card" data-categories="ux-design,grafisk-design,video,some" onclick="showProjectDetails('SPECIALE', [
+    { type: 'text', value: 'Med en personlig interesse for fitness og sociale medier, valgte jeg at undersøge hvordan instruktionsvideoer på SoMe-platforme egentlig anvendes i praksis. ' },
+    { type: 'image', value: 'images/projekt12/3.jpg' },
+    { type: 'text', value: 'I specialet undersøger jeg dels UI på tværs af Facebook, Instagram, TikTok og YouTube, for at forstå hvordan platformene er sat op - overraskende minder alle platforme visuelt om hinanden - men for at interagere med interfacet, skal der forskellige handlinger til.' },
+    { type: 'text', value: 'Udover UI, har jeg testet platformene og udvalgte videoinstruktioner på 4 forsøgspersoner, for at observere hvordan videoindholdet anvendes direkte, og om der opstår begrænsninger i interaktionen mellem bruger, video og platform.' },
+    { type: 'image', value: 'images/projekt12/1.jpg' },
+    { type: 'text', value: 'Udover UI, har jeg testet platformene og udvalgte videoinstruktioner på 4 forsøgspersoner, for at observere hvordan videoindholdet anvendes direkte, og om der opstår begrænsninger i interaktionen mellem bruger, video og platform.' },
+    { type: 'text', value: 'Problematikken valgte jeg at døbe start-og-stop-processen. Processen definerer brugerens skiften mellem at se videoinstruktioner, og selv prøve at udføre øvelserne fra videoerne. Men grundet det korte videoformat og få detaljer, er brugerne løbende nødt til at skfite frem og tilbage for at få fuld forståelse for øvelserne.' },
+    { type: 'image', value: 'images/projekt12/2.jpg' },
+    { type: 'text', value: 'Gennem dialog med forsøgspersonerne og analyse af videooptagelserne, kom jeg frem til en række løsningsforslag.' },
+    { type: 'text', value: 'Den første løsning implementerer VR. Ved hjælp af VR-briller vil brugeren have mulighed for at se videoinstruktioner, mens der samtidig kan udføres øvelser.' },
+    { type: 'image', value: 'images/projekt12/4.jpg' },
+    { type: 'text', value: 'Brugen af VR løser også et problem som flere brugere rapportede; muligheden for at se instruktørerne bedre. Med VR kan brugeren navigere rundt om instruktøren og se hvordan øvelser udføres. Dog kræver det at videoskaberen bag instruktionsvideoen, har VR-udstyr til rådighed.' },
+ ], 'Programmer anvendt: Photoshop, Illustrator, Premiere Pro.')">
+    <img src="images/projekt12/thumbnail.jpg" alt="speciale">
+    <h3>KANDIDATSPECIALE</h3>
+    <p>Anvendelsen af korte fitnessinstruktionsvideoer på sociale medier.</p>
+    <h5>UX</h5>
+    <h5>Grafisk design</h5>
+    <h5>Video</h5>
+    <h5>Sociale medier</h5>
+  </div>
+
+      <!-- project 1 -->
+<div class="card" data-categories="webudvikling,grafisk-design" onclick="showProjectDetails('INFOSIDE', [
+  { type: 'text', value: 'Ved årskiftet 2022-2023, blev lovgivning om affaldssortering på arbejdspladser skærpet. Derfor opbyggede og designede jeg en infoside om affaldssortering for B Company.' },
+  { type: 'image', value: 'images/projekt1/desktop.jpg' },
+  { type: 'text', value: 'Landingssiden informerer om hvordan virksomheder skal forholde sig i forhold til lovgivningen.' },
+  { type: 'image', value: 'images/projekt1/2.jpg' },
+  { type: 'text', value: 'Siden indeholder produkter til affaldssortering, samt guide til sorteringsmærkater' },
+  { type: 'image', value: 'images/projekt1/3.jpg' },
+  { type: 'image', value: 'images/projekt1/4.jpg' },
+], 'Programmer anvendt: Photoshop, Illustrator, Magento Pagebuilder.')">
+  <img src="images/projekt1/thumbnail.jpg" alt="Affaldssortering">
+  <h3>AFFALDSSORTERING</h3>
+  <p>Design af infoside om Affaldssortering og lovgivning.</p>
+  <h5>Webudvikling</h5>
+  <h5>Grafisk design</h5>
+</div>
+
+  <!-- project 2 -->
+<div class="card" data-categories="grafisk-design,print" onclick="showProjectDetails('PAKKEKORT', [
+  { type: 'text', value: 'Design af pakkekort ved udsendelse af vareordre.' },
+  { type: 'image', value: 'images/projekt2/1.jpg' },
+], 'Programmer anvendt: Illustrator.')">
+  <img src="images/projekt2/thumbnail.jpg" alt="Pakkekort">
+  <h3>PAKKEKORT</h3>
+  <p>Design af pakkekort ved udsendelse af vareordre.</p>
+  <h5>Grafisk design</h5>
+  <h5>Print</h5>
+</div>
+
+  <!-- project 3 -->
+  <div class="card" data-categories="grafisk-design" onclick="showProjectDetails('FACADESKILTE', [
+  { type: 'text', value: 'Da B Company flyttede i nye lokale i efteråret 2022, fik jeg æren af at designe nye skilte til virksomhedensfacaden' },
+  { type: 'image', value: 'images/projekt3/1.jpg' },
+  { type: 'text', value: 'I alt blev der designet fem skilte, herunder logo, indgangsparti, lager, p-plads, åbningstider, samt flag.' },
+  { type: 'image', value: 'images/projekt3/2.jpg' },
+  { type: 'text', value: 'Alle skilte er designet med B Companys velkendte grønne og grå farver.' },
+  { type: 'image', value: 'images/projekt3/3.jpg' },
+  { type: 'image', value: 'images/projekt3/4.jpg' },
+  { type: 'image', value: 'images/projekt3/5.jpg' },
+], 'Programmer anvendt: Illustrator.')">
+  <img src="images/projekt3/thumbnail.jpg" alt="skilte til virksomhedsfacade">
+  <h3>FACADESKILTE</h3>
+  <p>Design af nye skilte til virksomhedsfacade.</p>
+  <h5>Grafisk design</h5>
+</div>
+
+<!-- project 4 -->
+<div class="card" data-categories="video,some" onclick="showProjectDetails('LIVESTREAM', [
+{ type: 'text', value: 'Jeg var med til at planlægge og afholde et online event, live på Facebook' },
+{ type: 'image', value: 'images/projekt4/1.jpg' },
+{ type: 'text', value: 'Jeg var vært for eventet, som strak sig over 2 dage. Derudover holdte jeg koordinerende møder med øvrige medvirkende forud for eventet.' },
+{ type: 'image', value: 'images/projekt4/2.jpg' },
+{ type: 'text', value: 'Jeg opsatte selv alt kameraudstyr og lys.' },
+{ type: 'image', value: 'images/projekt4/3.jpg' },
+{ type: 'text', value: 'Ligeledes markedsførte jeg eventet gennem opslag på sociale medier, samt skilte i butikken.' },
+], 'Programmer anvendt: Facebook Livestream, Photoshop.')">
+<img src="images/projekt4/thumbnail.jpg" alt="livestreaming">
+<h3>LIVESTREAMEVENT</h3>
+<p>Afholdelse af livestreamevents på Facebook.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 5 -->
+<div class="card" data-categories="webudvikling,grafisk-design" onclick="showProjectDetails('KUNDEKLUB', [
+{ type: 'text', value: 'I maj 2022, gik B Companys Kundefordelsprogram Pluskunde i luften.' },
+{ type: 'image', value: 'images/projekt5/1.jpg' },
+{ type: 'text', value: 'Jeg var med til at udvikle og implementere programmet på webshop, samt opsætte infosider og guidevideoer, som informerer om programmet.' },
+{ type: 'image', value: 'images/projekt5/2.jpg' },
+{ type: 'text', value: 'Løbende har jeg promoveret programmet gennem sociale medier og email-nyhedsbreve.' },
+{ type: 'video', value: 'images/projekt5/Pluskunde_uge32.mp4' },
+{ type: 'text', value: 'Jeg har designet ikoner og grafik til alle kanaler, i virksomhedens grå/grønne farver.' },
+{ type: 'image', value: 'images/projekt5/3.jpg' },
+], 'Programmer anvendt: Illustrator, Photoshop, Premiere Pro, Magento Pagebuilder.')">
+<img src="images/projekt5/thumbnail.jpg" alt="kundeklub">
+<h3>KUNDEKLUB</h3>
+<p>Implementering af nyt kundefordelsprogram.</p>
+<h5>Webudvikling</h5>
+<h5>Grafisk design</h5>
+</div>
+
+<!-- project 6 -->
+<div class="card" data-categories="video,some,grafisk-design" onclick="showProjectDetails('KONKURRENCE', [
+{ type: 'text', value: 'I forbindelse med Fodbold VM i 2022, lavede jeg en konkurrence på Facebook og Instagram' },
+{ type: 'video', value: 'images/projekt6/1.mp4' },
+{ type: 'text', value: 'Konkurrencen gik på, at personer som gættede Danmarks resultater, ville vinde papirvarer og dispensere fra hygiejnebrandet Tork.' },
+{ type: 'image', value: 'images/projekt6/2.jpg' },
+{ type: 'text', value: 'Eftersom Danmark ikke klarede sig videre fantastisk, endte det kun med tre videoer, hvor jeg udlovede præmier.' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt6/thumbnail.jpg" alt="Konkurrence">
+<h3>KONKURRENCE</h3>
+<p>Konkurrence i samarbejde med hygiejnebrandet Tork.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+<h5>Grafisk design</h5>
+</div>
+
+<!-- project 7 -->
+<div class="card" data-categories="grafisk-design,some" onclick="showProjectDetails('Emballage', [
+{ type: 'text', value: 'Til et SoMe-opslag om bæredygtig emballage, kreerede jeg denne grafik.' },
+{ type: 'image', value: 'images/projekt7/1.jpg' },
+{ type: 'text', value: 'Opslaget har til formål at promovere bæredygtig emballage til borddækning.' },
+{ type: 'image', value: 'images/projekt7/2.jpg' },
+], 'Programmer anvendt: Photoshop.')">
+<img src="images/projekt7/thumbnail.jpg" alt="bæredygtig emballage">
+<h3>BÆREDYGTIG EMBALLAGE</h3>
+<p>Grafik til SoMe-opslag om bæredygtig emballage.</p>
+<h5>Grafisk design</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 8 -->
+<div class="card" data-categories="video,grafisk-design,some,webudvikling" onclick="showProjectDetails('EMBALLAGE MED EGET LOGO', [
+{ type: 'text', value: 'Video som fremviser emballage med eget logo.' },
+{ type: 'video', value: 'images/projekt8/1.mp4' },
+{ type: 'image', value: 'images/projekt8/2.jpg' },
+{ type: 'text', value: 'Videoen er markedsført på LinkedIn.' },
+{ type: 'image', value: 'images/projekt8/3.jpg' },
+{ type: 'text', value: 'Jeg har ligeledes også udarbejdet en landingsside, som informerer om servicen.' },
+{ type: 'image', value: 'images/projekt8/4.jpg' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt8/thumbnail.jpg" alt="emballage med eget logo">
+<h3>EMBALLAGE MED EGET LOGO</h3>
+<p>Videofremvisning af emballage med logo.</p>
+<h5>Video</h5>
+<h5>Grafisk design</h5>
+<h5>Sociale medier</h5>
+<h5>Webudvikling</h5>
+</div>
+
+<!-- project 9 --> 
+<div class="card" data-categories="video,some" onclick="showProjectDetails('FRA ORDRE TIL PAKKE', [
+{ type: 'text', value: 'Processen i at håndtere en ordre, til udsendelse af pakke - demonstreret på 18 sekunder.' },
+{ type: 'video', value: 'images/projekt9/1.mp4' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt9/thumbnail.jpg" alt="Affaldssortering">
+<h3>FRA ORDRE TIL PAKKE</h3>
+<p>Videofremvisning af processen fra placeret ordre til afsendt pakke.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 10 -->
+<div class="card" data-categories="video,some," onclick="showProjectDetails('MIKROFIBERKLUDE', [
+{ type: 'text', value: 'Video og grafik til SoMe-opslag om miljøvenlige mikrofiberklude.' },
+{ type: 'image', value: 'images/projekt10/1.jpg' },
+{ type: 'text', value: 'Plottet for opslaget var, at miljøvenlige mikrofiberklude er moderne og det nye sort.' },
+{ type: 'image', value: 'images/projekt10/2.jpg' },
+{ type: 'text', value: 'Derfor blev livsstilsmagasinet på billedet, udskiftet med en smart og moderne mikrofiberklud i stedet for.' },
+{ type: 'video', value: 'images/projekt10/3.mp4' },
+{ type: 'text', value: 'Ligeledes har jeg kreeret grafik om mikrofiberklude til B Companys webshop.' },
+{ type: 'video', value: 'images/projekt10/4.mp4' },
+{ type: 'image', value: 'images/projekt10/5.jpg' },
+], 'Programmer anvendt: Photoshop, Premiere Pro.')">
+<img src="images/projekt10/thumbnail.jpg" alt="mikrofiberklude">
+<h3>MIKROFIBER-KLUDE</h3>
+<p>Grafik til SoMe-opslag om mikrofiberklude.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 13 -->
+<div class="card" data-categories="grafisk-design,some" onclick="showProjectDetails('MUSEIQ', [
+{ type: 'text', value: 'Jeg kreerede grafik til et Instagram-opslag for streamingtjenesten MUSEIQ, som omhandlede et podcastinterview med den indiske artist Mujjo.' },
+{ type: 'image', value: 'images/projekt13/1.jpg' },
+], 'Programmer anvendt: Photoshop.')">
+<img src="images/projekt13/thumbnail.jpg" alt="SoMe-opslag">
+<h3>SOME-OPSLAG FOR MUSEIQ</h3>
+<p>SoMe-opslag for MUSEIQ vedr. podcastinterview med musiker Mujjo.</p>
+<h5>Grafisk design</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 14 -->
+<div class="card" data-categories="lyd" onclick="showProjectDetails('RADIOSPOT', [
+{ type: 'text', value: 'I samarbejde med produktionsselskabet Komo, udarbejdede jeg et radiospot i forlængelse af B Companys adresseflytning.' },
+{ type: 'video', value: 'images/projekt14/1.mp3' },
+{ type: 'text', value: 'Radiospottet blev bragt på de lokale kanaler Classic FM, Skala FM, samt Rock FM.' },
+], 'Programmer anvendt: Photoshop, Premiere Pro.')">
+<img src="images/projekt14/thumbnail.jpg" alt="radiospot">
+<h3>RADIOSPOT</h3>
+<p>Radiospot i lokalradio.</p>
+<h5>Lyd</h5>
+</div>
+
+<!-- project 15 -->
+<div class="card" data-categories="video,some" onclick="showProjectDetails('1 ÅR MED B COMPANY', [
+{ type: 'text', value: 'I forbindelse med B Companys første år på Stenhuggervej i Odense, lavede jeg denne video som ser tilbage på året der gik.' },
+{ type: 'video', value: 'images/projekt15/1.mp4' },
+], 'Programmer anvendt: Photoshop, Premiere Pro.')">
+<img src="images/projekt15/thumbnail.jpg" alt="Video som ser tilbage på B Companys første år på Stenhuggervej 4">
+<h3>1 ÅR MED B COMPANY</h3>
+<p>'Year-in-review' med B Companys nye adresse.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 16 -->
+<div class="card" data-categories="video,grafisk-design,some" onclick="showProjectDetails('BRANDING-KAMPAGNE', [
+{ type: 'text', value: 'Et udvalg af annoncer, som brander B Companys varesortiment.' },
+{ type: 'video', value: 'images/projekt16/1.mp4' },
+{ type: 'video', value: 'images/projekt16/2.mp4' },
+{ type: 'image', value: 'images/projekt16/3.jpg' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt16/thumbnail.jpg" alt="et udvalg af betalte annonce, som brander B Companys sortiment">
+<h3>BRANDING-KAMPAGNE</h3>
+<p>Kampagneannoncer på LinkedIn.</p>
+<h5>Sociale medier</h5>
+<h5>Grafisk design</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 17 -->
+<div class="card" data-categories="video,some" onclick="showProjectDetails('VINTERHANDSKER', [
+{ type: 'text', value: 'Videoer jeg udarbejdede i forbindelse med en fokuskampagne på vinterhandsker i vinteren 2023.' },
+{ type: 'video', value: 'images/projekt17/1.mp4' },
+{ type: 'text', value: 'Udgangspunktet for videoerne var at det skulle være anderledes og sjovt. Det kom der bl.a. disse to videoer ud af.' },
+{ type: 'video', value: 'images/projekt17/2.mp4' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt17/thumbnail.jpg" alt="Video som viser brugen af vinterhandsker til kontorarbejde">
+<h3>VINTERHANDSKER</h3>
+<p>Vinterhandsker kan bruges udenfor... og indenfor.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 18 -->
+<div class="card" data-categories="video,some" onclick="showProjectDetails('KIEHL SMARTDOSERING', [
+{ type: 'text', value: 'Fokusvideo på Kiehls smartdoseringssystem.' },
+{ type: 'video', value: 'images/projekt18/1.mp4' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt18/thumbnail.jpg" alt="Annoncevideo som fremviser Kiehl smartdosering">
+<h3>KIEHL SMARTDOSERING</h3>
+<p>Annonce i forbindelse med månedstilbud på rengøringsbrandet Kiehl.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 19 -->
+<div class="card" data-categories="video,some,grafisk-design,print" onclick="showProjectDetails('GLASSFOREVER', [
+{ type: 'text', value: 'Grafisk materiale til glassFORever - et brand der producerer flergangsglas i brudsikkert plastik.' },
+{ type: 'video', value: 'images/projekt19/1.mp4' },
+{ type: 'image', value: 'images/projekt19/2.png' },
+], 'Programmer anvendt: Premiere Pro, Photoshop.')">
+<img src="images/projekt19/thumbnail.jpg" alt="grafisk materiale til glassFORever">
+<h3>GLASSFOREVER</h3>
+<p>Video- og billedemateriale til brandet GlassFORever.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+<h5>Grafisk design</h5>
+<h5>Print</h5>
+</div>
+
+<!-- project 20 -->
+<div class="card" data-categories="video,some" onclick="showProjectDetails('CYKLUS PÅ KIEHL-FLASKE', [
+{ type: 'text', value: 'Kort video som demonstrerer livscyklussen på en flaske fra brandet Kiehl.' },
+{ type: 'video', value: 'images/projekt20/1.mp4' },
+{ type: 'text', value: 'Kiehl er et brand med stor fokus på genanvendelse. Derfor tager de også brugte flasker retur og genanvender dem på ny.' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt20/thumbnail.jpg" alt="Video som fremviser Kiehls retursystem og livscyklus på rengøringsflasker">
+<h3>CYKLUS PÅ KIEHL-FLASKE</h3>
+<p>Video som sætter fokus på rengøringsbrandet Kiehl og deres retursystem.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+<!-- project 21 -->
+<div class="card" data-categories="video,some,grafisk-design" onclick="showProjectDetails('OPTJEN BONUSKRONER', [
+{ type: 'text', value: 'Grafisk video som kort formidler hvordan kunder ved B Company kan optjene rabatpoint på deres køb.' },
+{ type: 'video', value: 'images/projekt21/1.mp4' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt21/thumbnail.jpg" alt="Video som viser Bonuskroner ved B Company">
+<h3>OPTJEN BONUSKRONER</h3>
+<p>Grafisk video, som fremviser pointsystemet 'Bonuskroner' ved virksomheden B Company.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+<h5>Grafisk design</h5>
+</div>
+
+<!-- project 22 -->
+<div class="card" data-categories="video,some,grafisk-design" onclick="showProjectDetails('HURTIG LEVERING', [
+{ type: 'text', value: 'Kort video til sociale medier, som formidler den hurtige pakkelevering ved B Company.' },
+{ type: 'video', value: 'images/projekt22/1.mp4' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt22/thumbnail.jpg" alt="hurtig levering hos B Company">
+<h3>HURTIG LEVERING</h3>
+<p>Hurtig levering hos B Company kræver en hurtig video.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+<h5>Grafisk design</h5>
+</div>
+
+<!-- project 23 -->
+<div class="card" data-categories="video,print,grafisk-design" onclick="showProjectDetails('LIPLID', [
+{ type: 'text', value: 'Værdisat til 100 mio. er Liplid låg til to go-kaffebægre og andre engangskopper.' },
+{ type: 'image', value: 'images/projekt23/1.jpg' },
+{ type: 'text', value: 'Jeg fik til opgave at lave en infobrochure, som formidlede unique selling points, historien bag, hvordan der bruges m.m.' },
+{ type: 'image', value: 'images/projekt23/2.jpg' },
+{ type: 'text', value: 'Forud for brochuren har jeg researchet artikler om konceptet, samt studeret hvordan Liplid selv brander sig. Det er der kommet denne brochure ud af.' },
+], 'Programmer anvendt: Photoshop.')">
+<img src="images/projekt23/thumbnail.jpg" alt="Infobruchure om låget LipLid">
+<h3>LIPLID</h3>
+<p>Liplid er et nyt miljøvenligt låg til to go-kaffe og sodavandsbægre.</p>
+<h5>Video</h5>
+<h5>Print</h5>
+<h5>Grafisk design</h5>
+</div>
+
+<!-- project 24 -->
+<div class="card" data-categories="video,some" onclick="showProjectDetails('JUL I B COMPANY', [
+{ type: 'text', value: 'Kort video som viser juletræet hos B Company.' },
+{ type: 'video', value: 'images/projekt24/1.mp4' },
+], 'Programmer anvendt: Premiere Pro.')">
+<img src="images/projekt24/thumbnail.jpg" alt="Video som viser juletræet hos B Company">
+<h3>JUL I B COMPANY</h3>
+<p>Ingen jul uden juletræ.</p>
+<h5>Video</h5>
+<h5>Sociale medier</h5>
+</div>
+
+</div>
+  </section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="about-container">
+
+    <div class="about-item">
+      <!-- Add your content for the left column here -->
+      <h2>Erfaring</h2>
+      <h3>Digital Content Creator</h3>
+      <h4>B Company, 2021 - nu</h4>
+      <p><i>Webudvikling | Grafisk design | Sociale medier | SEO | Videoproduktion | Marketing</i></p><br>
+
+      <h3>Grafisk Designer</h3>
+      <h4>MuseIQ, 2023 - nu</h4>
+      <p><i>Logo design | Sociale medier | Branding | Visuel kommunikation</i></p>
+    </div>
+
+    <div class="about-item">
+      <!-- Add your content for the right column here -->
+      <h2>Udannelse</h2>
+      <h3>Cand.it. Webkommunikation</h3>
+      <h4>Syddansk Universitet, 2021 - 2023</h4>
+      <p><i>HTML, CSS & JS | Grafisk design | UX design | Interaktionsdesign | Digital formidling</i></p><br>
+
+      <h3>BA. International virksomhedskommunikation</h3>
+      <h4>Syddansk Universitet, 2018 - 2021</h4>
+      <p><i>B2B markedskommunikation | Digitale medier | Marketing | Projektledelse</i></p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>KONTAKT</h2>
+    <div class="grid-container">
+
+        <div class="grid-item">
+            <a href="https://www.linkedin.com/in/jonashartmannalbjerg/" target="_blank" rel="noopener noreferrer">
+                <img src="images/kontakt/linkedin.svg" alt="LinkedIn">
+            </a>
+        </div>
+
+        <div class="grid-item">
+            <a href="tel:+4553632036" target="_blank" rel="noopener noreferrer">
+                <img src="images/kontakt/telefon.svg" alt="Telefon">
+            </a>
+        </div>
+
+        <div class="grid-item">
+            <a href="mailto:jonas@stenstrupmail.dk" target="_blank" rel="noopener noreferrer">
+                <img src="images/kontakt/mail.svg" alt="Mail">
+            </a>
+        </div>
+
+      </div>
+    </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <img src="images/logo.svg" alt="Logo" class="footer-logo">
+    <p>&copy; 2023 Jonas Hartmann Albjerg.</p>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close" onclick="hideProjectDetails()">&times;</span>
+      <h2 id="modalProjectTitle"></h2>
+      <div id="modalProjectContent"></div>
+      <p id="modalProjectDescription"></p>
+    </div>
+  </div>
+  
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
