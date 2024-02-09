@@ -244,6 +244,7 @@ section {
   height: auto;
   margin-bottom: 30px;
   margin-top: 30px;
+  border-radius: 10px;
 }
 
 .modal-content p {
