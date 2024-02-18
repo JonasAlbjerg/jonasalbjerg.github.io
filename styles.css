@@ -375,6 +375,18 @@ video {
   transform: scale(1.1); /* Increase the scale value to enlarge the image more */
 }
 
+/* Hide and show text under contact icons */
+.hide {
+  display: none;
+}
+
+.myDIV:hover + .hide {
+  display: block;
+  color: #555555;
+  font-size: 12px;
+  padding: 10px;
+}
+
 /* Footer Section */
 footer {
   text-align: center;
@@ -384,7 +396,8 @@ footer {
 
 footer p {
   margin: 0; /* Remove default margin to center the text vertically */
-  padding-top: 60px;
+  padding-top: 20px;
+  color: #666666;
 }
 
 .footer-logo {
@@ -394,3 +407,4 @@ footer p {
   margin: 20px auto 0; /* Add margin for spacing and center the logo horizontally */
   filter: grayscale(100%); /* Apply grayscale filter */
 }
+
