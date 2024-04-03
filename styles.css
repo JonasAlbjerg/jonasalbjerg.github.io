@@ -210,11 +210,11 @@ section {
   font-size: 12px;
 }
 
-/* Apply the scaling effect on hover
+/* Apply the scaling effect on hover */
 .card:hover {
   transform: scale(1.05); /* Increase the scale value to enlarge the card more */
 }
-*/
+
 
 /* Modal Styles */
 .modal {
