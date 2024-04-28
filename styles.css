@@ -275,7 +275,6 @@ video {
   text-align: center; /* Center the video horizontally */
 }
 
-
 .close {
   color: #216B7c;
   float: right;
@@ -287,6 +286,52 @@ video {
 /* Show the modal when it's triggered */
 .modal.show {
   display: block;
+}
+
+/* om Section */
+#om {
+  background-color: #f1eee4;
+  padding: 0px;
+}
+
+.om-container {
+  display: flex;
+}
+
+.om-item {
+  flex-basis: calc(50% - 50px);
+}
+
+#om h2 {
+  padding-left: 25px;
+  padding-top: 25px;
+  text-align: left;
+}
+
+#om p{
+  padding-left: 25px;
+  padding-top: 15px;
+  padding-right: 25px;
+  color: #555555;
+  line-height: 30px;
+  text-align: left;
+}
+
+#om img{
+  width: 70%;
+  padding-top: 50px;
+  text-align: center;
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  .om-container {
+    flex-direction: column;
+    align-items: flex-start; /* Align items vertically to the right */
+  }
+  .om-item {
+    flex-basis: 100%;
+  }
 }
 
 /* About Section - CV */
