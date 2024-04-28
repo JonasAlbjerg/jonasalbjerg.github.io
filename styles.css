@@ -21,7 +21,7 @@ a:link {
 }
 
 a:visited {
-  color: #ff8c00;
+  color: #8e8478;
 }
 
 a:hover {
@@ -75,10 +75,6 @@ nav {
 .navbar-links a {
   color: #ffffff; /* green color for the links */
   text-decoration: none;
-}
-
-.navbar-links a.active {
-  color: #ff8c00; /* Add any other styles you want for the active link */
 }
 
 /* Styling for Sections */
@@ -290,7 +286,7 @@ video {
 
 /* om Section */
 #om {
-  background-color: #f1eee4;
+  background-color: #216B7c;
   padding: 0px;
 }
 
@@ -303,17 +299,18 @@ video {
 }
 
 #om h2 {
-  padding-left: 25px;
-  padding-top: 25px;
+  padding-left: 40px;
+  padding-top: 40px;
   text-align: left;
+  color:#ff8c00
 }
 
 #om p{
-  padding-left: 25px;
+  padding-left: 40px;
   padding-top: 15px;
   padding-right: 25px;
   padding-top: 10px;
-  color: #555555;
+  color: #ffffff;
   line-height: 30px;
   text-align: left;
 }
@@ -336,12 +333,12 @@ video {
 }
 
 /* About Section - CV */
-#about {
-  background-color: #f1f1f1;
+#cv {
+  background-color: #f9f9f9;
   padding: 40px;
 }
 
-.about-container {
+.cv-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start; /* Align all items to the right */
@@ -349,37 +346,38 @@ video {
   margin-bottom: 40px;
 }
 
-.about-item {
+.cv-item {
   flex-basis: calc(50% - 20px);
   margin-bottom: 20px;
   text-align: left; /* Align the content within each item to the right */
 }
 
-#about h2 {
+#cv h2 {
   padding-bottom: 5px;
 }
 
-#about h3 {
+#cv h3 {
   color: #ff8c00;
 }
 
-#about h4{
+#cv h4{
   color: #555555;
 }
 
-#about p{
+#cv p{
   margin-bottom: 30px;
   color: #555555;
   line-height: 30px;
+  padding-right: 50px;
 }
 
 /* Mobile layout */
 @media (max-width: 767px) {
-  .about-container {
+  .cv-container {
     flex-direction: column;
     align-items: flex-start; /* Align items vertically to the right */
   }
-  .about-item {
+  .cv-item {
     flex-basis: 100%;
   }
 }
@@ -408,6 +406,16 @@ video {
   }
 }
 
+#contact p{
+  color: #555555;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  border: 1px solid #999999;
+  border-radius: 10px;
+}
 
 .grid-item img {
   width: 60%;
@@ -420,18 +428,6 @@ video {
 /* Apply the scaling effect on hover */
 .grid-item:hover img {
   transform: scale(1.1); /* Increase the scale value to enlarge the image more */
-}
-
-/* Hide and show text under contact icons */
-.hide {
-  display: none;
-}
-
-.myDIV:hover + .hide {
-  display: block;
-  color: #555555;
-  font-size: 12px;
-  padding: 10px;
 }
 
 /* Footer Section */
@@ -454,4 +450,3 @@ footer p {
   margin: 20px auto 0; /* Add margin for spacing and center the logo horizontally */
   filter: grayscale(100%); /* Apply grayscale filter */
 }
-
