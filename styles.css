@@ -322,7 +322,8 @@ video {
 }
 
 #about p{
-  margin-bottom: 5px;
+  font-size: 12px;
+  margin-bottom: 30px;
   color: #555555;
   line-height: 30px;
 }
