@@ -6,16 +6,18 @@
   <title>Jonas' Portfolio</title>
   <link rel="shortcut icon" type="image/svg" href="favicon/logo.svg"/>
   
-  
   <style>
-    /* Grundlæggende styling */
+    
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
+   
+   /* Grundlæggende styling */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Special Gothic Expanded One", sans-serif;
       line-height: 1.6;
       background: linear-gradient(to bottom, #216B7c, #003743);
     }
@@ -27,6 +29,7 @@
     a {
       text-decoration: none;
       color: inherit;
+      font-family: "Special Gothic Expanded One", sans-serif;
     }
     
     h1 a {
@@ -39,21 +42,21 @@
     h1 a:hover{
       background: #ff8c00;
       border-radius: 8px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Special Gothic Expanded One", sans-serif;
       font-weight: 700;
       font-style: italic;
     }
 
     /* H2-elemtenter fader ind */
     h2 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Special Gothic Expanded One", sans-serif;
     text-transform: uppercase;
     font-weight: bolder;
     opacity: 0;
     transition: opacity 4s ease-in-out;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    font-size: 50px;
+    font-size: 40px;
     }
 
 h2.visible {
@@ -106,6 +109,7 @@ section {
     nav {
       width: 100%;
       color: #fff;
+      background-color: rgba(33, 107, 124, 0.8);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -113,7 +117,6 @@ section {
       align-items: center;
       justify-content: space-between;
       padding: 2rem;
-      font-family: Arial, Helvetica, sans-serif;
       text-transform: uppercase;
       font-weight: 900;
     }
@@ -125,15 +128,15 @@ section {
       margin-left: 1rem;
     }
     .nav-links li a {
-      color: #fff;
       padding: 0.5rem;
       transition: background 0.5s;
       border-radius: 8px;
     }
+
     .nav-links li a:hover {
       background: #ff8c00;
       border-radius: 8px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Special Gothic Expanded One", sans-serif;
       font-weight: 900;
       font-style: italic;
 
@@ -208,10 +211,12 @@ section {
     }
 
     .project-item h4 {
-      font-weight: 100;
+      font-family: "Raleway", sans-serif;
+      font-weight: 500;
     }
 
     .project-item p {
+      font-family: "Raleway", sans-serif;
       margin-top: 2%;
       display: inline-block;
       border: 0.5px solid #777;
@@ -223,7 +228,7 @@ section {
     .project-item:hover {
       background: linear-gradient(to bottom, #ff6f00, #ff8c00);
       transform: skew(1deg, 1deg);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Special Gothic Expanded One", sans-serif;
       font-weight: 900;
       font-style: italic;
       color: #fff;
@@ -280,6 +285,8 @@ section {
       color: #333;
       text-align: left;
       padding: 1rem;
+      font-family: "Raleway", sans-serif;
+      font-weight: 500;
     }
 
     .modal-body a {
@@ -303,18 +310,18 @@ section {
     .about-container {
       display: flex;
       align-items: center;
-      gap: 3rem;
+      gap: 2rem;
     }
     .about-text, .about-image {
+      font-family: "Raleway", sans-serif;
+      font-size: 18px;
+      font-weight: 500;
       flex: 1;
-      padding-right: 5rem;
-      padding-left: 5rem;
+      padding-right: 4rem;
+      padding-left: 4rem;
       text-align: left;
-      font-size: 20px;
-      font-weight: 900;
       color: #fff;
     }
-
 
     /* Erfaring sektion med accordion */
     .erfaring {
@@ -384,6 +391,8 @@ section {
 
     .footer-text {
       padding: 2rem;
+      font-family: "Raleway", sans-serif;
+      font-weight: 500;
     }
 
     /* Responsivt design */
@@ -519,7 +528,7 @@ section {
           <!-- Projekt 23 -->
       <div class="project-item" data-modal="modal23">
         <img src="images/projekt23/thumbnail.jpg" alt="Grafisk materiale til lipLid" title="liplid er den ny standard til to-go koppen.">
-        <h3>LIPLID - EN NY STANDARD TIL TO-GO KOPPEN</h3>
+        <h3>LIPLID</h3>
         <h4>Liplid er et nyt miljøvenligt låg til to go-kaffe og sodavandsbægre.</h4>
         <p>Video</p>
         <p>Motion Graphics</p>
@@ -587,7 +596,7 @@ section {
         <p>Se f.eks. nogle af opslagene <a href="https://www.facebook.com/share/v/16BoYvEJpW/" target="_blank">her</a> eller <a href="https://www.linkedin.com/posts/b-company_hvert-%C3%A5r-produceres-mere-end-300-mia-plastik-activity-7192077951868252161-tokN?utm_source=share&utm_medium=member_desktop&rcm=ACoAACs1JMoBIsJC-LW-rkQl9dYrkRWvj98CVZw" target="_blank">her.</a></p>
         <img src="images/projekt23/3.jpg" alt="Brochure">
         <img src="images/projekt23/3.jpg" alt="Visitkort">
-        <p>Udover grafik og video, har jeg også opsat en <a href="https://bcompany.dk/liplid" target="_blank">Landingsside</a>, som informerer om låget, unique selling points, ofte stillede spørgsmål og video guides.</p>
+        <p>Udover grafik og video, har jeg også opsat en <a href="https://bcompany.dk/liplid" target="_blank">landingsside</a>, som informerer om låget, unique selling points, ofte stillede spørgsmål og video guides.</p>
         <p>Både SEO og den synlige del af landingssiden er opsat i Magento Pagebuilder.</p>
         <img src="images/projekt23/5.jpg" alt="Landingsside - desktop">
         <img src="images/projekt23/6.jpg" alt="Landingsside - mobil">
@@ -794,6 +803,7 @@ Skabelon slut -->
         }
       });
     });
+
   </script>
 </body>
 </html>
