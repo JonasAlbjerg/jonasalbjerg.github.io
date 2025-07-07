@@ -119,7 +119,7 @@
       width: 100%;
       color: #fff;
       background: transparent;
-      backdrop-filter: blur(5px); /* sløret baggrund på nav bar */
+      backdrop-filter: blur(50px); /* sløret baggrund på nav bar */
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -128,7 +128,7 @@
       justify-content: space-between;
       text-transform: uppercase;
       font-weight: 900;
-      max-width: 80rem;
+      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
       padding: 1rem;
@@ -192,7 +192,7 @@
       align-items: center;
       background: linear-gradient(to bottom, #ff6f00, #ff8c00);
       border-radius: 3rem;
-      max-width: 80rem;
+      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
       margin-top: 2rem;
@@ -263,7 +263,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  max-width: 80rem;
+  max-width: 90rem;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
@@ -308,7 +308,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
-      max-width: 80rem;
+      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
       padding-left: 1rem;
@@ -423,7 +423,7 @@
     /* Om mig sektion */
     .ommig {
       text-align: center;
-      max-width: 80rem;
+      max-width: 95rem;
       margin-left: auto;
       margin-right: auto;
       padding-left: 1rem;
@@ -462,9 +462,11 @@
 /* Wrapper for slider + overlay */
 .slider-wrapper {
   position: relative;
-  max-width: 80rem;
+  max-width: 90rem;
   margin: 0 auto;
   overflow: hidden;
+  height: 500px;          /* justér til ønsket fast højde */
+  padding-top: 3rem;      /* i stedet for .slides’ margin-top */
 }
 
 /* Tidslinje-overlay */
@@ -506,20 +508,20 @@
 /* Slides container */
 .slides {
   display: flex;
-  transition: transform 0.4s ease;
-  margin-top: 3rem;  /* plads til tidslinjen */
   transition: transform 0.4s ease, height 0.3s ease; /* tilføj height‐transition hvis du vil animere */
-  align-items: flex-start;   /* justere slide til content */
-
+/* fast højde */  
+  height: 100%;       /* justér til det du ønsker */
+  align-items: stretch;/* sørger for at .slide strækkes til fuld højde */
 }
 .slide {
   flex: 0 0 100%;
-  padding: 3rem;
-  padding-left: 2.5rem;
+  padding: 3rem 2.5rem;
   box-sizing: border-box;
   background: linear-gradient(to bottom, #fff, #eaeaea);
   border-radius: 0.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  height: 100%;          /* fylder hele .slides-højden */
+  overflow-y: auto;      /* scroll hvis indholdet er for langt */
 }
 
 .slides h3 {
@@ -561,13 +563,15 @@
   padding: 1rem;
 }
 
+/* mobil view */
 @media (max-width: 768px) {
   .slide-grid {
     grid-template-columns: 1fr; /* Gør kolonner til rækker på mobil */
   }
 
   .slider-wrapper {
-    overflow-x: hidden;
+    height: 400px;        /* en lidt lavere højde på mobil */
+    padding-top: 3rem;
   }
 
   .slides {
@@ -614,7 +618,7 @@
       text-align: center;
     }
     .accordion {
-    max-width: 80rem;
+    max-width: 90rem;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1rem;
@@ -705,7 +709,16 @@
       transform: scale(1.1); /* Grows 10% on hover */
     }
 
-    /* Responsivt design */
+    /* Responsivt design tablet */
+  @media screen and (min-width: 768px) and (max-width: 1024px)  {
+    .hero {
+      max-width: 80rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+    /* Responsivt design mobil */
     @media (max-width: 768px) {
       /* Nav-bar: vis burger-menu og skjul standard links */
 
