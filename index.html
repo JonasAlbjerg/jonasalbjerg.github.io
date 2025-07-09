@@ -84,22 +84,27 @@
   position: relative;
   margin-bottom: 4rem;
   margin-top: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .marquee-content {
   display: flex;
   white-space: nowrap;
   will-change: transform;
-  animation: scroll-marquee 25s linear infinite;
+  animation: scroll-marquee 35s linear infinite;
 }
 
 .marquee-content span {
   display: inline-block;
   padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
   font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: bold;
-  color: #ff6f00;
+  color: #fff;
   font-size: 30px;
+  background-color: #ff8c00;
 }
 
 @keyframes scroll-marquee {
@@ -128,7 +133,6 @@
       justify-content: space-between;
       text-transform: uppercase;
       font-weight: 900;
-      max-width: 90rem;
       margin-left: auto;
       margin-right: auto;
       padding: 1rem;
@@ -709,12 +713,21 @@
       transform: scale(1.1); /* Grows 10% on hover */
     }
 
-    /* Responsivt design tablet */
+    /* Responsivt design tablet horisontal view */
+  @media screen and (min-width: 768px) and (max-width: 1366px)  {
+    .hero {
+     max-width: 80rem;
+     margin-left: auto;
+     margin-right: auto;
+    }
+  }
+
+      /* Responsivt design tablet vertical view view */
   @media screen and (min-width: 768px) and (max-width: 1024px)  {
     .hero {
-      max-width: 80rem;
-      margin-left: 1rem;
-      margin-right: 1rem;
+     max-width: 60rem;
+     margin-left: auto;
+     margin-right: auto;
     }
   }
 
@@ -878,25 +891,25 @@ nav {
 <section id="skills" class="skills">
   
   <div class="skill-box">
-    <img src="images/skills/Digital Projektledelse ikon.svg" alt="Adaptability Icon" class="skill-icon">
+    <img src="images/skills/Digital Projektledelse ikon.svg" alt="Digital projektledelse" class="skill-icon">
     <h2>Digital Projektledelse</h2>
     <p>Styrer digitale projekter fra idé til eksekvering - med fokus på struktur, overblik og brugervenlighed.</p>
   </div>
 
   <div class="skill-box">
-    <img src="images/skills/Content Creation & Visuel Kommunikation ikon.svg" alt="Adaptability Icon" class="skill-icon">
+    <img src="images/skills/Content Creation & Visuel Kommunikation ikon.svg" alt="Content creation og visuel kommunikation" class="skill-icon">
     <h2>Content Creation & Visuel Kommunikation</h2>
     <p>Producerer video, foto og design til både web og print - altid med blik for formidling og branding..</p>
   </div>
 
   <div class="skill-box">
-    <img src="images/skills/AI & Automatisering.svg" alt="Adaptability Icon" class="skill-icon">
+    <img src="images/skills/AI & Automatisering.svg" alt="AI og automatisering" class="skill-icon">
     <h2>AI & Automatisering</h2>
     <p>Implementerer AI-værktøjer og automatisering, der effektiviserer arbejdsgange og skaber nye muligheder.</p>
   </div>
 
   <div class="skill-box">
-    <img src="images/skills/Undervisning & Formidling.svg" alt="Adaptability Icon" class="skill-icon">
+    <img src="images/skills/Undervisning & Formidling.svg" alt="Undervisning og formidling" class="skill-icon">
     <h2>Undervisning & Formidling</h2>
     <p>Formidler teknisk viden på en enkel måde og tilpasser undervisning til forskellige faglige niveauer.</p>
   </div>
