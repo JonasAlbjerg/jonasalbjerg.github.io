@@ -136,15 +136,18 @@
       margin-left: auto;
       margin-right: auto;
       padding: 1rem;
-
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
     .nav-links {
       list-style: none;
       display: flex;
     }
+
     .nav-links li {
       margin-left: 1rem;
     }
+
     .nav-links li a {
       padding: 0.5rem;
       transition: background 0.5s;
@@ -157,9 +160,9 @@
       font-family: "Special Gothic Expanded One", sans-serif;
       font-weight: 900;
       font-style: italic;
-
     }
-    /* Burger-menu styling til mobil */
+
+/* Burger-menu styling til mobil */
 .burger-menu {
   display: none;
   flex-direction: column;
@@ -205,15 +208,19 @@
       padding-right: 2rem;
       padding-bottom: 2rem;
       padding-top: 2rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
     .hero h2{
       color: #fff;
       text-align: left;
     }
+
     .hero-left, .hero-right {
       flex: 1;
       padding: 1rem;
     }
+
     .hero-left {
      display: flex;
      justify-content: center; /* Centrerer billedet vandret */
@@ -238,6 +245,7 @@
     cursor: pointer;
     width: auto;
     text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .hero button:hover {
@@ -247,7 +255,7 @@
     }
 
 
- /* animation på billede */   
+ /* animation på billede i hero */   
     @keyframes rotateScale {
   0% {
     transform: rotate(0deg) scale(0);
@@ -279,8 +287,8 @@
   background: linear-gradient(to bottom, #fff, #eaeaea);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .skill-icon {
@@ -325,6 +333,7 @@
       border-radius: 0.5rem;
       cursor: pointer;
       transition: transform 0.3s;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .project-item h3 {
@@ -424,30 +433,30 @@
       color: #ff0000;
     }
 
-    /* Om mig sektion */
-    .ommig {
-      text-align: center;
-      max-width: 95rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    .about-container {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-    .about-text, .about-image {
-      font-family: "Raleway", sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      flex: 1;
-      padding-right: 4rem;
-      padding-left: 4rem;
-      text-align: left;
-      color: #fff;
-    }
+/* Om mig sektion */
+.ommig {
+  text-align: center;
+  max-width: 95rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.about-text, .about-image {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  flex: 1;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  text-align: left;
+  color: #fff;
+}
 
 /* tidslinje */
 
@@ -489,9 +498,11 @@
   padding: 0 5rem;
   scrollbar-width: none;
 }
+
 .timeline::-webkit-scrollbar {
   display: none;
 }
+
 .timeline-item {
   flex: 0 0 auto;
   margin: 0 1rem;
@@ -516,14 +527,15 @@
 /* fast højde */  
   height: 100%;       /* justér til det du ønsker */
   align-items: stretch;/* sørger for at .slide strækkes til fuld højde */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .slide {
   flex: 0 0 100%;
   padding: 3rem 2.5rem;
   box-sizing: border-box;
   background: linear-gradient(to bottom, #fff, #eaeaea);
   border-radius: 0.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   height: 100%;          /* fylder hele .slides-højden */
   overflow-y: auto;      /* scroll hvis indholdet er for langt */
 }
@@ -628,9 +640,11 @@
     padding-left: 1rem;
     padding-right: 1rem;
     }
+
     .accordion-item {
       padding: 1rem;
     }
+    
     .accordion-header {
       font-family: "Raleway", sans-serif;
       width: 100%;
@@ -645,17 +659,21 @@
       border-radius: 8px;
       color: #216B7c;
     }
+
     .accordion-header.active {
       background: linear-gradient(to bottom, #ff6f00, #ff8c00);
       border-radius: 8px;
       color: #fff;
     }
+
     .accordion-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
       padding: 0 1rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
     .accordion-content p {
       font-family: "Raleway", sans-serif;
       padding-top: 8px;
@@ -664,7 +682,7 @@
     }
 
     iframe {
-      border-radius: 8px 8px 8px 8px;
+      border-radius: 1rem;
       margin: 2rem;
     }
 
@@ -713,27 +731,9 @@
       transform: scale(1.1); /* Grows 10% on hover */
     }
 
-    /* Responsivt design tablet horisontal view */
-  @media screen and (min-width: 768px) and (max-width: 1366px)  {
-    .hero {
-     max-width: 80rem;
-     margin-left: auto;
-     margin-right: auto;
-    }
-  }
-
-      /* Responsivt design tablet vertical view view */
-  @media screen and (min-width: 768px) and (max-width: 1024px)  {
-    .hero {
-     max-width: 60rem;
-     margin-left: auto;
-     margin-right: auto;
-    }
-  }
-
-    /* Responsivt design mobil */
-    @media (max-width: 768px) {
-      /* Nav-bar: vis burger-menu og skjul standard links */
+/* Responsivt design mobil */
+@media (max-width: 768px) {
+/* Nav-bar: vis burger-menu og skjul standard links */
 
 /* Override nav bar layout on mobile */
 nav {
