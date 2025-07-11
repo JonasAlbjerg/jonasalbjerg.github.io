@@ -282,6 +282,61 @@
   padding-right: 1rem;
 }
 
+.skills-thumbnails-wrapper {
+  grid-column: 1 / -1;
+}
+
+.skills-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.thumb-box {
+  aspect-ratio: 1 / 1;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumb-box img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.thumb-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .skills {
+    grid-template-columns: 1fr; /* Gør skill-boxes i én kolonne på mobil */
+  }
+
+  .skills-thumbnails {
+    grid-template-columns: repeat(4, 1fr); /* 4 thumbnails per række */
+  }
+
+.thumb-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+  .thumb-box.active {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background-color: #e0e0e0;
+}
+}
+
+
 .skill-box {
   background-color: #f5f5f5;
   background: linear-gradient(to bottom, #fff, #eaeaea);
@@ -671,7 +726,6 @@
       overflow: hidden;
       transition: max-height 0.3s ease;
       padding: 0 1rem;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .accordion-content p {
@@ -889,29 +943,53 @@ nav {
 </div>
 
 <section id="skills" class="skills">
-  
-  <div class="skill-box">
-    <img src="images/skills/Digital Projektledelse ikon.svg" alt="Digital projektledelse" class="skill-icon">
-    <h2>Digital Projektledelse</h2>
-    <p>Styrer digitale projekter fra idé til eksekvering - med fokus på struktur, overblik og brugervenlighed.</p>
+
+  <div class="skills-thumbnails-wrapper">
+    <div class="skills-thumbnails">
+      <div class="thumb-box"><img src="images/thumbnails/photoshop.png" alt="Photoshop"></div>
+      <div class="thumb-box"><img src="images/thumbnails/premierepro.png" alt="Premiere Pro"></div>
+      <div class="thumb-box"><img src="images/thumbnails/illustrator.png" alt="Illustrator"></div>
+      <div class="thumb-box"><img src="images/thumbnails/chatgpt.png" alt="ChatGPT"></div>
+      <div class="thumb-box"><img src="images/thumbnails/powerautomate.png" alt="Power Automate"></div>
+      <div class="thumb-box"><img src="images/thumbnails/n8n.png" alt="n8n"></div>
+            <div class="thumb-box"><img src="images/thumbnails/photoshop.png" alt="Photoshop"></div>
+      <div class="thumb-box"><img src="images/thumbnails/premierepro.png" alt="Premiere Pro"></div>
+      <div class="thumb-box"><img src="images/thumbnails/illustrator.png" alt="Illustrator"></div>
+      <div class="thumb-box"><img src="images/thumbnails/chatgpt.png" alt="ChatGPT"></div>
+      <div class="thumb-box"><img src="images/thumbnails/powerautomate.png" alt="Power Automate"></div>
+      <div class="thumb-box"><img src="images/thumbnails/n8n.png" alt="n8n"></div>
+            <div class="thumb-box"><img src="images/thumbnails/photoshop.png" alt="Photoshop"></div>
+      <div class="thumb-box"><img src="images/thumbnails/premierepro.png" alt="Premiere Pro"></div>
+      <div class="thumb-box"><img src="images/thumbnails/illustrator.png" alt="Illustrator"></div>
+      <div class="thumb-box"><img src="images/thumbnails/chatgpt.png" alt="ChatGPT"></div>
+      <div class="thumb-box"><img src="images/thumbnails/powerautomate.png" alt="Power Automate"></div>
+      <div class="thumb-box"><img src="images/thumbnails/n8n.png" alt="n8n"></div>
+      <!-- Tilføj flere her -->
+    </div>
   </div>
 
   <div class="skill-box">
     <img src="images/skills/Content Creation & Visuel Kommunikation ikon.svg" alt="Content creation og visuel kommunikation" class="skill-icon">
     <h2>Content Creation & Visuel Kommunikation</h2>
-    <p>Producerer video, foto og design til både web og print - altid med blik for formidling og branding..</p>
+    <p>Photoshop, Premiere Pro, Illustrator - indsæt selv flere. Jeg har et godt øje for videoproduktion og motion graphics. Mangler du stillestående grafik eller fotos fikser jeg også det for dig.</p>
   </div>
 
   <div class="skill-box">
     <img src="images/skills/AI & Automatisering.svg" alt="AI og automatisering" class="skill-icon">
     <h2>AI & Automatisering</h2>
-    <p>Implementerer AI-værktøjer og automatisering, der effektiviserer arbejdsgange og skaber nye muligheder.</p>
+    <p>ChatGPT, Power Automate, n8n - om man vil det eller ej, så skal man følge med når det kommer til AI. Derfor gør jeg mit for at effektivisere arbejdsgange og skabe nye muligheder.</p>
+  </div>
+
+  <div class="skill-box">
+    <img src="images/skills/Digital Projektledelse ikon.svg" alt="Digital projektledelse" class="skill-icon">
+    <h2>Digital Projektledelse</h2>
+    <p>Jeg styrer digitale projekter fra idé til eksekvering - med fokus på struktur, UX, og velovervejde valg.</p>
   </div>
 
   <div class="skill-box">
     <img src="images/skills/Undervisning & Formidling.svg" alt="Undervisning og formidling" class="skill-icon">
     <h2>Undervisning & Formidling</h2>
-    <p>Formidler teknisk viden på en enkel måde og tilpasser undervisning til forskellige faglige niveauer.</p>
+    <p>Med en uddannelsesbaggrund i IT og kommunikation, kan jeg formidle IT og teknik, på en enkel måde, naturligvis tilpasset dig, din mormor eller hund.</p>
   </div>
 
 </section>
