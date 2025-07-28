@@ -492,7 +492,7 @@
       text-align: left;
       padding-left: 1rem;
     }
-    
+
     .modal-body {
       overflow-y: auto;
       max-height: 80rem;
@@ -519,7 +519,7 @@
     .modal-body p {
       color: #333;
       text-align: left;
-      padding: 0.5rem;
+      padding: 1rem;
       font-family: "Raleway", sans-serif;
       font-weight: 500;
     }
@@ -533,7 +533,7 @@
 
     .close {
       position: absolute;
-      top: 1rem;
+      top: -0.5rem;
       right: 1rem;
       font-size: 3rem;
       cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
@@ -894,6 +894,7 @@ nav {
     transform: translateY(-100%);
     transition: transform 0.4s ease-in-out;
     z-index: 999;
+    border-radius: 0;
   }
 
   .nav-links.active {
@@ -916,12 +917,13 @@ nav {
       /* Hero sektion: stak kolonner vertikalt */
       .hero {
         flex-direction: column;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
       }
 
       .hero h1 {
         text-align: center;
+        font-size: 1.1rem;
       }
 
     .hero button {
@@ -933,16 +935,17 @@ nav {
  /* skills sektion: én kolonne */
   .skills {
     grid-template-columns: 1fr;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    gap: 1.5rem;
   }
 
       /* Projekter sektion: én kolonne */
       .projects-container {
         grid-template-columns: 1fr;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        gap: 2rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        gap: 1.5rem;
       }
 
       /* Om mig: tekst først, billede under */
@@ -953,8 +956,8 @@ nav {
       
     .about-text, .about-image {
       flex: 1;
-      padding-right: 2rem;
-      padding-left: 2rem;
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
       text-align: left;
       font-size: 1rem;
       font-weight: 500;
@@ -1010,7 +1013,7 @@ nav {
       <img src="images/hero/jonas_hero.png" alt="Hero billede" class="rotate-scale">
     </div>
     <div class="hero-right">
-      <h1>DIGITALE LØSNINGER OG GRAFISKE PROJEKTER</h1>
+      <h1>DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1>
       <button class="hero-button" onclick="location.href='#projekter'">Vil du se?</button>
     </div>
   </section>
