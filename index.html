@@ -216,16 +216,15 @@
       align-items: center;
       background: linear-gradient(to bottom, #ff6f00, #ff8c00);
       border-radius: 3rem;
-      max-width: 90rem;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 2rem;
+      margin-right: 2rem;
       margin-top: 2rem;
       margin-bottom: 2rem;
       padding-left: 2rem;
       padding-right: 2rem;
       padding-bottom: 2rem;
       padding-top: 2rem;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .hero h2{
@@ -1025,7 +1024,7 @@ nav {
   <section id="hero" class="hero">
     <div class="hero-left">
       <!-- Udskift src med det ønskede billede -->
-      <img src="images/hero/jonas_hero.png" alt="Hero billede" class="rotate-scale">
+      <img src="images/hero/jonas_hero.png" alt="Hero billede" class="rotate-scale" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-right">
       <h1>DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1>
@@ -1163,6 +1162,13 @@ nav {
         <p>Motion Graphics</p>
       </div>     
 
+        <!-- Projekt 35 -->
+      <div class="project-item" data-modal="modal35">
+        <img src="images/projekt35/thumbnail.png" alt="Plakat til Odense Squash Club" title="Spil Squash eller bliv squashed">
+        <h3>Odense Squash Club</h3>
+        <h4>Plakat til OSC, som informerer om den kommende sæson.</h4>
+        <p>Grafisk design</p>
+      </div>   
 
       <!-- project 4 -->
       <div class="project-item" data-modal="modal4">
@@ -1353,6 +1359,19 @@ nav {
             <source src="images/projekt21/1.mp4" type="video/mp4" alt="Bonuskroner-video">
             </video>
             <p>Programmer anvendt: Premiere Pro.</p>
+          </div>
+        </div>
+      </div>
+
+            <!-- project 35 -->
+      <div class="modal" id="modal35">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Odense Squash Club</h2>
+          <div class="modal-body">
+            <p>I sommeren 2025 udarbejdede jeg denne plakat til OSC, som informerede om træningstidspunkter for den kommende squash-sæson.</p>
+            <img src="images/projekt35/1.png" alt="Odense Squash Club poster">
+            <p>Programmer anvendt: Illustrator.</p>
           </div>
         </div>
       </div>
