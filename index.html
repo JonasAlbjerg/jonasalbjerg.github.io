@@ -655,7 +655,7 @@
 
 .slide {
   flex: 0 0 100%;
-  padding: 3rem 2.5rem;
+  padding: 2rem 2rem;
   box-sizing: border-box;
   background: linear-gradient(to bottom, #fff, #eaeaea);
   border-radius: 0.5rem;
@@ -670,10 +670,18 @@
 
 .slides p {
   color: #333;
-  padding-top: 2rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   text-align: left;
+  background: linear-gradient(to bottom, #eaeaea, #fff);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .slides img {
@@ -681,7 +689,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 2rem;
+  margin-top: 2rem;
   width: 50%;
 }
 
@@ -696,6 +704,7 @@
   grid-template-columns: 1fr 1fr; /* To lige store kolonner */
   gap: 2rem; /* Afstand mellem kolonner */
   min-width: 0; /* vigtigt i flex/grid så teksten ikke overflows */
+  align-items: center;
 }
 
 .slide-grid div {
@@ -725,6 +734,10 @@
     /* one‐slide wide */
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .slides img {
+    width: 100%
   }
 }
 
@@ -814,6 +827,11 @@
       text-align: center;
     }
 
+    .footer h3 {
+      color: #fff;
+      margin: 1rem;
+    }
+
     .footer-images {
     display: flex; /* Skift fra grid til flex */
     justify-content: center; /* Centrerer ikonerne horisontalt */
@@ -862,6 +880,7 @@
     .footer-col img:hover {
     transform: rotateX(25deg); /* Gør ikonet lidt større ved hover */
     cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
+    filter: invert(1);
     }
 
     .footer-text {
@@ -1567,7 +1586,7 @@ nav {
               <p>Hos <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer">Røde Kors</a> er jeg sammen med andre frivillige i gang med at formidle om organisationens aktiviter i Odense.</p>
             </div>
             <div>
-              <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/rodekors.jpg" alt="Røde Kors"></a>
+              <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/rodekors.png" alt="Røde Kors"></a>
             </div>
           </div>
         </div>
@@ -1601,6 +1620,9 @@ nav {
               <p><a href="https://museiq.io" target="_blank" rel="noopener noreferrer">MUSEIQ</a> - Grafik og video til web og SoMe</p>
               <p><a href="http://worldguidefoundation.org" target="_blank" rel="noopener noreferrer">World Guide Foundation</a> - Vedligeholdelse og udvikling af website</p>
               <p><a href="https://verdensboern.dk" target="_blank" rel="noopener noreferrer">Verdens Børn</a> - udvikling af grafik til SoMe-opslag</p>
+            <div>
+              <img src="images/Tidslinje/frivilligjobs.png" alt="Jonas i skole">
+            </div>
             </div>
           </div>
         </div>
@@ -1612,7 +1634,7 @@ nav {
             <div>
               <h3>Mit første studierelevante job</h3>
               <p>Ved grossistvirksomheden B Company. Et sted hvor jeg lærte en masse om marketing, e-commerce og grafisk design.</p>
-              <img src="images/Tidslinje/logo_bcompany.svg" alt="B Company">
+              <img src="images/Tidslinje/bcompany.png" alt="B Company">
             </div>
             <div>
               <h3>Videre på Kandidaten</h3>
@@ -1657,7 +1679,10 @@ nav {
           <div class="slide-grid">
             <div>
               <h3>Jeg fik mit første job</h3>
-              <p>Som omdeler ved <a href="https://fk.dk/virksomhed/" target="_blank" rel="noopener noreferrer">FK Distribution</a>. Hårdt optjente penge, men det gav en masse disciplin.</p>
+              <p>Som omdeler ved <a href="https://fk.dk/virksomhed/" target="_blank" rel="noopener noreferrer">FK Distribution</a>. Hårdt optjente penge, men det udviklede en masse disciplin i unge Jonas - med god opbakning hjemmefra.</p>
+            </div>
+              <div>
+              <img src="images/Tidslinje/fkdistribution.png" alt="Jonas i skole">
             </div>
           </div>
         </div>
@@ -1670,7 +1695,7 @@ nav {
               <p>... Og Jonas var ikke helt tilfreds...</p>
             </div>
             <div>
-              <img src="images/Tidslinje/førstedagiskole.JPG" alt="Jonas i skole">
+              <img src="images/Tidslinje/jonasskole.png" alt="Jonas i skole">
             </div>
           </div>
         </div>
@@ -1763,6 +1788,8 @@ nav {
   <!-- Footer sektion med billeder og tekst -->
   <footer id="footer" class="footer">
 
+<div><h3>Skal vi ta' en snak - eller vil du kigge videre på SoMe?</h3></div>
+
 <div class="footer-images">
   <div class="footer-col">
     <a href="https://www.linkedin.com/in/jonashartmannalbjerg/" target="_blank" rel="noopener noreferrer">
@@ -1782,11 +1809,19 @@ nav {
       <span class="tooltip-text">Ring til mig</span>
     </a>
   </div>
+  <div class="footer-col">
+    <a href="https://www.tiktok.com/@cowboyderjones" target="_blank" rel="noopener noreferrer">
+      <img src="images/kontakt/tiktok.svg" alt="Tiktok">
+      <span class="tooltip-text">Tiktok</span>
+    </a>
+  </div>
+
 </div>
 
   <div class="footer-text">
     <p>Lavet med kærlighed, HTML og CSS 🧡</p>
     <p>&copy; 2025 - Jonas Hartmann Albjerg.</p>
+    <div><img src="images/logoer/logo.svg" alt="logo"></div>
     <a href="#hero"><img src="images/kontakt/Jonas_footer.png" alt="Jonas" title="Vil du tilbage til toppen?"></a>
   </div>
 </footer>
@@ -1823,26 +1858,69 @@ nav {
 
 
 
-    // Modal logik for projekter
-    const projectItems = document.querySelectorAll('.project-item');
-    projectItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const modalId = item.getAttribute('data-modal');
-        const modal = document.getElementById(modalId);
-        if (modal) {
-          modal.style.display = 'block';
-        }
-      });
-    });
-    // Luk modal, når man klikker på baggrunden eller lukkeknappen
-    const modals = document.querySelectorAll('.modal');
+// Modal logik for projekter
+const projectItems = document.querySelectorAll('.project-item');
+projectItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const modalId = item.getAttribute('data-modal');
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+    }
+  });
+});
+
+// Funktion til at lukke modal + stoppe video/lyd
+function closeModal(modal) {
+  modal.style.display = 'none';
+
+  // Find alle video og audio tags i modal og stop dem
+  const mediaElements = modal.querySelectorAll('video, audio');
+  mediaElements.forEach(media => {
+    media.pause();
+    media.currentTime = 0; // nulstil afspilningen
+  });
+}
+
+// Luk modal ved klik på baggrund eller close
+const modals = document.querySelectorAll('.modal');
+modals.forEach(modal => {
+  modal.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+      closeModal(modal);
+    }
+  });
+});
+
+// Luk modal med Escape (global lytter)
+document.addEventListener("keyup", function (event) {
+  if (event.key === "Escape" || event.key === "Esc") {
+    event.preventDefault();
     modals.forEach(modal => {
-      modal.addEventListener('click', (event) => {
-        if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
-          modal.style.display = 'none';
-        }
-      });
+      if (modal.style.display === 'block') {
+        closeModal(modal);
+      }
     });
+  }
+});
+
+// Ekstra failsafe: tilføj keyup-lytter på alle video- og audio-elementer
+const mediaElements = document.querySelectorAll('video, audio');
+mediaElements.forEach(media => {
+  media.addEventListener('keyup', function (event) {
+    if (event.key === "Escape" || event.key === "Esc") {
+      event.preventDefault();
+      // Find nærmeste modal som indeholder dette media
+      const modal = media.closest('.modal');
+      if (modal && modal.style.display === 'block') {
+        closeModal(modal);
+      }
+    }
+  });
+});
+
+
+
 
     // Accordion logik
     const accordionHeaders = document.querySelectorAll('.accordion-header');
