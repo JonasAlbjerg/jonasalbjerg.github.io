@@ -210,22 +210,24 @@
 
 
     /* Hero-banner sektion */
-    .hero {
-      font-weight: bolder;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
-      border-radius: 3rem;
-      margin-left: 2rem;
-      margin-right: 2rem;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      padding-bottom: 2rem;
-      padding-top: 2rem;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+.hero {
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  /* first layer = PNG, second layer = Gradient */
+  background: 
+  url(images/hero/background.svg),linear-gradient(to bottom, #ff6f00, #ff8c00);
+  background-size: cover, contain;   /* gradient covers, PNG scales nicely */
+  background-position: center, center; /* both centered */
+  background-repeat: no-repeat, no-repeat;
+  border-radius: 3rem;
+  margin: 2rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+
+  overflow: hidden; /* keeps PNG inside rounded corners */
+}
+
 
     .hero h2{
       color: #fff;
@@ -495,7 +497,7 @@
     .modal-body {
       overflow-y: auto;
       max-height: 80rem;
-      background: linear-gradient(to bottom, #eaeaea, #fff);
+      background: #fff;
       border-radius: 0.5rem;
     }
 
@@ -911,6 +913,10 @@
 nav {
   flex-direction: row;
   justify-content: space-between;
+  padding: 0.1rem;
+}
+
+.logo {
   padding: 1rem;
 }
 
@@ -943,6 +949,7 @@ nav {
 
   .burger-menu {
     display: flex;
+    margin: 2rem;
   }
 
   body.menu-open {
@@ -1239,7 +1246,7 @@ nav {
   <div class="project-item" data-modal="modal34">
     <img src="images/projekt34/thumbnail.jpg" alt="Filippa Tårnet i Odense - animeret" title="Filippa Tårnet er Odenses højeste tårn">
     <h3>Filippa Tårnet</h3>
-    <h4>Animation af Filipa Tårnet - Odenses højeste bygning.</h4>
+    <h4>Animation af Filippa Tårnet - Odenses højeste bygning.</h4>
     <p>Video</p>
   </div>
 
@@ -1490,9 +1497,9 @@ nav {
       <div class="modal" id="modal34">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <h2>Filipa Tårnet</h2>
+          <h2>Filippa Tårnet</h2>
           <div class="modal-body">
-            <p>Filipa Tårnet er Odenses højeste bygning - og den har jeg været med til at bygge... jeg mente animere.</p>
+            <p>Filippa Tårnet er Odenses højeste bygning - og den har jeg været med til at bygge... jeg mente animere.</p>
             <video controls>
               <source src="images/projekt34/1.mp4" type="video/mp4" alt="Filippa Tårnet bygget på få sekunder">
             </video>
