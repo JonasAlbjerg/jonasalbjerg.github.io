@@ -169,6 +169,8 @@
       padding: 0.5rem;
       transition: background 0.5s;
       border-radius: 2rem;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
     }
 
     .nav-links li a:hover {
@@ -214,18 +216,17 @@
   font-weight: bolder;
   display: flex;
   align-items: center;
-  /* first layer = PNG, second layer = Gradient */
+  /* first layer = SVG, second layer = Gradient */
   background: 
   url(images/hero/background.svg),linear-gradient(to bottom, #ff6f00, #ff8c00);
-  background-size: cover, contain;   /* gradient covers, PNG scales nicely */
+  background-size: cover, contain;   /* gradient covers, SVG scales nicely */
   background-position: center, center; /* both centered */
   background-repeat: no-repeat, no-repeat;
   border-radius: 3rem;
   margin: 2rem;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-
-  overflow: hidden; /* keeps PNG inside rounded corners */
+  overflow: hidden; /* keeps SVG inside rounded corners */
 }
 
 
@@ -272,19 +273,15 @@
     color: #ff8c00;
     }
 
-
- /* animation på billede i hero */   
-    @keyframes rotateScale {
-  0% {
-    transform: rotate(0deg) scale(0);
-  }
-  100% {
-    transform: rotate(360deg) scale(1.2);
-  }
+ /* animation rotation img */  
+@keyframes rotateScale {
+  0%   { transform: rotate(0deg) scale(1.2); }
+  50%  { transform: rotate(180deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.2); }
 }
 
 .rotate-scale {
-  animation: rotateScale 2s ease forwards;
+  animation: rotateScale 8s ease-in-out infinite;
 }
 
 
@@ -882,7 +879,6 @@
     .footer-col img:hover {
     transform: rotateX(25deg); /* Gør ikonet lidt større ved hover */
     cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    filter: invert(1);
     }
 
     .footer-text {
@@ -945,7 +941,22 @@ nav {
   .nav-links li {
     margin: 1.5rem 0;
     font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
   }
+
+  .nav-links.active li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* links fader ind */
+.nav-links.active li:nth-child(1) { transition-delay: 0.3s; }
+.nav-links.active li:nth-child(2) { transition-delay: 0.4s; }
+.nav-links.active li:nth-child(3) { transition-delay: 0.5s; }
+.nav-links.active li:nth-child(4) { transition-delay: 0.6s; }
+.nav-links.active li:nth-child(5) { transition-delay: 0.7s; }
 
   .burger-menu {
     display: flex;
