@@ -76,7 +76,7 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     font-size: 2rem;
-    color: #216B7c;
+    color: #fff;
     }
 
     h3 {
@@ -129,7 +129,7 @@
   }
 }
 
-  /* SLUT effekt som får h2-elementer til at køre hen over skærmen */
+  /* SLUT effekt som får span-elementer til at køre hen over skærmen */
 
     
     /* Navigation */
@@ -297,6 +297,11 @@
   padding-right: 1rem;
 }
 
+.skills h2 {
+  grid-column: 1 / -1;   /* strækker over begge kolonner */
+  text-align: center;    /* centrer teksten horisontalt */
+}
+
 
 /* første sektion med software og programmer */
 .skills-thumbnails-wrapper {
@@ -312,16 +317,16 @@
 }
 
 .thumb-box {
+  position: relative; /* needed for tooltip positioning */
   aspect-ratio: 1 / 1;
   background-color: #f0f0f0;
   border-radius: 5rem;
-  overflow: hidden;
+  overflow: visible; /* allow tooltip to show outside */
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   filter: invert(0%);
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 4.5rem;
   height: 4.5rem;
 }
@@ -331,6 +336,48 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   filter: invert(1);
+  z-index: 9999; /* raise above other icons on hover */
+}
+
+/* Tooltip element (pseudo-element) */
+.thumb-box::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -2.5rem; /* distance below circle */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 10000;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Small arrow under circle */
+.thumb-box::before {
+  content: "";
+  position: absolute;
+  bottom: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0.4rem;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  opacity: 0;
+  z-index: 10000;
+  transition: opacity 0.2s ease;
+}
+
+/* Show tooltip on hover */
+.thumb-box:hover::after,
+.thumb-box:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
 }
 
 .thumb-box img {
@@ -339,6 +386,7 @@
   object-fit: contain;
   border-radius: 0;
 }
+
 
 /* 4 bokse med beskrivelser om mine kompetencer */
 
@@ -358,7 +406,7 @@
   border-radius: 0;
 }
 
-.skill-box h2 {
+.skill-box h3 {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
 }
@@ -484,6 +532,7 @@
       text-align: left;
       padding-left: 2rem;
       font-size: 30px;
+      color: #216B7c;
     }
 
     .modal-content h3 {
@@ -580,8 +629,11 @@
   color: #fff;
 }
 
-/* tidslinje */
+.about-text h2 {
+  font-size: 1.5rem;
+}
 
+/* tidslinje */
 .slider-section {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -600,7 +652,7 @@
   max-width: 90rem;
   margin: 0 auto;
   overflow: hidden;
-  height: 500px;          /* justér til ønsket fast højde */
+  height: 650px;          /* justér til ønsket fast højde */
   padding-top: 3rem;      /* i stedet for .slides’ margin-top */
 }
 
@@ -717,7 +769,7 @@
   }
 
   .slider-wrapper {
-    height: 400px;        /* en lidt lavere højde på mobil */
+    height: 600px;        /* en lidt lavere højde på mobil */
     padding-top: 3rem;
   }
 
@@ -826,9 +878,9 @@
       text-align: center;
     }
 
-    .footer h3 {
+    .footer h2 {
       color: #fff;
-      margin: 1rem;
+      font-size: 1.5rem;
     }
 
     .footer-images {
@@ -1082,24 +1134,25 @@ nav {
 
 <section id="skills" class="skills">
 
+    <h2>Værktøjskassen.</h2>
 
   <div class="skills-thumbnails-wrapper">
     <div class="skills-thumbnails">
-      <div class="thumb-box"><img src="images/skills/programmer/adobe-photoshop.svg" alt="Photoshop"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/adobe-premiere.svg" alt="Premiere Pro"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/adobe-illustrator.svg" alt="Illustrator"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/adobe-indesign.svg" alt="InDesign"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/adobe-xd.svg" alt="Adobe XD"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/openai.svg" alt="ChatGPT"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/html-5.svg" alt="HTML5"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/css-3.svg" alt="CSS"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/linkedin.svg" alt="LinkedIn"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/meta.svg" alt="Meta Ads"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/wordpress.svg" alt="WordPress"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/magento.svg" alt="Magento"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/activecampaign.svg" alt="ActiveCampaign"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/Klaviyo.svg" alt="Klaviyo"></div>
-      <div class="thumb-box"><img src="images/skills/programmer/mailchimp.svg" alt="Mailchimp"></div>
+      <div class="thumb-box" data-tooltip="Photoshop"><img src="images/skills/programmer/adobe-photoshop.svg" alt="Photoshop"></div>
+      <div class="thumb-box" data-tooltip="Premiere Pro"><img src="images/skills/programmer/adobe-premiere.svg" alt="Premiere Pro"></div>
+      <div class="thumb-box" data-tooltip="Illustrator"><img src="images/skills/programmer/adobe-illustrator.svg" alt="Illustrator"></div>
+      <div class="thumb-box" data-tooltip="InDesign"><img src="images/skills/programmer/adobe-indesign.svg" alt="InDesign"></div>
+      <div class="thumb-box" data-tooltip="Adobe XD"><img src="images/skills/programmer/adobe-xd.svg" alt="Adobe XD"></div>
+      <div class="thumb-box" data-tooltip="ChatGPT"><img src="images/skills/programmer/openai.svg" alt="ChatGPT"></div>
+      <div class="thumb-box" data-tooltip="HTML5"><img src="images/skills/programmer/html-5.svg" alt="HTML5"></div>
+      <div class="thumb-box" data-tooltip="CSS"><img src="images/skills/programmer/css-3.svg" alt="CSS"></div>
+      <div class="thumb-box" data-tooltip="LinkedIn"><img src="images/skills/programmer/linkedin.svg" alt="LinkedIn"></div>
+      <div class="thumb-box" data-tooltip="Meta Ads"><img src="images/skills/programmer/meta.svg" alt="Meta Ads"></div>
+      <div class="thumb-box" data-tooltip="WordPress"><img src="images/skills/programmer/wordpress.svg" alt="WordPress"></div>
+      <div class="thumb-box"data-tooltip="Magento"><img src="images/skills/programmer/magento.svg" alt="Magento"></div>
+      <div class="thumb-box" data-tooltip="ActiveCampaign"><img src="images/skills/programmer/activecampaign.svg" alt="ActiveCampaign"></div>
+      <div class="thumb-box" data-tooltip="Klaviyo"><img src="images/skills/programmer/Klaviyo.svg" alt="Klaviyo"></div>
+      <div class="thumb-box" data-tooltip="Mailchimp">><img src="images/skills/programmer/mailchimp.svg" alt="Mailchimp"></div>
    
     </div>
   </div> 
@@ -1107,25 +1160,25 @@ nav {
 
   <div class="skill-box">
     <img src="images/skills/ikoner/Content Creation & Visuel Kommunikation ikon.svg" alt="Content creation og visuel kommunikation" class="skill-icon">
-    <h2>Content Creation & Visuel Kommunikation</h2>
+    <h3>Content Creation & Visuel Kommunikation</h3>
     <p>Photoshop, Premiere Pro, Illustrator - indsæt selv flere. Jeg har et godt øje for videoproduktion og motion graphics. Mangler du stillestående grafik eller fotos fikser jeg også det for dig.</p>
   </div>
 
   <div class="skill-box">
     <img src="images/skills/ikoner/AI & Automatisering.svg" alt="AI og automatisering" class="skill-icon">
-    <h2>AI & Automatisering</h2>
+    <h3>AI & Automatisering</h3>
     <p>ChatGPT, Power Automate, n8n - om man vil det eller ej, så skal man følge med når det kommer til AI. Derfor gør jeg mit for at effektivisere arbejdsgange og skabe nye muligheder.</p>
   </div>
 
   <div class="skill-box">
     <img src="images/skills/ikoner/Digital Projektledelse ikon.svg" alt="Digital projektledelse" class="skill-icon">
-    <h2>Digital Projektledelse</h2>
+    <h3>Digital Projektledelse</h3>
     <p>Jeg styrer digitale projekter fra idé til eksekvering - med fokus på struktur, UX, og velovervejde valg.</p>
   </div>
 
   <div class="skill-box">
     <img src="images/skills/ikoner/Undervisning & Formidling.svg" alt="Undervisning og formidling" class="skill-icon">
-    <h2>Undervisning & Formidling</h2>
+    <h3>Undervisning & Formidling</h3>
     <p>Med en uddannelsesbaggrund i IT og kommunikation, kan jeg formidle IT og teknik på en enkel måde - naturligvis tilpasset dig, din mormor eller hund.</p>
   </div>
 
@@ -1562,6 +1615,7 @@ nav {
 
     <div class="about-container">
       <div class="about-text">
+        <h2>Teknisk. Kreativ. God.</h2>
         <p>Da jeg gik i 3. klasse var jeg med i min første film. En kortfilm, som tilfældigvis blev optaget på min folkeskole. Jeg skulle sige et par enkelte sætninger, så vildere var det heller ikke. Men det blev startskuddet for min fascination for film, medier og det visuelle.</p><br>
         <p>I dag er jeg havnet i krydsfeltet mellem det kreative og tekniske. Jeg arbejder med Digitalisering; IT; Marketing. Jeg laver ting, der bliver set. Jeg formidler tekniske løsninger, omdanner det til lægmandssprog, og gør det på en sjov måde.</p><br>
         <p>Jeg er stadig ny på arbejdsmarkedet, men igennem de seneste år har jeg hjulpet virksomheder med digitale løsninger; opsætning og kodning af websites; video og motion graphics; AI-workflows; onboarding af nye medarbejdere; email-marketing; betalte annoncer på Meta; sociale medier og visuel branding.</p>
@@ -1575,7 +1629,7 @@ nav {
 <!-- tidslinje -->
 
 <section class="slider-section">
-    <h2>A trip down memory lane</h2>
+    <h2>A trip down memory lane.</h2>
     <div class="slider-wrapper">
       <!-- Tidslinje overlay -->
       <div class="timeline-overlay">
@@ -1806,7 +1860,9 @@ nav {
   <!-- Footer sektion med billeder og tekst -->
   <footer id="footer" class="footer">
 
-<div><h3>Skal vi ta' en snak - eller vil du kigge videre på SoMe?</h3></div>
+<div>
+  <h2>Skal vi ta' en snak - eller vil du kigge videre på SoMe?</h2>
+</div>
 
 <div class="footer-images">
   <div class="footer-col">
