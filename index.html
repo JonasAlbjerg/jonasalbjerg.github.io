@@ -156,8 +156,8 @@
     .nav-links {
       list-style: none;
       display: flex;
-      background-color: transparent;
-      backdrop-filter: blur(50px);
+      background-color: #ffffff60;
+      backdrop-filter: blur(25px);
       border-radius: 2rem;
       padding: 1rem;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -637,7 +637,7 @@
 
 .about-text p {
   background-color: #eaeaea60;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(25px);
   border-radius: 0.5rem;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -1049,12 +1049,55 @@ nav {
     }
       
  /* skills sektion: én kolonne */
-  .skills {
-    grid-template-columns: 1fr;  /* én kolonne */
+
+  .skills{
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin: 0 auto;              /* behold centreret */
-    padding: 0 1.5rem;           /* luft i siderne */
+    padding: 0 1.5rem;
+    justify-items: center;       /* center all children */
   }
+
+  /* prevent grid children from widening the layout */
+  .skills > *{ min-width: 0; }
+
+  /* make the long title wrap + scale on tiny screens */
+  .skills h2{
+    max-width: 100%;
+    overflow-wrap: anywhere;      /* allow breaks anywhere */
+    word-break: break-word;
+    hyphens: auto;
+    text-align: center;
+    font-size: clamp(1.25rem, 8vw, 2rem);
+    line-height: 1.1;
+  }
+
+  /* icon row stays centered and contained */
+  .skills-thumbnails{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* optional: slightly smaller bubbles for very narrow widths */
+  @media (max-width: 420px){
+    .thumb-box{ width: 4rem; height: 4rem; }
+  }
+
+  /* center each card and CTA */
+  .skill-box{
+    width: 100%;
+    max-width: 42rem;
+    text-align: center;
+  }
+  .skill-icon{
+    display: block;
+    margin: 0 auto .5rem;
+  }
+  .skills-button{
+    justify-self: center;
+    width: max-content;
+    margin: 2rem auto 0;
+  }
+
 
       /* Projekter sektion: én kolonne */
       .projects-container {
@@ -1164,7 +1207,7 @@ nav {
       <div class="thumb-box"data-tooltip="Magento"><img src="images/skills/programmer/magento.svg" alt="Magento"></div>
       <div class="thumb-box" data-tooltip="ActiveCampaign"><img src="images/skills/programmer/activecampaign.svg" alt="ActiveCampaign"></div>
       <div class="thumb-box" data-tooltip="Klaviyo"><img src="images/skills/programmer/Klaviyo.svg" alt="Klaviyo"></div>
-      <div class="thumb-box" data-tooltip="Mailchimp">><img src="images/skills/programmer/mailchimp.svg" alt="Mailchimp"></div>
+      <div class="thumb-box" data-tooltip="Mailchimp"><img src="images/skills/programmer/mailchimp.svg" alt="Mailchimp"></div>
    
     </div>
   </div> 
