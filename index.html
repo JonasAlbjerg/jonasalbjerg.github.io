@@ -25,11 +25,14 @@
     body {
       font-family: "Special Gothic Expanded One", sans-serif;
       line-height: 1.6;
+      background-color: #216b7c;
+      background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
+    /* gammelt design af baggrund
       background:  url(images/hero/background_body.svg), linear-gradient(to bottom, #216B7c, #003743);
       cursor: url(images/mousecursor/mouse32x32.png) 0 0, auto;
-      background-size: cover, contain;   /* gradient covers, SVG scales nicely */
-      background-position: center, center; /* both centered */
-      background-repeat: no-repeat, no-repeat;
+      background-size: cover, contain;  
+      background-position: center, center;
+      background-repeat: no-repeat, no-repeat; */
     }
 
     img, video {
@@ -521,11 +524,11 @@
       text-align: center;
     }
     .modal-content {
-      background: linear-gradient(to bottom, #fff, #eaeaea);
+      background: linear-gradient(to bottom, #ff8c00, #ff6f00);
       margin: 2rem auto;
       padding: 1rem;
       border-radius: 0.5rem;
-      max-width: 70rem;
+      max-width: 85rem;
       position: relative;
       text-align: center;
     }
@@ -534,7 +537,7 @@
       text-align: left;
       padding-left: 2rem;
       font-size: 30px;
-      color: #216B7c;
+      color: #fff;
     }
 
     .modal-content h3 {
@@ -603,7 +606,7 @@
       right: 1rem;
       font-size: 3rem;
       cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      color: #ff0000;
+      color: #216B7c;
     }
 
 /* Om mig sektion */
@@ -731,10 +734,10 @@
 
 .slides p {
   color: #333;
-  padding-top: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
   font-family: "Raleway", sans-serif;
   font-weight: 500;
@@ -1166,7 +1169,7 @@ nav {
   <section id="hero" class="hero">
     <div class="hero-left">
       <!-- Udskift src med det ønskede billede -->
-      <img src="images/hero/jonas_hero.png" alt="Hero billede" class="rotate-scale" loading="eager" fetchpriority="high">
+      <img src="images/hero/jonas_hero.webp" alt="Hero billede" title="Jonas byder dig velkommen" class="rotate-scale" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-right">
       <h1>DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1>
@@ -1693,7 +1696,7 @@ nav {
         <p>Jeg er stadig ny på arbejdsmarkedet, men igennem de seneste år har jeg hjulpet virksomheder med digitale løsninger; opsætning og kodning af websites; video og motion graphics; AI-workflows; onboarding af nye medarbejdere; email-marketing; betalte annoncer på Meta; sociale medier og visuel branding.</p>
       </div>
       <div class="about-image">
-        <img src="images/om mig/Jonas_2024.png" alt="Billede af mig">
+        <img src="images/om mig/Jonas_2024.webp" alt="Billede af mig">
       </div>
     </div>
   </section>
@@ -1732,7 +1735,7 @@ nav {
               <p>Hos <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer">Røde Kors</a> er jeg sammen med andre frivillige i gang med at formidle om organisationens aktiviter i Odense.</p>
             </div>
             <div>
-              <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/rodekors.png" alt="Røde Kors"></a>
+              <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/rodekors.webp" alt="Røde Kors"></a>
             </div>
           </div>
         </div>
@@ -1747,7 +1750,7 @@ nav {
               <p>... Og mere endnu...</p>
             </div>
             <div>
-              <a href="https://lubijob.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/lubi.png" alt="LUBI"></a>
+              <a href="https://lubijob.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/lubi.webp" alt="LUBI"></a>
             </div>
           </div>
         </div>
@@ -1767,7 +1770,7 @@ nav {
               <p><a href="http://worldguidefoundation.org" target="_blank" rel="noopener noreferrer">World Guide Foundation</a> - Vedligeholdelse og udvikling af website</p>
               <p><a href="https://verdensboern.dk" target="_blank" rel="noopener noreferrer">Verdens Børn</a> - udvikling af grafik til SoMe-opslag</p>
             <div>
-              <img src="images/Tidslinje/frivilligjobs.png" alt="Jonas i skole">
+              <img src="images/Tidslinje/frivilligjobs.webp" alt="Jonas i skole">
             </div>
             </div>
           </div>
@@ -1780,7 +1783,7 @@ nav {
             <div>
               <h3>Mit første studierelevante job</h3>
               <p>Ved grossistvirksomheden B Company. Et sted hvor jeg lærte en masse om marketing, e-commerce og grafisk design.</p>
-              <img src="images/Tidslinje/bcompany.png" alt="B Company">
+              <img src="images/Tidslinje/bcompany.webp" alt="B Company">
             </div>
             <div>
               <h3>Videre på Kandidaten</h3>
@@ -1816,7 +1819,7 @@ nav {
               <p>Som Flaskedreng udviklede jeg kompetencer indenfor: <br><b>Problemløsning</b>; når flaskeautomaten ikke virkede. <br><b>Tunge løft</b>; når flaskeautomaten ikke virkede og jeg skulle fjerne store kar med flasker og dåser. <br><b>Kundekontakt</b>; når flaskeautomaten ikke virkede og jeg skulle forklare kunderne hvorfor deres kæmpe poser med flasker og dåser ikke kunne afleveres i automaten. </p>
             </div>
             <div>
-              <img src="images/Tidslinje/kvickly.png" alt="Kvickly">
+              <img src="images/Tidslinje/kvickly.webp" alt="Kvickly">
             </div>
           </div>
         </div>
@@ -1843,7 +1846,7 @@ nav {
               <p>Som omdeler ved <a href="https://fk.dk/virksomhed/" target="_blank" rel="noopener noreferrer">FK Distribution</a>. Hårdt optjente penge, men det udviklede en masse disciplin i unge Jonas - med god opbakning hjemmefra.</p>
             </div>
               <div>
-              <img src="images/Tidslinje/fkdistribution.png" alt="Jonas i skole">
+              <img src="images/Tidslinje/fkdistribution.webp" alt="Jonas i skole">
             </div>
           </div>
         </div>
@@ -1856,7 +1859,7 @@ nav {
               <p>Bevares, kun en lille rolle, men et stort øjeblik for unge Jonas. Vil du se mit skuespiltalent? Så kan du se den lige <a href="https://filmcentralen.dk/grundskolen/film/lysvaagen" target="_blank" rel="noopener noreferrer">her</a> med UNI login.</p>
             </div>
             <div>
-              <img src="images/Tidslinje/lysvaagen.png" alt="Lysvågen">
+              <img src="images/Tidslinje/lysvaagen.webp" alt="Lysvågen">
             </div>
           </div>
         </div>
@@ -1869,7 +1872,7 @@ nav {
               <p>... Og Jonas var ikke helt tilfreds...</p>
             </div>
             <div>
-              <img src="images/Tidslinje/jonasskole.png" alt="Jonas i skole">
+              <img src="images/Tidslinje/jonasskole.webp" alt="Jonas i skole">
             </div>
           </div>
         </div>
