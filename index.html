@@ -566,17 +566,38 @@
       border-radius: 1.5rem;
       width: 75%;
       display: block;
-        margin-left: auto;
-        margin-right: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      border-radius: 1.5rem;
+      margin: 2rem;
+     }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
 
     .modal-body p {
       color: #333;
       text-align: left;
       padding-left: 2rem;
       padding-right: 2rem;
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
       font-family: "Raleway", sans-serif;
       font-weight: 500;
     }
@@ -1411,11 +1432,20 @@ nav {
       <div class="modal-body">
         <p>Som en del af Slagelse Boldklub og Idrætsforening (SBI), er Erhvervsnetværket Vestsjælland et netværk for områdets virskomheder og organisationer.</p>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Pbqv92P2-BY?si=092qJ__rJQrGDkki" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/Pbqv92P2-BY?rel=0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
 
         <p>Folkene bag netværket havde i længere tid eftersøgt en ny sælger, som skulle være med til at hverve nye B2B-medlemmer. Derfor tog jeg en dag ud af kalenderen, og optog en præsentationsvideo af netværkets hovedsæde i Slagelse.</p>
         <p>Sammen med Sportschef, Mick Keller, samt formand Michael Birkedal, fik vi sat ord på Erhvervsnetværket Vestsjælland, miljøet i organisationen, og hvad det lige er de søger i en ny medarbejder.</p>
         <p>Efterfølgende er videoen blevet distribueret på bl.a. LUBIs hjemmeside for jobopslag og rekruttering, samt organiske og betalte opslag på Facebook, Instagram og LinkedIn.</p>
+        <img src="images/projekt37/logo.webp" alt="Slagelse Boldklub og Idrætsforening og Erhvervsnetværket Vestsjælland">
 
         <h3>Tekniske detaljer</h3>  
         <p>Videoen er filmet med Sony AX43 4K Handycam, hvor droneoptagelser er filmet med DJI Mini 2. Videoen er klippet i Premiere Pro</p>   
