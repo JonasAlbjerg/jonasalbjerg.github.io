@@ -550,6 +550,7 @@
       max-height: 80rem;
       background: #fff;
       border-radius: 0.5rem;
+      padding: 1rem 2rem  
     }
 
     .modal-body img {
@@ -573,14 +574,13 @@
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      width: 100%;           /* Fylder 75% af modalens bredde */
+      padding-bottom: 42.1875%; /* 16:9 ratio (75% af bredde) */
       height: 0;
       overflow: hidden;
-      max-width: 100%;
-      background: #000;
+      margin: 1rem auto;    /* Centrerer containeren */
       border-radius: 1.5rem;
-      margin: 1rem;
-     }
+    }
 
     .video-container iframe {
       position: absolute;
@@ -589,8 +589,8 @@
       width: 100%;
       height: 100%;
       border: 0;
+      border-radius: 1.5rem; /* Matcher containerens hjørner */
     }
-
 
     .modal-body p {
       color: #333;
