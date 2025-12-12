@@ -551,6 +551,9 @@
       will-change: transform, opacity;
       max-height: calc(100vh - 4rem); /* keep content inside viewport */
       overflow-y: auto; /* allow internal scrolling if content is tall */
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+      touch-action: pan-y; /* allow vertical touch panning */
+      overscroll-behavior: contain; /* prevent scroll chaining to body */
     }
 
     .modal.open .modal-content {
@@ -579,6 +582,9 @@
       background: #fff;
       border-radius: 0.5rem;
       padding: 1rem;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior: contain;
     }
 
     .modal-body img {
@@ -1171,6 +1177,8 @@ nav {
       max-width: 95rem;
       position: relative;
       text-align: center;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
     }
 
     .modal-content h2 {
@@ -2204,11 +2212,30 @@ nav {
 // Modal logik for projekter
 const projectItems = document.querySelectorAll('.project-item');
 projectItems.forEach(item => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
+    // Ignore clicks that happen immediately after a modal was closed
+    if (document.body.classList.contains('modal-just-closed')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     const modalId = item.getAttribute('data-modal');
     const modal = document.getElementById(modalId);
     if (modal) {
+      // remember previously focused element to restore later without scrolling
+      try { window._lastFocusedElement = document.activeElement; } catch (err) { window._lastFocusedElement = null; }
+
       modal.classList.add('open');
+      // make modal focusable and focus it without scrolling the page
+      try {
+        modal.setAttribute('tabindex', '-1');
+        modal.focus({ preventScroll: true });
+      } catch (err) {
+        // ignore if browser doesn't support options
+        try { modal.focus(); } catch (e) {}
+      }
+
       lockScroll(); // <-- lock scrolling when modal opens
     }
   });
@@ -2230,6 +2257,35 @@ function closeModal(modal) {
   if (!anyOpen) {
     unlockScroll();
   }
+
+  // Prevent click-throughs: ignore project clicks for a short moment after closing
+  document.body.classList.add('modal-just-closed');
+  setTimeout(() => document.body.classList.remove('modal-just-closed'), 350);
+
+  // avoid browser scrolling to previously focused element: blur and restore focus without scrolling
+  try {
+    // blur current active element (modal)
+    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+      document.activeElement.blur();
+    }
+
+    // restore previous focus if available, but prevent scrolling
+    const prev = window._lastFocusedElement;
+    if (prev && typeof prev.focus === 'function') {
+      try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
+    } else {
+      // fallback: focus body temporarily without scrolling
+      try {
+        document.body.setAttribute('tabindex', '-1');
+        document.body.focus({ preventScroll: true });
+        document.body.removeAttribute('tabindex');
+      } catch (err) {
+        try { document.body.focus(); document.body.removeAttribute('tabindex'); } catch (e) {}
+      }
+    }
+  } catch (err) {
+    // ignore focus errors
+  }
 }
 
 // Luk modal ved klik på baggrund eller close
@@ -2237,7 +2293,10 @@ const modals = document.querySelectorAll('.modal');
 modals.forEach(modal => {
   modal.addEventListener('click', (event) => {
     if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+      event.preventDefault();
+      event.stopPropagation();
       closeModal(modal);
+      return;
     }
   });
 });
@@ -2291,11 +2350,22 @@ function unlockScroll() {
   document.body.style.left = '';
   document.body.style.right = '';
   document.body.style.width = '';
-  window.scrollTo(0, _scrollY || 0);
+  // restore scroll without CSS `scroll-behavior: smooth` causing an animation
+  if (typeof window.scrollTo === 'function') {
+    try {
+      window.scrollTo({ top: (_scrollY || 0), left: 0, behavior: 'auto' });
+    } catch (err) {
+      // fallback for very old browsers
+      window.scrollTo(0, _scrollY || 0);
+    }
+  }
   document.removeEventListener('touchmove', preventTouch, { passive: false });
 }
 
 function preventTouch(e) {
+  // Allow touch interactions inside the modal so users can scroll the modal content.
+  // Only prevent touchmove when the touch is outside modal content.
+  if (e.target.closest('.modal-content') || e.target.closest('.modal-body')) return;
   e.preventDefault();
 }
     // Accordion logik
