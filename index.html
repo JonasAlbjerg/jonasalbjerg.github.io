@@ -512,53 +512,59 @@
 
     /* Modal styling with open animation */
     .modal {
+      /* make the overlay cover the entire viewport */
       position: fixed;
-      z-index: 2000;
+      z-index: 2000; /* sit on top of other content */
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
+      /* semi-transparent dark backdrop */
       background-color: rgba(0,0,0,0.7);
-      padding: 2rem 1rem; /* allow space at top on small screens */
+      padding: 2rem 1rem; /* spacing so modal sits away from viewport edges */
       text-align: center;
-      display: flex;
-      align-items: flex-start; /* pin content toward top when taller than viewport */
-      justify-content: center;
-      visibility: hidden;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 300ms ease, visibility 300ms ease;
+      display: flex; /* use flex to centre modal-content */
+      align-items: flex-start; /* align content near the top when tall */
+      justify-content: center; /* horizontally centre the modal box */
+      visibility: hidden; /* hidden by default */
+      opacity: 0; /* invisible by default */
+      pointer-events: none; /* clicks pass through when hidden */
+      transition: opacity 300ms ease, visibility 300ms ease; /* fade in/out */
     }
     .modal.open {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: auto;
+      visibility: visible; /* show overlay when open */
+      opacity: 1; /* make overlay visible */
+      pointer-events: auto; /* allow interaction when open */
     }
 
+    /* The modal box itself (the visible card inside the overlay) */
     .modal-content {
-      background: linear-gradient(to bottom, #ff8c00, #ff6f00);
-      margin: 0 auto;
-      padding-bottom: 1rem;
-      padding-right: 0.2rem;
-      padding-left: 0.2rem;
-      border-radius: 0.5rem;
-      max-width: 70rem;
-      position: relative;
-      text-align: center;
-      transform: translateY(8px) scale(2);
-      opacity: 0;
-      transition: transform 320ms cubic-bezier(.2,.8,.2,1), opacity 320ms ease;
-      will-change: transform, opacity;
-      max-height: calc(100vh - 4rem); /* keep content inside viewport */
-      overflow-y: auto; /* allow internal scrolling if content is tall */
-      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-      touch-action: pan-y; /* allow vertical touch panning */
-      overscroll-behavior: contain; /* prevent scroll chaining to body */
+      background: linear-gradient(to bottom, #ff8c00, #ff6f00); /* visual background */
+      margin: 0 auto; /* center horizontally inside overlay */
+      padding-bottom: 1rem; /* inner space under content */
+      padding-right: 0.2rem; /* small side padding */
+      padding-left: 0.2rem; /* small side padding */
+      border-radius: 0.5rem; /* rounded corners */
+      max-width: 70rem; /* limit width on large screens */
+      position: relative; /* needed for absolute-positioned close button */
+      text-align: center; /* center headings by default */
+      transform: translateY(8px) scale(2); /* start slightly moved/scaled for animation */
+      opacity: 0; /* start invisible for animation */
+      transition: transform 800ms cubic-bezier(.2,.8,.2,1), opacity 700ms ease; /* animate in */
+      will-change: transform, opacity; /* hint to the browser for smoother animation */
+      max-height: calc(100vh - 4rem); /* don't grow larger than viewport minus padding */
+      overflow: visible; /* allow children to scroll instead of this container */
+      display: flex; /* stack header and body vertically */
+      flex-direction: column; /* vertical layout */
+      align-items: stretch; /* children fill width */
+      min-height: 0; /* allow flex children to shrink properly (Firefox fix) */
+      overscroll-behavior: contain; /* prevent scroll chaining to the page */
     }
 
+    /* When the modal is open, animate the modal box into place */
     .modal.open .modal-content {
-      transform: translateY(0) scale(1);
-      opacity: 1;
+      transform: translateY(0) scale(1); /* final position and size */
+      opacity: 1; /* fully visible */
     }
 
     .modal-content h2 {
@@ -576,21 +582,23 @@
       padding-left: 1rem;
     }
 
+    /* The scrollable area inside the modal box */
     .modal-body {
-      overflow-y: auto;
-      max-height: 80rem;
-      background: #fff;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
-      overscroll-behavior: contain;
+      background: #fff; /* white interior for readability */
+      border-radius: 0.5rem; /* match modal box rounding */
+      padding: 1rem; /* space inside the body */
+      -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
+      touch-action: pan-y; /* allow vertical touch gestures */
+      overscroll-behavior: contain; /* avoid passing scroll to the page */
+      overflow-y: auto; /* enable vertical scrolling here only */
+      flex: 1 1 auto; /* grow to fill available vertical space inside .modal-content */
+      min-height: 0; /* allow correct overflow behavior in browsers like Firefox */
     }
 
     .modal-body img {
       padding: 1rem;
       border-radius: 2rem;
-      width: 100%;
+      width: 80%;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -599,7 +607,7 @@
     .modal-body video {
       padding: 1rem;
       border-radius: 1.5rem;
-      width: 100%;
+      width: 80%;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -608,7 +616,7 @@
    /* youtube embed link */
     .modal .video-container {
       position: relative;
-      width: 90%;
+      width: 80%;
       padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;       /* ensures rounded corners mask the iframe */
@@ -2191,6 +2199,7 @@ nav {
   const navItems = navLinks.querySelectorAll('a');
 
   function toggleMenu() {
+    // toggle visual state for burger and nav, and block body scroll
     burgerMenu.classList.toggle('active');
     navLinks.classList.toggle('active');
     document.body.classList.toggle('menu-open');
@@ -2209,72 +2218,77 @@ nav {
 
 
 
-// Modal logik for projekter
+// Modal logic for projects (click to open a modal)
 const projectItems = document.querySelectorAll('.project-item');
 projectItems.forEach(item => {
   item.addEventListener('click', (e) => {
-    // Ignore clicks that happen immediately after a modal was closed
+    // If a modal was just closed, ignore immediate clicks to avoid re-opening
     if (document.body.classList.contains('modal-just-closed')) {
       e.preventDefault();
       e.stopPropagation();
       return;
     }
 
+    // get the id of the modal to open from the clicked item
     const modalId = item.getAttribute('data-modal');
     const modal = document.getElementById(modalId);
     if (modal) {
-      // remember previously focused element to restore later without scrolling
+      // remember which element had focus before opening (so we can restore it later)
       try { window._lastFocusedElement = document.activeElement; } catch (err) { window._lastFocusedElement = null; }
 
+      // show modal visually
       modal.classList.add('open');
-      // make modal focusable and focus it without scrolling the page
+
+      // make the modal focusable and focus it without making the page jump
       try {
         modal.setAttribute('tabindex', '-1');
-        modal.focus({ preventScroll: true });
+        modal.focus({ preventScroll: true }); // focus modal for keyboard users
       } catch (err) {
-        // ignore if browser doesn't support options
+        // older browsers may not support the option object; fall back to normal focus
         try { modal.focus(); } catch (e) {}
       }
 
-      lockScroll(); // <-- lock scrolling when modal opens
+      // lock page scroll while the modal is open
+      lockScroll();
     }
   });
 });
 
-// Funktion til at lukke modal + stoppe video/lyd
+// Function to close a modal and stop any playing media inside it
 function closeModal(modal) {
+  // hide the modal visually
   modal.classList.remove('open');
 
-  // Find alle video og audio tags i modal og stop dem
+  // find any <video> or <audio> inside the modal and stop them
   const mediaElements = modal.querySelectorAll('video, audio');
   mediaElements.forEach(media => {
-    media.pause();
-    media.currentTime = 0; // nulstil afspilningen
+    media.pause(); // pause playback
+    media.currentTime = 0; // reset to start
   });
 
-  // Hvis ingen andre modaler er åbne, lås op for scroll
+  // if no other modal is open, restore page scrolling
   const anyOpen = Array.from(document.querySelectorAll('.modal')).some(m => m.classList.contains('open'));
   if (!anyOpen) {
     unlockScroll();
   }
 
-  // Prevent click-throughs: ignore project clicks for a short moment after closing
+  // briefly mark the body to prevent immediate re-open from click-through
   document.body.classList.add('modal-just-closed');
   setTimeout(() => document.body.classList.remove('modal-just-closed'), 350);
 
-  // avoid browser scrolling to previously focused element: blur and restore focus without scrolling
+  // restore focus to the element that had it before opening the modal
   try {
-    // blur current active element (modal)
+    // blur the currently focused element (usually the modal)
     if (document.activeElement && typeof document.activeElement.blur === 'function') {
       document.activeElement.blur();
     }
 
-    // restore previous focus if available, but prevent scrolling
+    // focus the previously focused element again without scrolling the page
     const prev = window._lastFocusedElement;
     if (prev && typeof prev.focus === 'function') {
       try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
     } else {
-      // fallback: focus body temporarily without scrolling
+      // fallback: focus body briefly without scrolling
       try {
         document.body.setAttribute('tabindex', '-1');
         document.body.focus({ preventScroll: true });
@@ -2284,14 +2298,15 @@ function closeModal(modal) {
       }
     }
   } catch (err) {
-    // ignore focus errors
+    // ignore any focus-related errors
   }
 }
 
-// Luk modal ved klik på baggrund eller close
+// Close modal when clicking background overlay or the close button
 const modals = document.querySelectorAll('.modal');
 modals.forEach(modal => {
   modal.addEventListener('click', (event) => {
+    // if click target is the overlay itself or the element with class 'close'
     if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
       event.preventDefault();
       event.stopPropagation();
@@ -2301,7 +2316,7 @@ modals.forEach(modal => {
   });
 });
 
-// Luk modal med Escape (global lytter)
+// Close modal with the Escape key (global listener)
 document.addEventListener("keyup", function (event) {
   if (event.key === "Escape" || event.key === "Esc") {
     event.preventDefault();
@@ -2313,13 +2328,13 @@ document.addEventListener("keyup", function (event) {
   }
 });
 
-// Ekstra failsafe: tilføj keyup-lytter på alle video- og audio-elementer
+// Extra safety: if user presses Escape while focused in a media element, close the nearest modal
 const mediaElements = document.querySelectorAll('video, audio');
 mediaElements.forEach(media => {
   media.addEventListener('keyup', function (event) {
     if (event.key === "Escape" || event.key === "Esc") {
       event.preventDefault();
-      // Find nærmeste modal som indeholder dette media
+      // find the modal that contains this media
       const modal = media.closest('.modal');
       if (modal && modal.classList.contains('open')) {
         closeModal(modal);
@@ -2329,28 +2344,28 @@ mediaElements.forEach(media => {
 });
 
 // --- Scroll lock utilities ---
-let _scrollY = 0;
+let _scrollY = 0; // store current vertical scroll position
 function lockScroll() {
-  // store current scroll
+  // save the current scroll position
   _scrollY = window.scrollY || document.documentElement.scrollTop;
-  // lock by fixing body and keeping visual position
+  // fix the body in place so the page behind the modal doesn't scroll
   document.body.style.position = 'fixed';
   document.body.style.top = `-${_scrollY}px`;
   document.body.style.left = '0';
   document.body.style.right = '0';
   document.body.style.width = '100%';
-  // prevent touchmove on mobile
+  // prevent touchmove on mobile from scrolling the background
   document.addEventListener('touchmove', preventTouch, { passive: false });
 }
 
 function unlockScroll() {
-  // remove fixed positioning and restore scroll
+  // remove the fixed positioning and restore the body's style
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.left = '';
   document.body.style.right = '';
   document.body.style.width = '';
-  // restore scroll without CSS `scroll-behavior: smooth` causing an animation
+  // scroll back to the saved position instantly (no smooth animation)
   if (typeof window.scrollTo === 'function') {
     try {
       window.scrollTo({ top: (_scrollY || 0), left: 0, behavior: 'auto' });
@@ -2359,13 +2374,14 @@ function unlockScroll() {
       window.scrollTo(0, _scrollY || 0);
     }
   }
+  // remove the touchmove prevention
   document.removeEventListener('touchmove', preventTouch, { passive: false });
 }
 
 function preventTouch(e) {
-  // Allow touch interactions inside the modal so users can scroll the modal content.
-  // Only prevent touchmove when the touch is outside modal content.
+  // allow touch gestures when they start inside the modal content or modal body
   if (e.target.closest('.modal-content') || e.target.closest('.modal-body')) return;
+  // otherwise prevent scrolling/touchmove to keep background fixed
   e.preventDefault();
 }
     // Accordion logik
