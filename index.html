@@ -290,7 +290,6 @@
   animation: rotateScale 8s ease-in-out infinite;
 }
 
-
  /* skills sektion */  
 .skills {
   display: grid;
@@ -541,9 +540,9 @@
     .modal-content {
       background: linear-gradient(to bottom, #ff8c00, #ff6f00); /* visual background */
       margin: 0 auto; /* center horizontally inside overlay */
-      padding-bottom: 1rem; /* inner space under content */
-      padding-right: 0.2rem; /* small side padding */
-      padding-left: 0.2rem; /* small side padding */
+      padding-bottom: 4rem; /* inner space under content */
+      padding-right: 0.4rem; /* small side padding */
+      padding-left: 0.4rem; /* small side padding */
       border-radius: 0.5rem; /* rounded corners */
       max-width: 70rem; /* limit width on large screens */
       position: relative; /* needed for absolute-positioned close button */
@@ -569,7 +568,7 @@
 
     .modal-content h2 {
       text-align: left;
-      padding-top: 2rem;
+      padding-top: 0.2rem;
       padding-left: 2rem;
       font-size: 1.5rem;
       color: #fff;
@@ -702,6 +701,16 @@
   padding-left: 4rem;
   text-align: left;
   color: #fff;
+}
+
+ /* animation rotation på about img */  
+@keyframes rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rotate {
+  animation: rotate 16s linear infinite;
 }
 
 .about-text h2 {
@@ -874,12 +883,12 @@
 /* Navigation knapper */
 .nav-btn {
   position: absolute;
-  top: 60%;
+  top: 95%;
   transform: translateY(-50%);
   background: none;
   border: none;
   font-size: 3rem;       /* gør pilen stor nok */
-  padding: 0.2rem;       /* klikområde */
+  padding: none;       /* klikområde */
   cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   color: #216B7c;           /* pilens farve */
   z-index: 20;
@@ -892,7 +901,7 @@
   cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
 }
 .nav-btn:hover:not(:disabled) {
-  color: #ff8c00;        /* hover-farve */
+  color: #003743;        /* hover-farve */
 }
 
 /* fun facts sektion med accordion */
@@ -1185,9 +1194,9 @@ nav {
       /* modal vinduer */
       .modal-content {
       margin: 1rem auto;
-      padding-bottom: 1rem;
-      padding-right: 0.2rem;
-      padding-left: 0.2rem;
+      padding-bottom: 3.5rem;
+      padding-right: 0.4rem;
+      padding-left: 0.4rem;
       max-width: 95rem;
       max-height: calc(85vh - 4rem); /* don't grow larger than viewport minus padding */
       position: relative;
@@ -1199,7 +1208,7 @@ nav {
     .modal-content h2 {
       font-size: 1rem;
       padding-left: 0.5rem;
-      padding-top: 1rem;
+      padding-top: 0.5rem;
     }
 
     .modal-content p {
@@ -1989,22 +1998,6 @@ nav {
       </div>
 
 
-           <!-- Projekt 33 
-      <div class="modal" id="modal33">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Sct Michaels Nat</h2>
-          <div class="modal-body">
-            <p>En promo-video som jeg udarbejdede til Slagelses årlige kulturnat 'Sct Michaels Nat'.</p>
-            <video controls>
-            <source src="https://drive.google.com/file/d/1HPicKnlufsroBhh85SIeuR_Hz6iC_qCF/view?usp=sharing" type="video/mp4" alt="Sct Michaels Nat ved LUBI">
-            </video>
-            <p>Programmer anvendt: Premiere Pro.</p>
-          </div>
-        </div>
-      </div>
-       slut -->
-
   <div class="marquee-wrapper">
     <div class="marquee-content">
       <span>OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG / OM MIG</span>
@@ -2023,7 +2016,7 @@ nav {
         <p>Igennem de seneste år har jeg hjulpet virksomheder med digitale løsninger; opsætning og kodning af websites; video og motion graphics; AI-workflows; onboarding af nye medarbejdere; email-marketing; betalte annoncer på Meta; sociale medier og visuel branding.</p>
       </div>
       <div class="about-image">
-        <img src="images/om mig/Jonas_2024.webp" alt="Billede af mig">
+        <img src="images/om mig/Jonas_2024.webp"  class="rotate" alt="Billede af mig">
       </div>
     </div>
   </section>
@@ -2419,6 +2412,9 @@ projectItems.forEach(item => {
       // show modal visually
       modal.classList.add('open');
 
+      // inject prev/next navigation buttons so the user can cycle projects while the modal is open
+      try { if (typeof ensureModalNav === 'function') ensureModalNav(modal); } catch (err) { /* ignore if helper not present */ }
+
       // make the modal focusable and focus it without making the page jump
       try {
         modal.setAttribute('tabindex', '-1');
@@ -2521,6 +2517,70 @@ mediaElements.forEach(media => {
       }
     }
   });
+});
+
+// Add prev/next navigation inside modals and keyboard navigation
+function ensureModalNav(modal) {
+  if (!modal) return;
+  if (modal.querySelector('.nav-btn')) return; // already added
+  const prev = document.createElement('button');
+  prev.className = 'nav-btn prev';
+  prev.setAttribute('aria-label', 'Previous project');
+  prev.innerHTML = '&#x2039;'; // ‹
+  const next = document.createElement('button');
+  next.className = 'nav-btn next';
+  next.setAttribute('aria-label', 'Next project');
+  next.innerHTML = '&#x203a;'; // ›
+
+  prev.addEventListener('click', (e) => { e.stopPropagation(); navigateModal('prev'); });
+  next.addEventListener('click', (e) => { e.stopPropagation(); navigateModal('next'); });
+
+  const content = modal.querySelector('.modal-content') || modal;
+  content.appendChild(prev);
+  content.appendChild(next);
+}
+
+function getOpenModalIndex() {
+  return Array.from(modals).findIndex(m => m.classList.contains('open'));
+}
+
+function openModalByIndex(index) {
+  const idx = ((index % modals.length) + modals.length) % modals.length;
+  const target = modals[idx];
+  if (!target) return;
+  // close any currently open modal(s)
+  modals.forEach(m => { if (m.classList.contains('open')) closeModal(m); });
+  // open target
+  target.classList.add('open');
+  try {
+    target.setAttribute('tabindex','-1');
+    target.focus({ preventScroll: true });
+  } catch (err) { try { target.focus(); } catch(e){} }
+  lockScroll();
+  ensureModalNav(target);
+}
+
+function navigateModal(direction) {
+  const idx = getOpenModalIndex();
+  if (idx === -1) return;
+  const delta = direction === 'next' ? 1 : -1;
+  const nextIdx = (idx + delta + modals.length) % modals.length;
+  openModalByIndex(nextIdx);
+}
+
+// keyboard: left/right to navigate when a modal is open (ignore when typing in inputs)
+document.addEventListener('keydown', function (event) {
+  if (!['ArrowLeft','ArrowRight'].includes(event.key)) return;
+  // skip if focus is in an input/textarea or contenteditable element
+  const active = document.activeElement;
+  const tag = active && (active.tagName || '').toLowerCase();
+  const isEditable = active && (active.isContentEditable || tag === 'input' || tag === 'textarea' || active.getAttribute('role') === 'textbox');
+  if (isEditable) return;
+  const anyOpen = Array.from(modals).some(m => m.classList.contains('open'));
+  if (!anyOpen) return;
+  event.preventDefault();
+  if (event.key === 'ArrowLeft') navigateModal('prev');
+  if (event.key === 'ArrowRight') navigateModal('next');
 });
 
 // --- Scroll lock utilities ---
