@@ -540,18 +540,19 @@
     .modal-content {
       background: linear-gradient(to bottom, #ff8c00, #ff6f00); /* visual background */
       margin: 0 auto; /* center horizontally inside overlay */
-      padding-bottom: 4rem; /* inner space under content */
+      padding-bottom: 3rem; /* inner space under content */
+      padding-top: 0rem; /* inner space over content */
       padding-right: 0.4rem; /* small side padding */
       padding-left: 0.4rem; /* small side padding */
       border-radius: 0.5rem; /* rounded corners */
-      max-width: 70rem; /* limit width on large screens */
+      max-width: 80rem; /* limit width on large screens */
       position: relative; /* needed for absolute-positioned close button */
       text-align: center; /* center headings by default */
       transform: translateY(8px) scale(2); /* start slightly moved/scaled for animation */
       opacity: 0; /* start invisible for animation */
       transition: transform 800ms cubic-bezier(.2,.8,.2,1), opacity 700ms ease; /* animate in */
       will-change: transform, opacity; /* hint to the browser for smoother animation */
-      max-height: calc(100vh - 4rem); /* don't grow larger than viewport minus padding */
+      max-height: calc(100vh - 3rem); /* don't grow larger than viewport minus padding */
       overflow: visible; /* allow children to scroll instead of this container */
       display: flex; /* stack header and body vertically */
       flex-direction: column; /* vertical layout */
@@ -568,24 +569,16 @@
 
     .modal-content h2 {
       text-align: left;
-      padding-top: 0.2rem;
       padding-left: 2rem;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: #fff;
-    }
-
-    .modal-content h3 {
-      text-align: left;
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
-      padding-left: 1rem;
     }
 
     /* The scrollable area inside the modal box */
     .modal-body {
       background: #fff; /* white interior for readability */
       border-radius: 0.5rem; /* match modal box rounding */
-      padding: 1rem; /* space inside the body */
+      padding: 3rem; /* space inside the body */
       -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
       touch-action: pan-y; /* allow vertical touch gestures */
       overscroll-behavior: contain; /* avoid passing scroll to the page */
@@ -606,7 +599,7 @@
     .modal-body video {
       padding: 1rem;
       border-radius: 1.5rem;
-      width: 80%;
+      width: 70%;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -615,7 +608,7 @@
    /* youtube embed link */
     .modal .video-container {
       position: relative;
-      width: 80%;
+      width: 100%;
       padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;       /* ensures rounded corners mask the iframe */
@@ -648,14 +641,24 @@
       text-align: left;
       font-family: "Raleway", sans-serif;
       font-weight: 500;
-      padding: 1rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+      .modal-body h3 {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      color: #216B7c;
+      text-align: left;
     }
 
       .modal-body ul {
       color: #333;
       list-style-type: square;
       text-align: left;
-      padding-left: 2rem;
+      padding-left: 3rem;
       padding-top: 1rem;
       padding-bottom: 1rem;
       font-family: "Raleway", sans-serif;
@@ -917,7 +920,7 @@
     }
 
     .accordion-item {
-      padding: 1rem;
+      padding: 0.5rem;
     }
     
     .accordion-header {
@@ -1208,12 +1211,16 @@ nav {
     .modal-content h2 {
       font-size: 1rem;
       padding-left: 0.5rem;
-      padding-top: 0.5rem;
+      padding-top: 0.1rem;
     }
 
     .modal-content p {
       font-size: 1rem;
       padding-left: 0.5rem;
+    }
+
+    .modal-body {
+      padding: 1rem;
     }
 
     .modal-body img {
@@ -1232,6 +1239,15 @@ nav {
       display: block;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    .modal-body p {
+      padding: 1rem;
+    }
+
+    .modal-body h3 {
+      padding: 1rem;
+      text-align: left;
     }
 
       /* Om mig: tekst først, billede under */
