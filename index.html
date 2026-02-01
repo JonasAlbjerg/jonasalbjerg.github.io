@@ -403,11 +403,22 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.skill-box:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(to top, #fff, #eaeaea);
+}
+
 .skill-icon {
   width: 2rem;
   height: 2rem;
   margin-bottom: 0.5rem;
   border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+/* skill-icon roterer når der hovers hen over skill-box */
+.skill-box:hover .skill-icon {
+  transform: rotate(405deg);
 }
 
 .skill-box h3 {
@@ -419,11 +430,6 @@
   font-size: 1rem;
   color: #444;
   font-weight: 500;
-}
-
-.skill-box:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(to top, #fff, #eaeaea);
 }
 
 /* knap med link til om mig-sektion */
@@ -650,6 +656,7 @@
       .modal-body h3 {
       padding-left: 3rem;
       padding-right: 3rem;
+      padding-top: 1rem;
       color: #216B7c;
       text-align: left;
     }
@@ -816,9 +823,8 @@
 
 .slides p {
   color: #333;
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
   padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   font-family: "Raleway", sans-serif;
