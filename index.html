@@ -546,7 +546,6 @@
     .modal-content {
       background: linear-gradient(to bottom, #ff8c00, #ff6f00); /* visual background */
       margin: 0 auto; /* center horizontally inside overlay */
-      padding-bottom: 3rem; /* inner space under content */
       padding-top: 0rem; /* inner space over content */
       padding-right: 0.4rem; /* small side padding */
       padding-left: 0.4rem; /* small side padding */
@@ -554,9 +553,9 @@
       max-width: 80rem; /* limit width on large screens */
       position: relative; /* needed for absolute-positioned close button */
       text-align: center; /* center headings by default */
-      transform: translateY(8px) scale(2); /* start slightly moved/scaled for animation */
+      transform: translateY(100vh) scale(1); /* start off-screen (below viewport) and invisible so it can slide up */
       opacity: 0; /* start invisible for animation */
-      transition: transform 800ms cubic-bezier(.2,.8,.2,1), opacity 700ms ease; /* animate in */
+      transition: transform 500ms cubic-bezier(.2,.8,.2,1), opacity 400ms ease; /* animate in/out */
       will-change: transform, opacity; /* hint to the browser for smoother animation */
       max-height: calc(100vh - 3rem); /* don't grow larger than viewport minus padding */
       overflow: visible; /* allow children to scroll instead of this container */
@@ -569,8 +568,14 @@
 
     /* When the modal is open, animate the modal box into place */
     .modal.open .modal-content {
-      transform: translateY(0) scale(1); /* final position and size */
+      transform: translateY(0) scale(1); /* slide into final position */
       opacity: 1; /* fully visible */
+    }
+
+    /* When closing, slide the modal content down off-screen before hiding the overlay */
+    .modal.closing .modal-content {
+      transform: translateY(100vh) scale(1);
+      opacity: 0;
     }
 
     .modal-content h2 {
@@ -1214,11 +1219,10 @@ nav {
       /* modal vinduer */
       .modal-content {
       margin: 1rem auto;
-      padding-bottom: 3.5rem;
       padding-right: 0.4rem;
       padding-left: 0.4rem;
       max-width: 95rem;
-      max-height: calc(85vh - 4rem); /* don't grow larger than viewport minus padding */
+      max-height: calc(100vh - 4rem); /* don't grow larger than viewport minus padding */
       position: relative;
       text-align: center;
         -webkit-overflow-scrolling: touch;
@@ -2464,50 +2468,70 @@ projectItems.forEach(item => {
 
 // Function to close a modal and stop any playing media inside it
 function closeModal(modal) {
-  // hide the modal visually
-  modal.classList.remove('open');
+  if (!modal) return;
 
-  // find any <video> or <audio> inside the modal and stop them
+  // avoid double-closing
+  if (modal.classList.contains('closing')) return;
+
+  // stop any media immediately
   const mediaElements = modal.querySelectorAll('video, audio');
   mediaElements.forEach(media => {
-    media.pause(); // pause playback
-    media.currentTime = 0; // reset to start
+    try { media.pause(); } catch (e) {}
+    try { media.currentTime = 0; } catch (e) {}
   });
 
-  // if no other modal is open, restore page scrolling
-  const anyOpen = Array.from(document.querySelectorAll('.modal')).some(m => m.classList.contains('open'));
-  if (!anyOpen) {
-    unlockScroll();
-  }
+  // add a 'closing' state so CSS can animate the modal sliding down
+  modal.classList.add('closing');
 
-  // briefly mark the body to prevent immediate re-open from click-through
-  document.body.classList.add('modal-just-closed');
-  setTimeout(() => document.body.classList.remove('modal-just-closed'), 350);
+  // finalization logic to run after the animation completes
+  const finalize = () => {
+    modal.classList.remove('closing');
+    modal.classList.remove('open');
 
-  // restore focus to the element that had it before opening the modal
-  try {
-    // blur the currently focused element (usually the modal)
-    if (document.activeElement && typeof document.activeElement.blur === 'function') {
-      document.activeElement.blur();
+    // if no other modal is open, restore page scrolling
+    const anyOpen = Array.from(document.querySelectorAll('.modal')).some(m => m.classList.contains('open'));
+    if (!anyOpen) {
+      unlockScroll();
     }
 
-    // focus the previously focused element again without scrolling the page
-    const prev = window._lastFocusedElement;
-    if (prev && typeof prev.focus === 'function') {
-      try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
-    } else {
-      // fallback: focus body briefly without scrolling
-      try {
-        document.body.setAttribute('tabindex', '-1');
-        document.body.focus({ preventScroll: true });
-        document.body.removeAttribute('tabindex');
-      } catch (err) {
-        try { document.body.focus(); document.body.removeAttribute('tabindex'); } catch (e) {}
+    // briefly mark the body to prevent immediate re-open from click-through
+    document.body.classList.add('modal-just-closed');
+    setTimeout(() => document.body.classList.remove('modal-just-closed'), 350);
+
+    // restore focus to the previously focused element
+    try {
+      if (document.activeElement && typeof document.activeElement.blur === 'function') {
+        document.activeElement.blur();
       }
+      const prev = window._lastFocusedElement;
+      if (prev && typeof prev.focus === 'function') {
+        try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
+      } else {
+        try {
+          document.body.setAttribute('tabindex', '-1');
+          document.body.focus({ preventScroll: true });
+          document.body.removeAttribute('tabindex');
+        } catch (err) {
+          try { document.body.focus(); document.body.removeAttribute('tabindex'); } catch (e) {}
+        }
+      }
+    } catch (err) {
+      // ignore focus errors
     }
-  } catch (err) {
-    // ignore any focus-related errors
-  }
+  };
+
+  // wait for the modal-content transition to finish before finalizing
+  const content = modal.querySelector('.modal-content') || modal;
+  const onEnd = (e) => {
+    if (e.target !== content) return;
+    finalize();
+  };
+  content.addEventListener('transitionend', onEnd, { once: true });
+
+  // fallback: ensure finalize runs even if transitionend doesn't fire
+  setTimeout(() => {
+    if (modal.classList.contains('closing')) finalize();
+  }, 800);
 }
 
 // Close modal when clicking background overlay or the close button
