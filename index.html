@@ -264,8 +264,8 @@
     color: #fff;
     font-size: 1rem;
     background: linear-gradient(to bottom, #216B7c, #003743);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
+    transition: transform 0.15s ease, background 0.15s ease;
+    border-color: rgba(0,0,0,0.12);
     border-radius: 0.5rem;
     cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
     width: auto;
@@ -445,8 +445,8 @@
   font-size: 1rem;
   color: #f5f5f5;
   background: linear-gradient(to bottom, #ff6f00, #ff8c00);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+  border-color: rgba(0,0,0,0.12);
   border-radius: 0.5rem;
   cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   width: auto;
@@ -458,6 +458,7 @@
   transform: skew(3deg, 5deg);
   background: linear-gradient(to bottom, #ff6f00, #ff8c00);
   color: #216B7c;
+  border-color: rgba(0,0,0,0.12);
 }
 
     /* Projekter sektion */
@@ -478,7 +479,7 @@
       padding: 0.5rem;
       border-radius: 0.5rem;
       cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      transition: transform 0.3s;
+      transition: transform 0.15s ease, background 0.15s ease;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
@@ -513,6 +514,46 @@
       font-weight: 900;
       font-style: italic;
       color: #fff;
+    }
+
+    /* Filter UI for projekter */
+    .project-filters {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 1.5rem auto 0 auto;
+      max-width: 90rem;
+      padding-bottom: 2rem;
+    }
+
+    .project-filters .filter-btn {
+      background: #ffffff60;
+      backdrop-filter: blur(10px);
+      border: 0.12rem solid rgba(0,0,0,0.08);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.5rem;
+      font-family: "Special Gothic Expanded One", sans-serif;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #ffffff;
+      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .project-filters .filter-btn:hover {
+      transform: skew(3deg, 5deg);
+      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
+      color: #fff;
+    }
+
+    .project-filters .filter-btn.active {
+      background: #216B7c;
+      color: #fff;
+      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
+      border-color: rgba(0,0,0,0.12);
     }
 
     /* Modal styling with open animation */
@@ -1338,7 +1379,7 @@ nav {
     </div>
     <div class="hero-right">
       <h1>DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1>
-      <button class="hero-button" onclick="location.href='#projekter'">Vil du se?</button>
+      <button class="hero-button" onclick="location.href='#projekter'">VIL DU SE?</button>
     </div>
   </section>
 
@@ -1402,7 +1443,7 @@ nav {
   </div>
 
 
-    <button class="skills-button" onclick="location.href='#ommig'">Læs mere om mig</button>
+    <button class="skills-button" onclick="location.href='#ommig'">LÆS MERE OM MIG</button>
 
 
 </section>
@@ -1417,6 +1458,18 @@ nav {
 
   <!-- Projekt-sektion med modalvinduer -->
   <section id="projekter" class="projekter">
+
+    <div class="project-filters" role="toolbar" aria-label="Filtrér projekter">
+      <button class="filter-btn" data-filter="video">Video</button>
+      <button class="filter-btn" data-filter="sociale-medier">Sociale medier</button>
+      <button class="filter-btn" data-filter="grafisk-design">Grafisk design</button>
+      <button class="filter-btn" data-filter="ux">UX</button>
+      <button class="filter-btn" data-filter="webudvikling">Webudvikling</button>
+      <button class="filter-btn" data-filter="lyd">Lyd</button>
+      <button class="filter-btn" data-filter="print">Print</button>
+      <button class="filter-btn" data-filter="motions-graphics">Motion Graphics</button>
+      <button class="filter-btn" data-filter="all">Vis alle</button>
+    </div>
 
     <div class="projects-container">
 
@@ -1501,7 +1554,7 @@ nav {
       </div>
 
       <!-- Projekt 12 -->
-      <div class="project-item" data-modal="modal12">
+      <div class="project-item" data-modal="modal12" id="modal12">
         <img src="images/projekt12/thumbnail.webp" alt="Kandidatspeciale" title="Går short-form-videoer hånd i hånd med træningscontent?">
         <h3>Kandidatspeciale</h3>
         <h4>Anvendelsen af korte fitnessinstruktionsvideoer på sociale medier.</h4>
@@ -1595,7 +1648,7 @@ nav {
 
   <!-- Modalvinduer for hvert projekt - indhold -->
 
-<!-- Projekt 37 -->
+<!-- Projekt 40 -->
   <div class="modal" id="modal40">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -1614,6 +1667,7 @@ nav {
         </div>
 
         <p>Til Morgenbusinessmødet den 17. februar 2026, var det Henrik Petersen fra HP Advisory som havde fået æren af afholde et oplæg om hans virksomhed og hvilke initiativer de har på tegnebrættet. Det kom der følgende interview ud af.</p>
+        
         <div class="video-container">
           <iframe
             src="https://www.youtube.com/embed/F4vCamNstAA?si="
@@ -1623,6 +1677,8 @@ nav {
             allowfullscreen>
           </iframe>
         </div>
+
+        <img src="images/projekt40/1.webp" alt="Jonas in-action" title="Jonas in-action ved optagelserne til ENVS' morgenbusinessmøde">
 
         <h3>Tekniske detaljer</h3>  
         <p>Videoen er filmet med Sony AX43 4K Handycam, hvor droneoptagelser er filmet med DJI Mini 2. Videoen er klippet i Premiere Pro.</p>   
@@ -2199,7 +2255,7 @@ nav {
               <h3>Videre på Kandidaten</h3>
               <p><a href="https://www.sdu.dk/da/uddannelse/kandidat/cand_it_webkommunikation" target="_blank" rel="noopener noreferrer">Cand.it. Webkommunikation</a> - jeg havde særligt fundet en interesse for medier og digitalisering gennem min bachelor, som førte mig til denne kandidat.</p>
               <p>Under uddannelsen har jeg f.eks. fået kompetencer indenfor webudvikling, som jeg også har brugt til at kode denne hjemmeside, UX-design, samt en dyb forståelse for sociale medier og logikkerne bag.</p>
-              <p>I mit speciale undersøgte jeg nemlig samspillet mellem sociale medier, og hvordan usability implementeres i korte videoer på f.eks. TikTok, Instagram og YouTube.</p>
+              <p>I mit <a href="#modal12">speciale</a> undersøgte jeg nemlig samspillet mellem sociale medier, og hvordan usability implementeres i korte videoer på f.eks. TikTok, Instagram og YouTube.</p>
             </div>
           </div>
         </div>
@@ -2836,5 +2892,50 @@ window.addEventListener('load', update);
 window.addEventListener('resize', update);
 
   </script>
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const slugFor = text => {
+    if(!text) return null;
+    const t = text.trim().toLowerCase();
+    if(/video/.test(t)) return 'video';
+    if(/sociale|so.?me|social/.test(t)) return 'sociale-medier';
+    if(/grafisk/.test(t)) return 'grafisk-design';
+    if(/motion|motions|motion graphics|motiongraphics/.test(t)) return 'motions-graphics';
+    if(/^ux$/.test(t)) return 'ux';
+    if(/web|website|webudvikling/.test(t)) return 'webudvikling';
+    if(/lyd/.test(t)) return 'lyd';
+    if(/print|plakat|flyer|visitkort/.test(t)) return 'print';
+    return null;
+  };
+
+  const projects = Array.from(document.querySelectorAll('.project-item'));
+  projects.forEach(p => {
+    const tags = Array.from(p.querySelectorAll('p')).map(el => el.textContent || '').map(slugFor).filter(Boolean);
+    p.dataset.categories = Array.from(new Set(tags)).join(' ');
+  });
+
+  const buttons = Array.from(document.querySelectorAll('.project-filters .filter-btn'));
+  const clearActive = () => buttons.forEach(b => b.classList.remove('active'));
+  const showAll = () => projects.forEach(p => p.style.display = '');
+
+  function applyFilter(slug){
+    if(!slug){ showAll(); return; }
+    projects.forEach(p => {
+      const cats = (p.dataset.categories || '').split(' ').filter(Boolean);
+      p.style.display = cats.includes(slug) ? '' : 'none';
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function(){
+      const slug = this.dataset.filter;
+      if(slug === 'all'){ clearActive(); showAll(); return; }
+      clearActive(); this.classList.add('active');
+      applyFilter(slug);
+    });
+  });
+});
+</script>
 </body>
 </html>
