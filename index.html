@@ -661,14 +661,15 @@
       margin-right: auto;
     }
 
-   /* youtube embed link */
+   /* youtube embed link – spacing now handled by wrapper instead of iframe itself */
     .modal .video-container {
       position: relative;
       width: 100%;
       padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
+      box-sizing: border-box; /* include any padding/margin in width calculations */
       overflow: hidden;       /* ensures rounded corners mask the iframe */
-      margin: 1rem auto;
+      margin: 2rem auto;      /* vertical gap around embeds, horizontal auto prevents overflow */
       border-radius: 1.5rem;  /* same radius on all corners */
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
@@ -1036,7 +1037,8 @@
 
     iframe {
       border-radius: 1rem;
-      margin: 2rem;
+      max-width: 100%;
+
     }
 
     /* Footer sektion */
