@@ -124,6 +124,7 @@
   color: #fff;
   font-size: 30px;
   background-color: #ff8c00;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 @keyframes scroll-marquee {
@@ -333,6 +334,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 4.5rem;
   height: 4.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .thumb-box:hover {
@@ -839,6 +841,7 @@
 .timeline-item.active {
   background: linear-gradient(to bottom, #ff6f00, #ff8c00);
   color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .timeline-item:not(.active):hover {
   background: #fff;
@@ -1001,6 +1004,8 @@
       outline: none;
       border-radius: 8px;
       color: #216B7c;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
     }
 
     .accordion-header.active {
@@ -1480,7 +1485,7 @@ nav {
 
       <!-- Projekt 37 -->
       <div class="project-item" data-modal="modal40">
-        <img src="images/projekt40/thumbnail.jpg" alt="Morgenbusinessmøde ved Ervsnetværket Vestsjælland" title="Kom med når Erhvervsnetværket Vetssjælland byder til Morgenbusinessmøde">
+        <img src="images/projekt40/thumbnail.webp" alt="Morgenbusinessmøde ved Ervsnetværket Vestsjælland" title="Kom med når Erhvervsnetværket Vetssjælland byder til Morgenbusinessmøde">
         <h3>Morgenbusinessmøder ved ENVS</h3>
         <h4>Highlightvideo fra ENVS' seneste netværksmøde.</h4>
         <p>Video</p>
@@ -2893,9 +2898,7 @@ document.querySelectorAll('.timeline-item').forEach(el =>
 window.addEventListener('load', update);
 window.addEventListener('resize', update);
 
-  </script>
-</script>
-<script>
+// filter funktion til projekter logik
 document.addEventListener('DOMContentLoaded', function(){
   const slugFor = text => {
     if(!text) return null;
@@ -2938,6 +2941,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   });
 });
-</script>
+
+  </script>
 </body>
 </html>
