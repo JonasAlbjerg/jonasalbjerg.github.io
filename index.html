@@ -96,6 +96,18 @@
     color: #fff;
     }
 
+     /* fade in up animation for h2 & h3 */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0.5;
+    transform: skewX(50deg) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
     h3 {
       font-family: "Special Gothic Expanded One", sans-serif;
       text-transform: uppercase;
@@ -302,6 +314,11 @@
   animation: rotateScale 8s ease-in-out infinite;
 }
 
+h2.fade-in-up,
+h3.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
  /* skills sektion */  
 .skills {
   display: grid;
@@ -349,7 +366,7 @@
 }
 
 .thumb-box:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(5deg);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   filter: invert(1);
@@ -1882,7 +1899,6 @@ nav {
               <b>Bureau:</b> LUBI ApS<br>
               <b>År:</b> 2025<br></p>
 
-            <p>Se websitet <a href="https://hecht-rigas.dk" target="_blank" rel="noopener noreferrer">her.</a></p>
           </div>
         </div>
       </div>
@@ -2887,6 +2903,7 @@ function preventTouch(e) {
       });
     });
 
+
     // tidslinje
     document.addEventListener("DOMContentLoaded", () => {
   const slidesContainer = document.querySelector(".slides");
@@ -3019,6 +3036,22 @@ document.addEventListener('DOMContentLoaded', function(){
       applyFilter(slug);
     });
   });
+});
+
+// Intersection Observer for h2 and h3 fade-in-up animation
+const headingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in-up');
+      headingObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('h2, h3').forEach(heading => {
+  headingObserver.observe(heading);
 });
 
   </script>
