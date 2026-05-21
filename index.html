@@ -17,86 +17,105 @@
   <title>Jonas' Tjekkede Portfolio</title>
   <link rel="shortcut icon" type="image/svg" href="images/favicon/favicon.svg"/>
   
-  <style>
-    
+<style>
+/* ==========================================================================
+   1. FONTS & GLOBALE FONTS/RESETS
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
-   
-   /* Grundlæggende styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding: 10rem;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: "Special Gothic Expanded One", sans-serif;
-      line-height: 1.6;
-      background-color: #216b7c;
-      background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
-      cursor: url(images/mousecursor/mouse32x32.png) 0 0, auto;
-    /* gammelt design af baggrund
-      background:  url(images/hero/background_body.svg), linear-gradient(to bottom, #216B7c, #003743);
-      background-size: cover, contain;  
-      background-position: center, center;
-      background-repeat: no-repeat, no-repeat; */
-    }
+html {
+  scroll-behavior: smooth;
+  scroll-padding: 10rem;
+}
 
-    img, video {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 1rem;
-    }
+body {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  line-height: 1.6;
+  background-color: #216b7c;
+  background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
+  cursor: url(images/mousecursor/mouse32x32.png) 0 0, auto;
+}
 
-    video {
-       cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    }
+/* Samling af globale typografier */
+h1 {
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 2rem;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-      font-family: "Special Gothic Expanded One", sans-serif;
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    }
+h2 {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #fff;
+}
 
-    button {
-      font-family: "Special Gothic Expanded One", sans-serif;
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    }
+h3 {
+  font-family: "Special Gothic Expanded One", sans-serif;
+  text-transform: uppercase;
+  color: #216B7c;
+}
 
-    .logo {
-      width: 10rem;
-      transition: 0.3s ease;
-    }
+p, h4, ul {
+  font-family: "Raleway", sans-serif;
+}
 
-    .logo:hover {
-      transform: scale(1.05);
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      filter: invert(1);
-    }
-    
-    h1 {
-      color: #fff;
-      padding: 0.5rem;
-      font-size: 2rem;
-    }
+/* Medie-elementer standard */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+}
 
-    h2 {
-    font-family: "Special Gothic Expanded One", sans-serif;
-    text-transform: uppercase;
-    font-weight: bolder;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: #fff;
-    }
+iframe {
+  border-radius: 1rem;
+  max-width: 100%;
+}
 
-     /* fade in up animation for h2 & h3 */
+/* Centralisering af custom hånd-cursor til interaktive elementer */
+a, 
+button, 
+video, 
+.logo:hover, 
+.burger-menu, 
+.thumb-box:hover, 
+.skills-button, 
+.project-item, 
+.filter-btn, 
+.close, 
+.timeline-item, 
+.nav-btn, 
+.accordion-header, 
+.footer-col img:hover, 
+.footer-text img:hover {
+  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
+}
+
+/* Globale links og knapper */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+
+/* ==========================================================================
+   2. GLOBALE ANIMATIONER (KEYFRAMES)
+   ========================================================================== */
 @keyframes fadeInUp {
   0% {
     opacity: 0.5;
@@ -108,18 +127,40 @@
   }
 }
 
-    h3 {
-      font-family: "Special Gothic Expanded One", sans-serif;
-      text-transform: uppercase;
-      color: #216B7c;
-    }
+@keyframes rotateScale {
+  0%   { transform: rotate(0deg) scale(1.2); }
+  50%  { transform: rotate(180deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.2); }
+}
 
-    p {
-      font-family: "Raleway", sans-serif;
-    }
+@keyframes rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-/* START effekt som får h2-elementer til at køre hen over skærmen */
+@keyframes scroll-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
 
+/* Animations-klasser */
+.rotate-scale {
+  animation: rotateScale 8s ease-in-out infinite;
+}
+
+.rotate {
+  animation: rotate 16s linear infinite;
+}
+
+h2.fade-in-up,
+h3.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+
+/* ==========================================================================
+   3. MARQUEE EFFEKT (RULLENDE TEKST)
+   ========================================================================== */
 .marquee-wrapper {
   width: 100%;
   overflow: hidden;
@@ -142,7 +183,6 @@
   padding-right: 1rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
-  font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: bold;
   color: #fff;
   font-size: 30px;
@@ -150,72 +190,67 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-@keyframes scroll-marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+
+/* ==========================================================================
+   4. NAVIGATION & BURGER-MENU
+   ========================================================================== */
+nav {
+  width: 100%;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
-  /* SLUT effekt som får span-elementer til at køre hen over skærmen */
+.logo {
+  width: 10rem;
+  transition: 0.3s ease;
+}
 
-    
-    /* Navigation */
-    nav {
-      width: 100%;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-transform: uppercase;
-      font-weight: 900;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 2rem;
-      padding: 1rem;
-    }
+.logo:hover {
+  transform: scale(1.05);
+  filter: invert(1);
+}
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      background-color: #ffffff60;
-      backdrop-filter: blur(10px);
-      border-radius: 2rem;
-      padding: 1rem;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+.nav-links {
+  list-style: none;
+  display: flex;
+  background-color: #ffffff60;
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-    .nav-links li {
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
+.nav-links li {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 
-    .nav-links li a {
-      padding: 0.5rem;
-      transition: background 0.5s;
-      border-radius: 2rem;
-      padding-left: 0.8rem;
-      padding-right: 0.8rem;
-    }
+.nav-links li a {
+  padding: 0.5rem 0.8rem;
+  transition: background 0.5s;
+  border-radius: 2rem;
+}
 
-    .nav-links li a:hover {
-      background: #ff8c00;
-      border-radius: 2rem;
-      font-family: "Special Gothic Expanded One", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-    }
+.nav-links li a:hover {
+  background: #ff8c00;
+  font-weight: 900;
+  font-style: italic;
+}
 
-/* Burger-menu styling til mobil */
 .burger-menu {
   display: none;
   flex-direction: column;
-  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   z-index: 1000;
   width: 2rem;
   height: 2rem;
@@ -232,111 +267,92 @@
   transition: all 0.3s ease;
 }
 
-/* Animate into "X" when active */
+/* Burger-menu animation til "X" */
 .burger-menu.active span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
+
 .burger-menu.active span:nth-child(2) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
 
-    /* Hero-banner sektion */
+/* ==========================================================================
+   5. HERO-BANNER SEKTION
+   ========================================================================== */
 .hero {
   font-weight: bolder;
   display: flex;
   align-items: center;
-  /* first layer = SVG, second layer = Gradient */
-  background: 
-  url(images/hero/background_hero.svg),linear-gradient(to bottom, #ff6f00, #ff8c00);
-  background-size: cover, contain;   /* gradient covers, SVG scales nicely */
-  background-position: center, center; /* both centered */
+  background: url(images/hero/background_hero.svg), linear-gradient(to bottom, #ff6f00, #ff8c00);
+  background-size: cover, contain;
+  background-position: center, center;
   background-repeat: no-repeat, no-repeat;
   border-radius: 3rem;
   margin: 2rem;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-  overflow: hidden; /* keeps SVG inside rounded corners */
+  overflow: hidden;
+}
+
+.hero h2 {
+  color: #fff;
+  text-align: left;
+}
+
+.hero-left, .hero-right {
+  flex: 1;
+  padding: 1rem;
+}
+
+.hero-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero img {
+  width: 12rem;
+}
+
+.hero-button {
+  margin: 2rem auto;
+  padding: 0.75rem 2rem;
+  color: #fff;
+  font-size: 1rem;
+  background: linear-gradient(to bottom, #216B7c, #003743);
+  transition: transform 0.15s ease, background 0.15s ease;
+  border-color: rgba(0,0,0,0.12);
+  border-radius: 0.5rem;
+  width: auto;
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hero-button:hover {
+  transform: skew(3deg, 5deg);
+  color: #ff8c00;
 }
 
 
-    .hero h2{
-      color: #fff;
-      text-align: left;
-    }
-
-    .hero-left, .hero-right {
-      flex: 1;
-      padding: 1rem;
-    }
-
-    .hero-left {
-     display: flex;
-     justify-content: center; /* Centrerer billedet vandret */
-     align-items: center; /* Centrerer billedet lodret, hvis nødvendigt */
-     flex: 1;
-     padding: 1rem;
-    }
-
-    .hero img {
-      width: 12rem;
-    }
-
-    .hero-button {
-    margin: 2rem auto;
-    padding: 0.75rem 2rem;
-    color: #fff;
-    font-size: 1rem;
-    background: linear-gradient(to bottom, #216B7c, #003743);
-    transition: transform 0.15s ease, background 0.15s ease;
-    border-color: rgba(0,0,0,0.12);
-    border-radius: 0.5rem;
-    cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    width: auto;
-    text-decoration: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .hero-button:hover {
-    transform: skew(3deg, 5deg);
-    background: linear-gradient(to bottom, #216B7c, #003743);
-    color: #ff8c00;
-    }
-
- /* animation rotation img */  
-@keyframes rotateScale {
-  0%   { transform: rotate(0deg) scale(1.2); }
-  50%  { transform: rotate(180deg) scale(1); }
-  100% { transform: rotate(360deg) scale(1.2); }
-}
-
-.rotate-scale {
-  animation: rotateScale 8s ease-in-out infinite;
-}
-
-h2.fade-in-up,
-h3.fade-in-up {
-  animation: fadeInUp 0.8s ease-out;
-}
-
- /* skills sektion */  
+/* ==========================================================================
+   6. SKILLS / KOMPETENCER SEKTION
+   ========================================================================== */
 .skills {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   max-width: 90rem;
-  margin: 0 auto;        /* centrer hele sektionen */
-  padding: 0 1rem;       /* luft i siderne på små skærme */
-  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .skills h2 {
-  grid-column: 1 / -1;   /* strækker over begge kolonner */
-  text-align: center;    /* centrer teksten horisontalt */
+  grid-column: 1 / -1;
+  text-align: center;
 }
 
-
-/* første sektion med software og programmer */
+/* Skills software ikoner */
 .skills-thumbnails-wrapper {
   grid-column: 1 / -1;
 }
@@ -350,11 +366,11 @@ h3.fade-in-up {
 }
 
 .thumb-box {
-  position: relative; /* needed for tooltip positioning */
+  position: relative;
   aspect-ratio: 1 / 1;
   background-color: #f0f0f0;
   border-radius: 5rem;
-  overflow: visible; /* allow tooltip to show outside */
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,16 +384,22 @@ h3.fade-in-up {
 .thumb-box:hover {
   transform: scale(1.1) rotate(5deg);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   filter: invert(1);
-  z-index: 9999; /* raise above other icons on hover */
+  z-index: 9999;
 }
 
-/* Tooltip element (pseudo-element) */
+.thumb-box img {
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+/* CSS Tooltips til ikoner */
 .thumb-box::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: -2.5rem; /* distance below circle */
+  bottom: -2.5rem;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.8);
@@ -392,7 +414,6 @@ h3.fade-in-up {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Small arrow under circle */
 .thumb-box::before {
   content: "";
   position: absolute;
@@ -407,25 +428,14 @@ h3.fade-in-up {
   transition: opacity 0.2s ease;
 }
 
-/* Show tooltip on hover */
 .thumb-box:hover::after,
 .thumb-box:hover::before {
   opacity: 1;
   transform: translateX(-50%) translateY(-2px);
 }
 
-.thumb-box img {
-  max-width: 60%;
-  max-height: 60%;
-  object-fit: contain;
-  border-radius: 0;
-}
-
-
-/* 4 bokse med beskrivelser om mine kompetencer */
-
+/* Kompetence-beskrivelseskort */
 .skill-box {
-  background-color: #f5f5f5;
   background: linear-gradient(to bottom, #fff, #eaeaea);
   border-radius: 0.5rem;
   padding: 1.5rem;
@@ -446,7 +456,6 @@ h3.fade-in-up {
   transition: transform 0.3s ease;
 }
 
-/* skill-icon roterer når der hovers hen over skill-box */
 .skill-box:hover .skill-icon {
   transform: rotate(405deg);
 }
@@ -462,14 +471,12 @@ h3.fade-in-up {
   font-weight: 500;
 }
 
-/* knap med link til om mig-sektion */
-
 .skills-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 1 / -1;  /* Spænd over hele grid'en */
-  justify-self: center;  /* Eller brug margin auto */
+  grid-column: 1 / -1;
+  justify-self: center;
   margin: 2rem auto;
   padding: 0.75rem 2rem;
   font-size: 1rem;
@@ -478,296 +485,274 @@ h3.fade-in-up {
   transition: transform 0.15s ease, background 0.15s ease;
   border-color: rgba(0,0,0,0.12);
   border-radius: 0.5rem;
-  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
   width: auto;
-  text-decoration: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .skills-button:hover {
   transform: skew(3deg, 5deg);
-  background: linear-gradient(to bottom, #ff6f00, #ff8c00);
   color: #216B7c;
+}
+
+
+/* ==========================================================================
+   7. PROJEKTER SEKTION & FILTRE
+   ========================================================================== */
+.project-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto 0 auto;
+  max-width: 90rem;
+  padding-bottom: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.project-filters .filter-btn {
+  background: #ffffff60;
+  backdrop-filter: blur(10px);
+  border: 0.12rem solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  font-family: "Special Gothic Expanded One", sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #ffffff;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.project-filters .filter-btn:hover {
+  transform: skew(3deg, 5deg);
+  background: linear-gradient(to bottom, #ff6f00, #ff8c00);
+  color: #fff;
+}
+
+.project-filters .filter-btn.active {
+  color: #fff;
+  background: linear-gradient(to bottom, #ff6f00, #ff8c00);
   border-color: rgba(0,0,0,0.12);
 }
 
-    /* Projekter sektion */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
-    .projects-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 90rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
+.project-item {
+  background: linear-gradient(to bottom, #fff, #eaeaea);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: transform 0.15s ease, background 0.15s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-    .project-item {
-      background: linear-gradient(to bottom, #fff, #eaeaea);
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+.project-item img {
+  border-radius: 0.5rem;
+}
 
-    .project-item img {
-      border-radius: 0.5rem;
-    }
+.project-item h3 {
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
 
-    .project-item h3 {
-      margin-top: 1rem;
-      text-transform: uppercase;
-    }
+.project-item h4 {
+  font-weight: 500;
+}
 
-    .project-item h4 {
-      font-family: "Raleway", sans-serif;
-      font-weight: 500;
-    }
+.project-item p {
+  margin-top: 1rem;
+  display: inline-block;
+  border: 0.01rem solid #777;
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  font-size: 0.5rem;
+}
 
-    .project-item p {
-      font-family: "Raleway", sans-serif;
-      margin-top: 1rem;
-      display: inline-block;
-      border: 0.01rem solid #777;
-      border-radius: 0.3rem;
-      padding: 0.4rem;
-      font-size: 0.5rem;
-    }
+.project-item:hover {
+  background: linear-gradient(to bottom, #ff6f00, #ff8c00);
+  transform: skew(1deg, 1deg);
+  font-family: "Special Gothic Expanded One", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #fff;
+}
 
-    .project-item:hover {
-      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
-      transform: skew(1deg, 1deg);
-      font-family: "Special Gothic Expanded One", sans-serif;
-      font-weight: 900;
-      font-style: italic;
-      color: #fff;
-    }
 
-    /* Filter UI for projekter */
-    .project-filters {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      margin: 1.5rem auto 0 auto;
-      max-width: 90rem;
-      padding-bottom: 2rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
+/* ==========================================================================
+   8. MODAL WINDOWS (PROJEKT DETALJER)
+   ========================================================================== */
+.modal {
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
 
-    .project-filters .filter-btn {
-      background: #ffffff60;
-      backdrop-filter: blur(10px);
-      border: 0.12rem solid rgba(0,0,0,0.08);
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      padding: 0.5rem 0.9rem;
-      border-radius: 0.5rem;
-      font-family: "Special Gothic Expanded One", sans-serif;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: #ffffff;
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
 
-    .project-filters .filter-btn:hover {
-      transform: skew(3deg, 5deg);
-      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
-      color: #fff;
-    }
+.modal-content {
+  background: linear-gradient(to bottom, #ff8c00, #ff6f00);
+  margin: 0 auto;
+  padding: 0rem 0.4rem;
+  border-radius: 0.5rem;
+  max-width: 80rem;
+  position: relative;
+  text-align: center;
+  transform: translateY(100vh) scale(1);
+  opacity: 0;
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1), opacity 400ms ease;
+  will-change: transform, opacity;
+  max-height: calc(100vh - 3rem);
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
 
-    .project-filters .filter-btn.active {
-      background: #216B7c;
-      color: #fff;
-      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
-      border-color: rgba(0,0,0,0.12);
-    }
+.modal.open .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
 
-    /* Modal styling with open animation */
-    .modal {
-      /* make the overlay cover the entire viewport */
-      position: fixed;
-      z-index: 2000; /* sit on top of other content */
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      /* semi-transparent dark backdrop */
-      background-color: rgba(0,0,0,0.7);
-      padding: 2rem 1rem; /* spacing so modal sits away from viewport edges */
-      text-align: center;
-      display: flex; /* use flex to centre modal-content */
-      align-items: flex-start; /* align content near the top when tall */
-      justify-content: center; /* horizontally centre the modal box */
-      visibility: hidden; /* hidden by default */
-      opacity: 0; /* invisible by default */
-      pointer-events: none; /* clicks pass through when hidden */
-      transition: opacity 300ms ease, visibility 300ms ease; /* fade in/out */
-    }
-    .modal.open {
-      visibility: visible; /* show overlay when open */
-      opacity: 1; /* make overlay visible */
-      pointer-events: auto; /* allow interaction when open */
-    }
+.modal.closing .modal-content {
+  transform: translateY(100vh) scale(1);
+  opacity: 0;
+}
 
-    /* The modal box itself (the visible card inside the overlay) */
-    .modal-content {
-      background: linear-gradient(to bottom, #ff8c00, #ff6f00); /* visual background */
-      margin: 0 auto; /* center horizontally inside overlay */
-      padding-top: 0rem; /* inner space over content */
-      padding-right: 0.4rem; /* small side padding */
-      padding-left: 0.4rem; /* small side padding */
-      border-radius: 0.5rem; /* rounded corners */
-      max-width: 80rem; /* limit width on large screens */
-      position: relative; /* needed for absolute-positioned close button */
-      text-align: center; /* center headings by default */
-      transform: translateY(100vh) scale(1); /* start off-screen (below viewport) and invisible so it can slide up */
-      opacity: 0; /* start invisible for animation */
-      transition: transform 500ms cubic-bezier(.2,.8,.2,1), opacity 400ms ease; /* animate in/out */
-      will-change: transform, opacity; /* hint to the browser for smoother animation */
-      max-height: calc(100vh - 3rem); /* don't grow larger than viewport minus padding */
-      overflow: visible; /* allow children to scroll instead of this container */
-      display: flex; /* stack header and body vertically */
-      flex-direction: column; /* vertical layout */
-      align-items: stretch; /* children fill width */
-      min-height: 0; /* allow flex children to shrink properly (Firefox fix) */
-      overscroll-behavior: contain; /* prevent scroll chaining to the page */
-    }
+.modal-content h2 {
+  text-align: left;
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+}
 
-    /* When the modal is open, animate the modal box into place */
-    .modal.open .modal-content {
-      transform: translateY(0) scale(1); /* slide into final position */
-      opacity: 1; /* fully visible */
-    }
+.modal-body {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
 
-    /* When closing, slide the modal content down off-screen before hiding the overlay */
-    .modal.closing .modal-content {
-      transform: translateY(100vh) scale(1);
-      opacity: 0;
-    }
+.modal-body img {
+  padding: 1rem;
+  border-radius: 2rem;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} 
 
-    .modal-content h2 {
-      text-align: left;
-      padding-left: 2rem;
-      font-size: 1.2rem;
-      color: #fff;
-    }
+.modal-body video {
+  padding: 1rem;
+  border-radius: 1.5rem;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    /* The scrollable area inside the modal box */
-    .modal-body {
-      background: #fff; /* white interior for readability */
-      border-radius: 0.5rem; /* match modal box rounding */
-      padding: 3rem; /* space inside the body */
-      -webkit-overflow-scrolling: touch; /* smooth momentum scrolling on iOS */
-      touch-action: pan-y; /* allow vertical touch gestures */
-      overscroll-behavior: contain; /* avoid passing scroll to the page */
-      overflow-y: auto; /* enable vertical scrolling here only */
-      flex: 1 1 auto; /* grow to fill available vertical space inside .modal-content */
-      min-height: 0; /* allow correct overflow behavior in browsers like Firefox */
-    }
+/* Responsiv video container (16:9) */
+.modal .video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 2rem auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
 
-    .modal-body img {
-      padding: 1rem;
-      border-radius: 2rem;
-      width: 80%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    } 
+.modal .video-container iframe,
+.modal .video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 1.5rem;
+  display: block;
+  background: transparent;
+}
 
-    .modal-body video {
-      padding: 1rem;
-      border-radius: 1.5rem;
-      width: 70%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.modal iframe {
+  margin: 0;
+  border-radius: 1.5rem;
+}
 
-   /* youtube embed link – spacing now handled by wrapper instead of iframe itself */
-    .modal .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-      box-sizing: border-box; /* include any padding/margin in width calculations */
-      overflow: hidden;       /* ensures rounded corners mask the iframe */
-      margin: 2rem auto;      /* vertical gap around embeds, horizontal auto prevents overflow */
-      border-radius: 1.5rem;  /* same radius on all corners */
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
+.modal-body p {
+  color: #333;
+  text-align: left;
+  font-weight: 500;
+  padding: 1rem 3rem;
+}
 
-    .modal .video-container iframe,
-    .modal .video-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      border-radius: 1.5rem; /* match container */
-      display: block;
-      background: transparent;
-    }
+.modal-body h3 {
+  padding: 1rem 3rem 0 3rem;
+  color: #216B7c;
+  text-align: left;
+}
 
-    /* ensure modal iframes don't get the global iframe margin/border-radius */
-    .modal iframe {
-      margin: 0;
-      border-radius: 1.5rem;
-    }
+.modal-body ul {
+  color: #333;
+  list-style-type: square;
+  text-align: left;
+  padding: 1rem 0 1rem 3rem;
+  font-weight: 500;
+}
 
-    .modal-body p {
-      color: #333;
-      text-align: left;
-      font-family: "Raleway", sans-serif;
-      font-weight: 500;
-      padding-left: 3rem;
-      padding-right: 3rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
+.modal-body a {
+  color: #ff8c00;
+  font-weight: bolder;
+}
 
-      .modal-body h3 {
-      padding-left: 3rem;
-      padding-right: 3rem;
-      padding-top: 1rem;
-      color: #216B7c;
-      text-align: left;
-    }
+.close {
+  position: absolute;
+  top: -0.5rem;
+  right: 1rem;
+  font-size: 3rem;
+  color: #216B7c;
+}
 
-      .modal-body ul {
-      color: #333;
-      list-style-type: square;
-      text-align: left;
-      padding-left: 3rem;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      font-family: "Raleway", sans-serif;
-      font-weight: 500;
-    }
 
-    .modal-body a {
-      color: #ff8c00;
-      font-weight: bolder;
-      font-family: "Railway", sans-serif;
-            cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    }
-
-    .close {
-      position: absolute;
-      top: -0.5rem;
-      right: 1rem;
-      font-size: 3rem;
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      color: #216B7c;
-    }
-
-/* Om mig sektion */
+/* ==========================================================================
+   9. OM MIG SEKTION
+   ========================================================================== */
 .ommig {
   text-align: center;
   max-width: 95rem;
@@ -776,13 +761,14 @@ h3.fade-in-up {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 .about-container {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
+
 .about-text, .about-image {
-  font-family: "Raleway", sans-serif;
   font-size: 18px;
   font-weight: 500;
   flex: 1;
@@ -790,16 +776,6 @@ h3.fade-in-up {
   padding-left: 4rem;
   text-align: left;
   color: #fff;
-}
-
- /* animation rotation på about img */  
-@keyframes rotate {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.rotate {
-  animation: rotate 16s linear infinite;
 }
 
 .about-text h2 {
@@ -814,7 +790,10 @@ h3.fade-in-up {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* tidslinje */
+
+/* ==========================================================================
+   10. TIDSLINJE / SLIDER SEKTION
+   ========================================================================== */
 .slider-section {
   padding-left: 3rem;
   padding-right: 3rem;
@@ -827,25 +806,24 @@ h3.fade-in-up {
   margin-top: 8rem;
 }
 
-/* Wrapper for slider + overlay */
 .slider-wrapper {
   position: relative;
   max-width: 90rem;
   margin: 0 auto;
   overflow: hidden;
-  height: 650px;          /* justér til ønsket fast højde */
-  padding-top: 3rem;      /* i stedet for .slides’ margin-top */
+  height: 650px;
+  padding-top: 3rem;
 }
 
-/* Tidslinje-overlay */
 .timeline-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.5rem 1;
+  padding: 0.5rem 1rem;
   z-index: 10;
 }
+
 .timeline {
   display: flex;
   overflow-x: auto;
@@ -861,39 +839,49 @@ h3.fade-in-up {
 .timeline-item {
   flex: 0 0 auto;
   margin: 0 1rem;
-  padding: 1rem 1rem;
-  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
+  padding: 1rem;
   border-radius: 0.5rem;
   transition: background 0.2s;
   color: #ff8c00;
 }
+
 .timeline-item.active {
   background: linear-gradient(to bottom, #ff6f00, #ff8c00);
   color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .timeline-item:not(.active):hover {
   background: #fff;
 }
 
-/* Slides container */
 .slides {
   display: flex;
-  transition: transform 0.4s ease, height 0.3s ease; /* tilføj height‐transition hvis du vil animere */
-/* fast højde */  
-  height: 100%;       /* justér til det du ønsker */
-  align-items: stretch;/* sørger for at .slide strækkes til fuld højde */
+  transition: transform 0.4s ease, height 0.3s ease;
+  height: 100%;
+  align-items: stretch;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .slide {
   flex: 0 0 100%;
-  padding: 2rem 2rem;
-  box-sizing: border-box;
+  padding: 2rem;
   background: linear-gradient(to bottom, #fff, #eaeaea);
   border-radius: 0.5rem;
-  height: 100%;          /* fylder hele .slides-højden */
-  overflow-y: auto;      /* scroll hvis indholdet er for langt */
+  height: 100%;
+  overflow-y: auto;
+}
+
+.slide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  min-width: 0;
+  align-items: center;
+}
+
+.slide-grid div {
+  padding: 1rem;
 }
 
 .slides h3 {
@@ -918,7 +906,6 @@ h3.fade-in-up {
   padding-right: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-  font-family: "Raleway", sans-serif;
   font-weight: 500;
   text-align: left;
 }
@@ -926,246 +913,191 @@ h3.fade-in-up {
 .slides img {
   border-radius: 0.5rem;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
+  margin: 2rem auto 0 auto;
   width: 50%;
 }
 
 .slides a {
   color: #ff8c00;
   font-weight: bolder;
-  font-family: "Railway", sans-serif;
 }
 
-.slide-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* To lige store kolonner */
-  gap: 2rem; /* Afstand mellem kolonner */
-  min-width: 0; /* vigtigt i flex/grid så teksten ikke overflows */
-  align-items: center;
-}
-
-.slide-grid div {
-  padding: 1rem;
-}
-
-/* mobil view */
-@media (max-width: 768px) {
-  .slide-grid {
-    grid-template-columns: 1fr; /* Gør kolonner til rækker på mobil */
-  }
-
-  .slider-wrapper {
-    height: 600px;        /* en lidt lavere højde på mobil */
-    padding-top: 3rem;
-  }
-
-  .slides {
-    /* make sure flex children don’t wrap or sneak in more than one */
-    display: flex;
-    flex-wrap: nowrap;
-    transition: transform 0.4s ease, height 0.3s ease; /* tilføj height‐transition hvis du vil animere */
-    align-items: flex-start;   /* justere slide til content */
-  }
-
-  .slide {
-    /* one‐slide wide */
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .slides img {
-    width: 100%
-  }
-}
-
-/* Navigation knapper */
+/* Slider-pile navigation */
 .nav-btn {
   position: absolute;
   top: 95%;
   transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 3rem;       /* gør pilen stor nok */
-  padding: none;       /* klikområde */
-  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-  color: #216B7c;           /* pilens farve */
+  font-size: 3rem;
+  color: #216B7c;
   z-index: 20;
 }
+
 .nav-btn.prev { left: 0.5rem; }
 .nav-btn.next { right: 0.5rem; }
 
 .nav-btn:disabled {
   opacity: 0.3;
-  cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
 }
+
 .nav-btn:hover:not(:disabled) {
-  color: #003743;        /* hover-farve */
+  color: #003743;
 }
 
-/* fun facts sektion med accordion */
-    .funfacts {
-      text-align: center;
-    }
-    .accordion {
-    max-width: 90rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    }
 
-    .accordion-item {
-      padding: 0.5rem;
-    }
-    
-    .accordion-header {
-      font-family: "Raleway", sans-serif;
-      width: 100%;
-      background: linear-gradient(to bottom, #fff, #eaeaea);
-      border: none;
-      text-align: left;
-      font-weight: 900;
-      padding: 1rem;
-      font-size: 1.1rem;
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-      outline: none;
-      border-radius: 8px;
-      color: #216B7c;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-    }
-
-    .accordion-header.active {
-      background: linear-gradient(to bottom, #ff6f00, #ff8c00);
-      border-radius: 8px;
-      color: #fff;
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 1rem;
-      margin-top: 0.5rem;
-      background-color: #ffffff60;
-      backdrop-filter: blur(10px);
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .accordion-content p {
-      font-family: "Raleway", sans-serif;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      text-align: left;
-      color: #fff;
-    }
-
-    iframe {
-      border-radius: 1rem;
-      max-width: 100%;
-
-    }
-
-    /* Footer sektion */
-    footer.footer {
-      color: #fff;
-      text-align: center;
-    }
-
-    .footer h2 {
-      color: #fff;
-      font-size: 1.5rem;
-    }
-
-    .footer-images {
-    display: flex; /* Skift fra grid til flex */
-    justify-content: center; /* Centrerer ikonerne horisontalt */
-    align-items: center; /* Centrerer dem vertikalt */
-    gap: 1rem; /* Giver lidt mere afstand mellem ikonerne */
-    padding: 1rem;
-    }
-
-    .footer-col img {
-      border-radius: 8px;
-      width: 8rem;
-      height: 8rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Tilføjer en smooth transition */
-    }
-
-    .footer-col {
-    position: relative;
-  }
-
-    .tooltip-text {
-    position: absolute;
-    bottom: 8rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ff8c00;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    white-space: nowrap;
-    border-radius: 0.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease;
-    pointer-events: none;
-    z-index: 10;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-
-  .footer-col:hover .tooltip-text {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(10%) skewX(10deg) rotate(-47deg);
-  }
-
-
-    .footer-col img:hover {
-    transform: rotateX(25deg); /* Gør ikonet lidt større ved hover */
-    cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    }
-
-    .footer-text {
-      font-family: "Raleway", sans-serif;
-      font-weight: 500;
-    }
-
-    /* Jonas ansigt i bunden */
-    .footer-text img {
-      width: 5%;
-      display: block;
-      margin: auto;
-      margin-top: 2.5rem;
-      transition: transform 0.3s ease; /* This enables smooth scaling */
-      border-radius: 0;
-    }
-
-    .footer-text img:hover {
-      transform: scale(1.1); /* Grows 10% on hover */
-      cursor: url('images/mousecursor/hand32x32.png') 0 0, pointer;
-    }
-
-/* Responsivt design mobil */
-@media (max-width: 768px) {
-/* Nav-bar: vis burger-menu og skjul standard links */
-
-/* Override nav bar layout on mobile */
-nav {
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0.1rem;
+/* ==========================================================================
+   11. FUN FACTS (ACCORDION SEKTION)
+   ========================================================================== */
+.funfacts {
+  text-align: center;
 }
 
-.logo {
+.accordion {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.accordion-item {
+  padding: 0.5rem;
+}
+
+.accordion-header {
+  width: 100%;
+  background: linear-gradient(to bottom, #fff, #eaeaea);
+  text-align: left;
+  font-weight: 900;
+  padding: 1rem;
+  font-size: 1.1rem;
+  outline: none;
+  border-radius: 8px;
+  color: #216B7c;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.accordion-header.active {
+  background: linear-gradient(to bottom, #ff6f00, #ff8c00);
+  border-radius: 8px;
+  color: #fff;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1rem;
+  margin-top: 0.5rem;
+  background-color: #ffffff60;
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.accordion-content p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: left;
+  color: #fff;
+}
+
+
+/* ==========================================================================
+   12. FOOTER SEKTION
+   ========================================================================== */
+footer.footer {
+  color: #fff;
+  text-align: center;
+}
+
+.footer h2 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.footer-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   padding: 1rem;
 }
 
-/* Mobile nav panel hidden by default */
+.footer-col {
+  position: relative;
+}
+
+.footer-col img {
+  border-radius: 8px;
+  width: 8rem;
+  height: 8rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-col img:hover {
+  transform: rotateX(25deg);
+}
+
+/* Tooltips i footer */
+.tooltip-text {
+  position: absolute;
+  bottom: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.footer-col:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(10%) skewX(10deg) rotate(-47deg);
+}
+
+.footer-text {
+  font-weight: 500;
+}
+
+/* Jonas ansigts-ikon */
+.footer-text img {
+  width: 5%;
+  display: block;
+  margin: 2.5rem auto 0 auto;
+  transition: transform 0.3s ease;
+  border-radius: 0;
+}
+
+.footer-text img:hover {
+  transform: scale(1.1);
+}
+
+
+/* ==========================================================================
+   13. RESPONSIVT DESIGN (ALLE MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+  
+  /* Navigation & Mobil-panel */
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.1rem;
+  }
+
+  .logo {
+    padding: 1rem;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -1196,16 +1128,16 @@ nav {
   }
 
   .nav-links.active li {
-  opacity: 1;
-  transform: translateY(0);
-}
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-/* links fader ind */
-.nav-links.active li:nth-child(1) { transition-delay: 0.3s; }
-.nav-links.active li:nth-child(2) { transition-delay: 0.4s; }
-.nav-links.active li:nth-child(3) { transition-delay: 0.5s; }
-.nav-links.active li:nth-child(4) { transition-delay: 0.6s; }
-.nav-links.active li:nth-child(5) { transition-delay: 0.7s; }
+  /* Fade-in delay på mobile links */
+  .nav-links.active li:nth-child(1) { transition-delay: 0.3s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.4s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.5s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.6s; }
+  .nav-links.active li:nth-child(5) { transition-delay: 0.7s; }
 
   .burger-menu {
     display: flex;
@@ -1216,41 +1148,40 @@ nav {
     overflow: hidden;
   }
 
-      /* Hero sektion: stak kolonner vertikalt */
-      .hero {
-        flex-direction: column;
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
-      }
+  /* Hero sektion mobil */
+  .hero {
+    flex-direction: column;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
 
-      .hero h1 {
-        text-align: center;
-        font-size: 1.2rem;
-        padding: 0;
-      }
+  .hero h1 {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0;
+  }
 
-    .hero button {
+  .hero button {
     display: flex;
     justify-content: center;
     align-items: center;
-    }
-      
- /* skills sektion: én kolonne */
+  }
 
-  .skills{
+  /* Skills sektion mobil */
+  .skills {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 1.5rem;
-    justify-items: center;       /* center all children */
+    justify-items: center;
   }
 
-  /* prevent grid children from widening the layout */
-  .skills > *{ min-width: 0; }
+  .skills > * { 
+    min-width: 0; 
+  }
 
-  /* make the long title wrap + scale on tiny screens */
-  .skills h2{
+  .skills h2 {
     max-width: 100%;
-    overflow-wrap: anywhere;      /* allow breaks anywhere */
+    overflow-wrap: anywhere;
     word-break: break-word;
     hyphens: auto;
     text-align: center;
@@ -1258,131 +1189,157 @@ nav {
     line-height: 1.1;
   }
 
-  /* icon row stays centered and contained */
-  .skills-thumbnails{
+  .skills-thumbnails {
     width: 100%;
     justify-content: center;
   }
 
-  /* optional: slightly smaller bubbles for very narrow widths */
-  @media (max-width: 420px){
-    .thumb-box{ width: 4rem; height: 4rem; }
-  }
-
-  /* center each card and CTA */
-  .skill-box{
+  .skill-box {
     width: 100%;
     max-width: 42rem;
     text-align: center;
   }
-  .skill-icon{
+
+  .skill-icon {
     display: block;
     margin: 0 auto .5rem;
   }
-  .skills-button{
+
+  .skills-button {
     justify-self: center;
     width: max-content;
     margin: 2rem auto 0;
   }
 
+  /* Projekter grid mobil */
+  .projects-container {
+    grid-template-columns: 1fr;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1.5rem;
+  }
 
-      /* Projekter sektion: én kolonne */
-      .projects-container {
-        grid-template-columns: 1fr;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-        gap: 1.5rem;
-      }
+  /* Modals mobil */
+  .modal-content {
+    margin: 1rem auto;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+    max-width: 95rem;
+    max-height: calc(95vh - 4rem);
+    position: relative;
+    text-align: center;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
 
-      /* modal vinduer */
-      .modal-content {
-      margin: 1rem auto;
-      padding-right: 0.4rem;
-      padding-left: 0.4rem;
-      max-width: 95rem;
-      max-height: calc(95vh - 4rem); /* don't grow larger than viewport minus padding */
-      position: relative;
-      text-align: center;
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-y;
-    }
+  .modal-content h2 {
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    padding-top: 0.1rem;
+  }
 
-    .modal-content h2 {
-      font-size: 1rem;
-      padding-left: 0.5rem;
-      padding-top: 0.1rem;
-    }
+  .modal-content p {
+    font-size: 1rem;
+    padding-left: 0.5rem;
+  }
 
-    .modal-content p {
-      font-size: 1rem;
-      padding-left: 0.5rem;
-    }
+  .modal-body {
+    padding: 1rem;
+  }
 
-    .modal-body {
-      padding: 1rem;
-    }
+  .modal-body img {
+    padding: 1rem;
+    border-radius: 2rem;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  } 
 
-    .modal-body img {
-      padding: 1rem;
-      border-radius: 2rem;
-      width: 100%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    } 
+  .modal-body video {
+    padding: 1rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .modal-body video {
-      padding: 1rem;
-      border-radius: 1.5rem;
-      width: 100%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  .modal-body p {
+    padding: 1rem;
+  }
 
-    .modal-body p {
-      padding: 1rem;
-    }
+  .modal-body h3 {
+    padding: 1rem;
+    text-align: left;
+  }
 
-    .modal-body h3 {
-      padding: 1rem;
-      text-align: left;
-    }
+  /* Om mig sektion mobil */
+  .about-container {
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .about-text, .about-image {
+    flex: 1;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+  }
 
-      /* Om mig: tekst først, billede under */
-      .about-container {
-        flex-direction: column;
-        text-align: left;
-      }
-      
-    .about-text, .about-image {
-      flex: 1;
-      padding-right: 1.5rem;
-      padding-left: 1.5rem;
-      text-align: left;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #fff;
-    }
+  /* Tidslinje / Slider sektion mobil */
+  .slide-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .footer-images {
-        display: flex;
-        flex-direction: column; /* Stak ikonerne vertikalt */
-        align-items: center; /* Centrerer ikonerne horisontalt */
-        gap: 1rem; /* Tilføjer afstand mellem ikonerne */
-    }
+  .slider-wrapper {
+    height: 600px;
+    padding-top: 3rem;
+  }
 
-    /* billede af mig */
-        .footer-text img {
-      width: 20%;
-      display: block;
-      margin: auto;
-      margin-top: 2.5rem;
-      transition: transform 0.3s ease; /* This enables smooth scaling */
-    }
-    }
-        
-  </style>
+  .slides {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.4s ease, height 0.3s ease;
+    align-items: flex-start;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .slides img {
+    width: 100%;
+  }
+
+  /* Footer sektion mobil */
+  .footer-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-text img {
+    width: 20%;
+    display: block;
+    margin: 2.5rem auto 0 auto;
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Ekstra lille medieforespørgsel til mikroskærme */
+@media (max-width: 420px) {
+  .thumb-box { 
+    width: 4rem; 
+    height: 4rem; 
+  }
+}
+</style>
 
 
 </head>
@@ -1524,7 +1481,7 @@ nav {
 
       <!-- Projekt 40 -->
       <div class="project-item" data-modal="modal40">
-        <img src="images/projekt40/thumbnail.webp" alt="Morgenbusinessmøde ved Ervsnetværket Vestsjælland" title="Kom med når Erhvervsnetværket Vetssjælland byder til Morgenbusinessmøde">
+        <img src="images/projekt40/thumbnail.webp" alt="Morgenbusinessmøde ved Erhvervsnetværket Vestsjælland" title="Kom med når Erhvervsnetværket Vestsjælland byder til Morgenbusinessmøde">
         <h3>Morgenbusinessmøder ved ENVS</h3>
         <h4>Highlightvideo fra ENVS' seneste netværksmøde.</h4>
         <p>Video</p>
@@ -1575,7 +1532,7 @@ nav {
 
       <!-- Projekt 39 -->
       <div class="project-item" data-modal="modal39">
-        <img src="images/projekt39/thumbnail.webp" alt="En kort præsntationsvideo af bureauet LUBI ApS, som blev vist ved SLagelse Erhvervs Nytårskur 2026.">
+        <img src="images/projekt39/thumbnail.webp" alt="En kort præsentationsvideo af bureauet LUBI ApS, som blev vist ved SLagelse Erhvervs Nytårskur 2026.">
         <h3>Slagelse Erhverv - Nytårskur 2026</h3>
         <h4>Præsentationsvideo af LUBI ApS</h4>
         <p>Video</p>
@@ -1746,7 +1703,7 @@ nav {
       <span class="close">&times;</span>
       <h2>Morgenbusinessmøder ved Erhvervsnetværket Vestsjælland</h2>
       <div class="modal-body">
-        <p>Som en del af Slagelse Boldklub og Idrætsforening (SBI), er Erhvervsnetværket Vestsjælland et netværk for områdets virskomheder og organisationer. I 2026 indgik vi i LUBI et samarbejde med Netværket (ENVS), hvor vi fremover skulle levere videomateriale til promovering. Derudover indebar samarbejdet også opsætning af et dedikeret website, som bla. samler de seneste nyheder og medlemsvirksomhederne.</p>
+        <p>Som en del af Slagelse Boldklub og Idrætsforening (SBI), er Erhvervsnetværket Vestsjælland et netværk for områdets virksomheder og organisationer. I 2026 indgik vi i LUBI et samarbejde med Netværket (ENVS), hvor vi fremover skulle levere videomateriale til promovering. Derudover indebar samarbejdet også opsætning af et dedikeret website, som bla. samler de seneste nyheder og medlemsvirksomhederne.</p>
 
         <!-- HP Advisory -->
         <div class="video-container">
@@ -1895,7 +1852,7 @@ nav {
               <b>Roller og arbejdsområder:</b> Webdesign og opsætning, samt rådgivning og sparring ang. det visuelle design af hjemmesidens komponenter.<br>
               <b>Programmer anvendt:</b> WordPress, Elementor, Yoast SEO-plugin, Photoshop, Canva<br>
               <b>Varighed:</b> ca. 2 måneder<br>
-              <b>Kunde:</b> Hecht:Rigas Advokatanpartselskab<br>
+              <b>Kunde:</b> Hecht:Rigas Advokatanpartsselskab<br>
               <b>Bureau:</b> LUBI ApS<br>
               <b>År:</b> 2025<br></p>
 
@@ -1943,9 +1900,9 @@ nav {
   <div class="modal" id="modal39">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>Nytårkur 2026 - Slagelse Erhverv</h2>
+      <h2>Nytårskur 2026 - Slagelse Erhverv</h2>
       <div class="modal-body">
-        <p>Præsentationsvideo til Nytårskur 2026 ved Slagelse Erhverv. Videoen bliv vist for ca. 100 virksomheder i Slagelse og omegn.</p>
+        <p>Præsentationsvideo til Nytårskur 2026 ved Slagelse Erhverv. Videoen blev vist for ca. 100 virksomheder i Slagelse og omegn.</p>
 
         <div class="video-container">
           <iframe
@@ -2100,7 +2057,7 @@ nav {
 
           <h3>Tekniske detaljer</h3>  
             <p>
-              <b>Arbejdsområder:</b> Opsætning af kamera, lyd, lys og studie til optagelse, samt <u></u>darbejdelse af manuskrifter til medvirkende. <br>
+              <b>Arbejdsområder:</b> Opsætning af kamera, lyd, lys og studie til optagelse, samt <u></u>udarbejdelse af manuskrifter til medvirkende. <br>
               <b>Programmer anvendt:</b> Adobe Photoshop, Facebook Livestream<br>
               <b>Virksomhed:</b> B Company<br>
               <b>År:</b> 2022<br></p>
@@ -2115,7 +2072,7 @@ nav {
           <span class="close">&times;</span>
           <h2>FACADESKILTE</h2>
           <div class="modal-body">
-            <p>Da B Company flyttede i nye lokale i efteråret 2022, fik jeg æren af at designe nye skilte til virksomhedensfacaden.</p>
+            <p>Da B Company flyttede i nye lokale i efteråret 2022, fik jeg æren af at designe nye skilte til virksomhedens facade.</p>
             <img src="images/projekt3/1.webp" alt="">
             <p>I alt designede jeg fem skilte, herunder logo, indgangsparti, lager, p-plads, åbningstider, samt flag</p>
             <img src="images/projekt3/2.webp" alt="">
@@ -2313,7 +2270,7 @@ nav {
             <div>
               <h3><img src="images/Tidslinje/lubi.webp" alt="LUBI"/>Nyt Job ved LUBI</h3>
               <p>Ved rekrutteringsvirksomhed LUBI arbejder jeg med digital udvikling, hvor IT, marketing og forretning mødes. Mit fokus er at gøre komplekse systemer brugbare, strømline interne processer og udvikle løsninger, der sparer tid og reducerer afhængighed af enkeltpersoner.</p>
-              <p>Jeg udvikler og implementerer interne AI-løsninger, herunder Custom GPT’er til CRM-support og overenskomster, som gør tung og specialiseret viden tilgængelig direkte i Microsoft Teams. Derudover arbejder jeg med automatisering af rekrutterings- og onboardingprocesser gennem HR-platforme og et digitalt onboarding-univers med video og quizzes.</p>
+              <p>Jeg udvikler og implementerer interne AI-løsninger, herunder Custom GPT’er til CRM-support og overenskomster, som gør tung og specialiseret viden tilgængelig direkte i Microsoft Teams. Derudover arbejder jeg med automatisering af rekrutterings- og onboardingprocesser gennem HR-platforme og et digitalt onboarding-univers med video og quizzer.</p>
               <p>Jeg designer og udvikler websites i WordPress og Shopify og producerer foto- og videoindhold til rekruttering og markedsføring. Samtidig arbejder jeg med SEO, tracking og performance, så løsningerne ikke bare ser godt ud, men også virker.</p>
               <p>Som prikken over i'et underviser, supporterer og rådgiver jeg mine kollegaer i alt der rimer på 'digital'. En rolle jeg trives godt i, hvor jeg to gange årligt også har ansvar for en studiepraktikant.</p>
 
@@ -2338,9 +2295,9 @@ nav {
               <p><a href="https://museiq.io" target="_blank" rel="noopener noreferrer">MUSEIQ</a> - Grafik og video til web og SoMe</p>
               <p><a href="http://worldguidefoundation.org" target="_blank" rel="noopener noreferrer">World Guide Foundation</a> - Vedligeholdelse og udvikling af website</p>
               <p><a href="https://verdensboern.dk" target="_blank" rel="noopener noreferrer">Verdens Børn</a> - udvikling af grafik til SoMe-opslag</p>
-            <div>
-              <img src="images/Tidslinje/frivilligjobs.webp" alt="Jonas i skole">
-            </div>
+              <div>
+                <img src="images/Tidslinje/frivilligjobs.webp" alt="Jonas i skole">
+              </div>
             </div>
           </div>
         </div>
@@ -2382,7 +2339,7 @@ nav {
             <div>
               <h3><img src="images/Tidslinje/TexasMoreland.webp" alt="Texas og Moreland"/>Texas og Moreland</h3>
               <p>Da jeg gik på 1. år af min bachelor fik jeg job ved Texas A/S - en grossist som sælger havemaskiner- og udstyr - og møbler gennem søstervirksomheden Moreland.</p>
-              <p>Jeg var lagermedarbejder, med ansvar for pluk og pak af ordrebestillinger gennem virksomhedens webshop.</p>
+              <p>Jeg var lagermedarbejder, med ansvar for pluk og pak af ordre gennem virksomhedens webshop.</p>
               <p>Igennem mine 3 år ved Texas fik jeg et godt kendskab til lagerstyring og systemet LOGIA WMS, og hvordan varer kan sættes i system på et lager.</p>
             </div>
             <div>
