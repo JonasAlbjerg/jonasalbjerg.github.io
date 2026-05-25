@@ -42,6 +42,11 @@ body {
   cursor: url(images/mousecursor/mouse32x32.png) 0 0, auto;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Samling af globale typografier */
 h1 {
   color: #fff;
@@ -105,11 +110,13 @@ video,
 a {
   text-decoration: none;
   color: inherit;
+  font-family: "Special Gothic Expanded One", sans-serif;
 }
 
 button {
   background: none;
   border: none;
+  font-family: "Special Gothic Expanded One", sans-serif;
 }
 
 
@@ -1403,7 +1410,7 @@ footer.footer {
       <div class="thumb-box" data-tooltip="LinkedIn"><img src="images/skills/programmer/linkedin.svg" alt="LinkedIn"></div>
       <div class="thumb-box" data-tooltip="Meta Ads"><img src="images/skills/programmer/meta.svg" alt="Meta Ads"></div>
       <div class="thumb-box" data-tooltip="WordPress"><img src="images/skills/programmer/wordpress.svg" alt="WordPress"></div>
-      <div class="thumb-box"data-tooltip="Magento"><img src="images/skills/programmer/magento.svg" alt="Magento"></div>
+      <div class="thumb-box" data-tooltip="Magento"><img src="images/skills/programmer/magento.svg" alt="Magento"></div>
       <div class="thumb-box" data-tooltip="ActiveCampaign"><img src="images/skills/programmer/activecampaign.svg" alt="ActiveCampaign"></div>
       <div class="thumb-box" data-tooltip="Klaviyo"><img src="images/skills/programmer/Klaviyo.svg" alt="Klaviyo"></div>
       <div class="thumb-box" data-tooltip="Mailchimp"><img src="images/skills/programmer/mailchimp.svg" alt="Mailchimp"></div>
@@ -2566,22 +2573,21 @@ footer.footer {
 
   <!-- JavaScript: burger-menu, modalvinduer og accordion -->
   <script>
-    // Burger-menu logik
-
+ document.addEventListener("DOMContentLoaded", () => {
+  
+  // --- BURGER MENU LOGIK ---
   const burgerMenu = document.getElementById('burger-menu');
   const navLinks = document.getElementById('nav-links');
   const navItems = navLinks.querySelectorAll('a');
 
   function toggleMenu() {
-    // toggle visual state for burger and nav, and block body scroll
     burgerMenu.classList.toggle('active');
     navLinks.classList.toggle('active');
     document.body.classList.toggle('menu-open');
   }
 
-  burgerMenu.addEventListener('click', toggleMenu);
+  if (burgerMenu) burgerMenu.addEventListener('click', toggleMenu);
 
-  // Close menu when clicking any link
   navItems.forEach(link => {
     link.addEventListener('click', () => {
       burgerMenu.classList.remove('active');
@@ -2590,279 +2596,210 @@ footer.footer {
     });
   });
 
+  // --- MODAL LOGIK TIL PROJEKTER ---
+  const projectItems = document.querySelectorAll('.project-item');
+  const modals = document.querySelectorAll('.modal');
 
-
-// Modal logic for projects (click to open a modal)
-const projectItems = document.querySelectorAll('.project-item');
-projectItems.forEach(item => {
-  item.addEventListener('click', (e) => {
-    // If a modal was just closed, ignore immediate clicks to avoid re-opening
-    if (document.body.classList.contains('modal-just-closed')) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    // get the id of the modal to open from the clicked item
-    const modalId = item.getAttribute('data-modal');
-    const modal = document.getElementById(modalId);
-    if (modal) {
-      // remember which element had focus before opening (so we can restore it later)
-      try { window._lastFocusedElement = document.activeElement; } catch (err) { window._lastFocusedElement = null; }
-
-      // show modal visually
-      modal.classList.add('open');
-
-      // inject prev/next navigation buttons so the user can cycle projects while the modal is open
-      try { if (typeof ensureModalNav === 'function') ensureModalNav(modal); } catch (err) { /* ignore if helper not present */ }
-
-      // make the modal focusable and focus it without making the page jump
-      try {
-        modal.setAttribute('tabindex', '-1');
-        modal.focus({ preventScroll: true }); // focus modal for keyboard users
-      } catch (err) {
-        // older browsers may not support the option object; fall back to normal focus
-        try { modal.focus(); } catch (e) {}
+  projectItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      if (document.body.classList.contains('modal-just-closed')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
       }
 
-      // lock page scroll while the modal is open
-      lockScroll();
-    }
-  });
-});
+      const modalId = item.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        try { window._lastFocusedElement = document.activeElement; } catch (err) { window._lastFocusedElement = null; }
+        modal.classList.add('open');
+        ensureModalNav(modal);
 
-// Function to close a modal and stop any playing media inside it
-function closeModal(modal) {
-  if (!modal) return;
-
-  // avoid double-closing
-  if (modal.classList.contains('closing')) return;
-
-  // stop any media immediately
-  const mediaElements = modal.querySelectorAll('video, audio');
-  mediaElements.forEach(media => {
-    try { media.pause(); } catch (e) {}
-    try { media.currentTime = 0; } catch (e) {}
-  });
-
-  // add a 'closing' state so CSS can animate the modal sliding down
-  modal.classList.add('closing');
-
-  // finalization logic to run after the animation completes
-  const finalize = () => {
-    modal.classList.remove('closing');
-    modal.classList.remove('open');
-
-    // if no other modal is open, restore page scrolling
-    const anyOpen = Array.from(document.querySelectorAll('.modal')).some(m => m.classList.contains('open'));
-    if (!anyOpen) {
-      unlockScroll();
-    }
-
-    // briefly mark the body to prevent immediate re-open from click-through
-    document.body.classList.add('modal-just-closed');
-    setTimeout(() => document.body.classList.remove('modal-just-closed'), 350);
-
-    // restore focus to the previously focused element
-    try {
-      if (document.activeElement && typeof document.activeElement.blur === 'function') {
-        document.activeElement.blur();
-      }
-      const prev = window._lastFocusedElement;
-      if (prev && typeof prev.focus === 'function') {
-        try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
-      } else {
         try {
+          modal.setAttribute('tabindex', '-1');
+          modal.focus({ preventScroll: true });
+        } catch (err) {
+          try { modal.focus(); } catch (e) {}
+        }
+        lockScroll();
+      }
+    });
+  });
+
+  function closeModal(modal) {
+    if (!modal || modal.classList.contains('closing')) return;
+
+    const mediaElements = modal.querySelectorAll('video, audio');
+    mediaElements.forEach(media => {
+      try { media.pause(); } catch (e) {}
+      try { media.currentTime = 0; } catch (e) {}
+    });
+
+    modal.classList.add('closing');
+
+    const finalize = () => {
+      modal.classList.remove('closing');
+      modal.classList.remove('open');
+
+      const anyOpen = Array.from(document.querySelectorAll('.modal')).some(m => m.classList.contains('open'));
+      if (!anyOpen) unlockScroll();
+
+      document.body.classList.add('modal-just-closed');
+      setTimeout(() => document.body.classList.remove('modal-just-closed'), 350);
+
+      try {
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
+        const prev = window._lastFocusedElement;
+        if (prev && typeof prev.focus === 'function') {
+          try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
+        } else {
           document.body.setAttribute('tabindex', '-1');
           document.body.focus({ preventScroll: true });
           document.body.removeAttribute('tabindex');
-        } catch (err) {
-          try { document.body.focus(); document.body.removeAttribute('tabindex'); } catch (e) {}
         }
-      }
-    } catch (err) {
-      // ignore focus errors
-    }
-  };
+      } catch (err) {}
+    };
 
-  // wait for the modal-content transition to finish before finalizing
-  const content = modal.querySelector('.modal-content') || modal;
-  const onEnd = (e) => {
-    if (e.target !== content) return;
-    finalize();
-  };
-  content.addEventListener('transitionend', onEnd, { once: true });
+    const content = modal.querySelector('.modal-content') || modal;
+    const onEnd = (e) => {
+      if (e.target !== content) return;
+      finalize();
+    };
+    content.addEventListener('transitionend', onEnd, { once: true });
+    setTimeout(() => { if (modal.classList.contains('closing')) finalize(); }, 800);
+  }
 
-  // fallback: ensure finalize runs even if transitionend doesn't fire
-  setTimeout(() => {
-    if (modal.classList.contains('closing')) finalize();
-  }, 800);
-}
-
-// Close modal when clicking background overlay or the close button
-const modals = document.querySelectorAll('.modal');
-modals.forEach(modal => {
-  modal.addEventListener('click', (event) => {
-    // if click target is the overlay itself or the element with class 'close'
-    if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
-      event.preventDefault();
-      event.stopPropagation();
-      closeModal(modal);
-      return;
-    }
-  });
-});
-
-// Close modal with the Escape key (global listener)
-document.addEventListener("keyup", function (event) {
-  if (event.key === "Escape" || event.key === "Esc") {
-    event.preventDefault();
-    modals.forEach(modal => {
-      if (modal.classList.contains('open')) {
+  modals.forEach(modal => {
+    modal.addEventListener('click', (event) => {
+      if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+        event.preventDefault();
+        event.stopPropagation();
         closeModal(modal);
       }
     });
-  }
-});
+  });
 
-// Extra safety: if user presses Escape while focused in a media element, close the nearest modal
-const mediaElements = document.querySelectorAll('video, audio');
-mediaElements.forEach(media => {
-  media.addEventListener('keyup', function (event) {
-    if (event.key === "Escape" || event.key === "Esc") {
+  document.addEventListener("keyup", (event) => {
+    if (["Escape", "Esc"].includes(event.key)) {
       event.preventDefault();
-      // find the modal that contains this media
-      const modal = media.closest('.modal');
-      if (modal && modal.classList.contains('open')) {
-        closeModal(modal);
-      }
+      modals.forEach(modal => { if (modal.classList.contains('open')) closeModal(modal); });
     }
   });
-});
 
-// Add prev/next navigation inside modals and keyboard navigation
-function ensureModalNav(modal) {
-  if (!modal) return;
-  if (modal.querySelector('.nav-btn')) return; // already added
-  const prev = document.createElement('button');
-  prev.className = 'nav-btn prev';
-  prev.setAttribute('aria-label', 'Previous project');
-  prev.innerHTML = '&#x2039;'; // ‹
-  const next = document.createElement('button');
-  next.className = 'nav-btn next';
-  next.setAttribute('aria-label', 'Next project');
-  next.innerHTML = '&#x203a;'; // ›
+  // Gør det muligt for medier at lukke ved Esc
+  document.querySelectorAll('video, audio').forEach(media => {
+    media.addEventListener('keyup', (event) => {
+      if (["Escape", "Esc"].includes(event.key)) {
+        event.preventDefault();
+        const modal = media.closest('.modal');
+        if (modal && modal.classList.contains('open')) closeModal(modal);
+      }
+    });
+  });
 
-  prev.addEventListener('click', (e) => { e.stopPropagation(); navigateModal('prev'); });
-  next.addEventListener('click', (e) => { e.stopPropagation(); navigateModal('next'); });
+  function ensureModalNav(modal) {
+    if (!modal || modal.querySelector('.nav-btn')) return;
+    const prev = document.createElement('button');
+    prev.className = 'nav-btn prev';
+    prev.setAttribute('aria-label', 'Previous project');
+    prev.innerHTML = '&#x2039;';
+    const next = document.createElement('button');
+    next.className = 'nav-btn next';
+    next.setAttribute('aria-label', 'Next project');
+    next.innerHTML = '&#x203a;';
 
-  const content = modal.querySelector('.modal-content') || modal;
-  content.appendChild(prev);
-  content.appendChild(next);
-}
+    prev.addEventListener('click', (e) => { e.stopPropagation(); navigateModal('prev'); });
+    next.addEventListener('click', (e) => { e.stopPropagation(); navigateModal('next'); });
 
-function getOpenModalIndex() {
-  return Array.from(modals).findIndex(m => m.classList.contains('open'));
-}
+    const content = modal.querySelector('.modal-content') || modal;
+    content.appendChild(prev);
+    content.appendChild(next);
+  }
 
-function openModalByIndex(index) {
-  const idx = ((index % modals.length) + modals.length) % modals.length;
-  const target = modals[idx];
-  if (!target) return;
-  // close any currently open modal(s)
-  modals.forEach(m => { if (m.classList.contains('open')) closeModal(m); });
-  // open target
-  target.classList.add('open');
-  try {
-    target.setAttribute('tabindex','-1');
-    target.focus({ preventScroll: true });
-  } catch (err) { try { target.focus(); } catch(e){} }
-  lockScroll();
-  ensureModalNav(target);
-}
+  function getOpenModalIndex() {
+    return Array.from(modals).findIndex(m => m.classList.contains('open'));
+  }
 
-function navigateModal(direction) {
-  const idx = getOpenModalIndex();
-  if (idx === -1) return;
-  const delta = direction === 'next' ? 1 : -1;
-  const nextIdx = (idx + delta + modals.length) % modals.length;
-  openModalByIndex(nextIdx);
-}
-
-// keyboard: left/right to navigate when a modal is open (ignore when typing in inputs)
-document.addEventListener('keydown', function (event) {
-  if (!['ArrowLeft','ArrowRight'].includes(event.key)) return;
-  // skip if focus is in an input/textarea or contenteditable element
-  const active = document.activeElement;
-  const tag = active && (active.tagName || '').toLowerCase();
-  const isEditable = active && (active.isContentEditable || tag === 'input' || tag === 'textarea' || active.getAttribute('role') === 'textbox');
-  if (isEditable) return;
-  const anyOpen = Array.from(modals).some(m => m.classList.contains('open'));
-  if (!anyOpen) return;
-  event.preventDefault();
-  if (event.key === 'ArrowLeft') navigateModal('prev');
-  if (event.key === 'ArrowRight') navigateModal('next');
-});
-
-// --- Scroll lock utilities ---
-let _scrollY = 0; // store current vertical scroll position
-function lockScroll() {
-  // save the current scroll position
-  _scrollY = window.scrollY || document.documentElement.scrollTop;
-  // fix the body in place so the page behind the modal doesn't scroll
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${_scrollY}px`;
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.width = '100%';
-  // prevent touchmove on mobile from scrolling the background
-  document.addEventListener('touchmove', preventTouch, { passive: false });
-}
-
-function unlockScroll() {
-  // remove the fixed positioning and restore the body's style
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.left = '';
-  document.body.style.right = '';
-  document.body.style.width = '';
-  // scroll back to the saved position instantly (no smooth animation)
-  if (typeof window.scrollTo === 'function') {
+  function openModalByIndex(index) {
+    const idx = ((index % modals.length) + modals.length) % modals.length;
+    const target = modals[idx];
+    if (!target) return;
+    modals.forEach(m => { if (m.classList.contains('open')) closeModal(m); });
+    target.classList.add('open');
     try {
-      window.scrollTo({ top: (_scrollY || 0), left: 0, behavior: 'auto' });
-    } catch (err) {
-      // fallback for very old browsers
-      window.scrollTo(0, _scrollY || 0);
-    }
+      target.setAttribute('tabindex','-1');
+      target.focus({ preventScroll: true });
+    } catch (err) { try { target.focus(); } catch(e){} }
+    lockScroll();
+    ensureModalNav(target);
   }
-  // remove the touchmove prevention
-  document.removeEventListener('touchmove', preventTouch, { passive: false });
-}
 
-function preventTouch(e) {
-  // allow touch gestures when they start inside the modal content or modal body
-  if (e.target.closest('.modal-content') || e.target.closest('.modal-body')) return;
-  // otherwise prevent scrolling/touchmove to keep background fixed
-  e.preventDefault();
-}
-    // Accordion logik
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-      header.addEventListener('click', () => {
-        header.classList.toggle('active');
-        const content = header.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
+  function navigateModal(direction) {
+    const idx = getOpenModalIndex();
+    if (idx === -1) return;
+    const delta = direction === 'next' ? 1 : -1;
+    openModalByIndex(idx + delta);
+  }
 
-        }
-      });
+  document.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft','ArrowRight'].includes(event.key)) return;
+    const active = document.activeElement;
+    const tag = active && (active.tagName || '').toLowerCase();
+    const isEditable = active && (active.isContentEditable || tag === 'input' || tag === 'textarea' || active.getAttribute('role') === 'textbox');
+    if (isEditable) return;
+    const anyOpen = Array.from(modals).some(m => m.classList.contains('open'));
+    if (!anyOpen) return;
+    event.preventDefault();
+    if (event.key === 'ArrowLeft') navigateModal('prev');
+    if (event.key === 'ArrowRight') navigateModal('next');
+  });
+
+  // --- SCROLL LOCK UTILITIES ---
+  let _scrollY = 0;
+  function lockScroll() {
+    _scrollY = window.scrollY || document.documentElement.scrollTop;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${_scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.addEventListener('touchmove', preventTouch, { passive: false });
+  }
+
+  function unlockScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    if (typeof window.scrollTo === 'function') {
+      try { window.scrollTo({ top: _scrollY, left: 0, behavior: 'auto' }); } catch (err) { window.scrollTo(0, _scrollY); }
+    }
+    document.removeEventListener('touchmove', preventTouch, { passive: false });
+  }
+
+  function preventTouch(e) {
+    if (e.target.closest('.modal-content') || e.target.closest('.modal-body')) return;
+    e.preventDefault();
+  }
+
+  // --- ACCORDION LOGIK ---
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      header.classList.toggle('active');
+      const content = header.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
     });
+  });
 
-
-    // tidslinje
-    document.addEventListener("DOMContentLoaded", () => {
+  // --- TIDSLINJE-SLIDER (SAMLET OG FIXET) ---
   const slidesContainer = document.querySelector(".slides");
   const slides = Array.from(document.querySelectorAll(".slide"));
   const items = Array.from(document.querySelectorAll(".timeline-item"));
@@ -2871,88 +2808,54 @@ function preventTouch(e) {
   const timeline = document.querySelector(".timeline");
 
   let currentIndex = 0;
+
   const updateSlider = (index) => {
-    // flyt slides
-    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    if (!slidesContainer || slides.length === 0) return;
+    
+    currentIndex = index;
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-    // opdater aktiv timeline-item
-    items.forEach(i => i.classList.toggle("active", parseInt(i.dataset.index) === index));
+    items.forEach(i => i.classList.toggle("active", parseInt(i.dataset.index) === currentIndex));
 
-    // enable/disable knapper
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === slides.length - 1;
+    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
 
-    // scroll timeline så aktivt element er centreret
-    const activeItem = items[index];
-    const offset = activeItem.offsetLeft - (timeline.clientWidth / 2) + (activeItem.clientWidth / 2);
-    timeline.scrollTo({ left: offset, behavior: "smooth" });
+    // Centrer tidslinje-knap
+    const activeItem = items[currentIndex];
+    if (activeItem && timeline) {
+      const offset = activeItem.offsetLeft - (timeline.clientWidth / 2) + (activeItem.clientWidth / 2);
+      timeline.scrollTo({ left: offset, behavior: "smooth" });
+    }
+
+    // Tilpas højde dynamisk efter indhold
+    const activeSlide = slides[currentIndex];
+    if (activeSlide) {
+      const h = activeSlide.getBoundingClientRect().height;
+      slidesContainer.style.height = `${h}px`;
+    }
   };
 
-  // klik på tidslinje
   items.forEach(item => {
     item.addEventListener("click", () => {
-      currentIndex = parseInt(item.dataset.index);
-      updateSlider(currentIndex);
+      updateSlider(parseInt(item.dataset.index));
     });
   });
 
-  // prev/next knapper
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlider(currentIndex);
-    }
-  });
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < slides.length - 1) {
-      currentIndex++;
-      updateSlider(currentIndex);
-    }
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) updateSlider(currentIndex - 1);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < slides.length - 1) updateSlider(currentIndex + 1);
+    });
+  }
 
-  // initialiser
-  updateSlider(currentIndex);
-});
+  window.addEventListener('load', () => updateSlider(currentIndex));
+  window.addEventListener('resize', () => updateSlider(currentIndex));
 
-const slides      = document.querySelectorAll('.slide');
-const slidesCtner = document.querySelector('.slides');
-let   idx         = 0;
-
-function update() {
-  // 1) Flyt slidervinduet
-  slidesCtner.style.transform = `translateX(-${idx * 100}%)`;
-
-  // 2) Opdater aktive klasse på timeline-items (hvis du bruger dem)
-  document.querySelectorAll('.timeline-item').forEach(el => el.classList.remove('active'));
-  document.querySelector(`.timeline-item[data-index="${idx}"]`).classList.add('active');
-
-  // 3) Mål og sæt højde
-  const activeSlide = document.querySelector(`.slide[data-index="${idx}"]`);
-  const h           = activeSlide.getBoundingClientRect().height;
-  slidesCtner.style.height = `${h}px`;
-}
-
-// Knap-events
-document.querySelector('.nav-btn.prev').addEventListener('click', () => {
-  if (idx > 0) { idx--; update(); }
-});
-document.querySelector('.nav-btn.next').addEventListener('click', () => {
-  if (idx < slides.length - 1) { idx++; update(); }
-});
-// Timeline-klik
-document.querySelectorAll('.timeline-item').forEach(el =>
-  el.addEventListener('click', e => {
-    idx = +e.currentTarget.dataset.index;
-    update();
-  })
-);
-
-// Init på load & resize
-window.addEventListener('load', update);
-window.addEventListener('resize', update);
-
-// filter funktion til projekter logik
-document.addEventListener('DOMContentLoaded', function(){
+  // --- FILTER SYSTEM TIL PROJEKTER ---
   const slugFor = text => {
     if(!text) return null;
     const t = text.trim().toLowerCase();
@@ -2988,27 +2891,27 @@ document.addEventListener('DOMContentLoaded', function(){
   buttons.forEach(btn => {
     btn.addEventListener('click', function(){
       const slug = this.dataset.filter;
-      if(slug === 'all'){ clearActive(); showAll(); return; }
-      clearActive(); this.classList.add('active');
+      clearActive();
+      this.classList.add('active'); // Sætter også 'active' på "Vis alle" nu
+      if(slug === 'all'){ showAll(); return; }
       applyFilter(slug);
     });
   });
-});
 
-// Intersection Observer for h2 and h3 fade-in-up animation
-const headingObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('fade-in-up');
-      headingObserver.unobserve(entry.target);
-    }
+  // --- INTERSECTION OBSERVER ANIMATIONER ---
+  const headingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-up');
+        headingObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('h2, h3').forEach(heading => {
+    headingObserver.observe(heading);
   });
-}, {
-  threshold: 0.1
-});
 
-document.querySelectorAll('h2, h3').forEach(heading => {
-  headingObserver.observe(heading);
 });
 
   </script>
