@@ -32,6 +32,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding: 10rem;
+  /* Sørg for at html-tagget tillader sticky elementer, men fjerner scroll */
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Hvis du bruger blød scroll til sektioner */
 }
 
 body {
@@ -40,12 +43,13 @@ body {
   background-color: #216b7c;
   background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
   cursor: url(images/mousecursor/mouse32x32.png) 0 0, auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Fjern overflow-x herfra, hvis det lå på body! */
+  overflow-x: clip;
 }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
 
 /* Samling af globale typografier */
 h1 {
@@ -215,7 +219,7 @@ nav {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 1rem; 
 }
 
 .logo {
@@ -1410,6 +1414,7 @@ footer.footer {
       <div class="thumb-box" data-tooltip="LinkedIn"><img src="images/skills/programmer/linkedin.svg" alt="LinkedIn"></div>
       <div class="thumb-box" data-tooltip="Meta Ads"><img src="images/skills/programmer/meta.svg" alt="Meta Ads"></div>
       <div class="thumb-box" data-tooltip="WordPress"><img src="images/skills/programmer/wordpress.svg" alt="WordPress"></div>
+      <div class="thumb-box" data-tooltip="Elementor"><img src="images/skills/programmer/elementor.svg" alt="Elementor"></div>
       <div class="thumb-box" data-tooltip="Magento"><img src="images/skills/programmer/magento.svg" alt="Magento"></div>
       <div class="thumb-box" data-tooltip="ActiveCampaign"><img src="images/skills/programmer/activecampaign.svg" alt="ActiveCampaign"></div>
       <div class="thumb-box" data-tooltip="Klaviyo"><img src="images/skills/programmer/Klaviyo.svg" alt="Klaviyo"></div>
@@ -1500,7 +1505,7 @@ footer.footer {
       <div class="project-item" data-modal="modal42">
         <img src="images/projekt42/thumbnail.webp" alt="Virksomhedsbesøg ved VVS-firmaet Urhøj på Vestsjælland" title="Rekrutteringsvideo i Urhøj VVS-firma.">
         <h3>Virksomhedsbesøg ved Urhøj</h3>
-        <h4>VVS-udstyr og droneflyvning på Vestsjælland</h4>
+        <h4>VVS-udstyr og droneflyvning på Vestsjælland.</h4>
         <p>Video</p>
         <p>Sociale medier</p>
       </div>
