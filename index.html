@@ -208,18 +208,32 @@ h3.fade-in-up {
 nav {
   width: 100%;
   color: #fff;
-  position: sticky;
+  /* 1. Skift fra sticky til fixed, så den altid kender skærmkanten */
+  position: fixed; 
   top: 0;
+  left: 0; /* Sørg for den starter helt ude i venstre side */
+  box-sizing: border-box; /* Sikrer at padding ikke skyder bredden ud */
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-transform: uppercase;
   font-weight: 900;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
   padding: 1rem; 
+  
+  /* 2. Gør swipet glat og lækkert */
+  transition: transform 0.3s ease-in-out; 
+}
+
+/* 3. Denne klasse tilføjes af JS, når du scroller NED */
+nav.nav-hidden {
+  transform: translateY(-100%);
+}
+
+/* 4. TRUMFKORTET: Hvis body har klassen 'menu-open', skal nav Tvinges frem på skærmen,
+   uanset om den har fået 'nav-hidden' klassen påsat! */
+body.menu-open nav {
+  transform: translateY(0) !important;
 }
 
 .logo {
@@ -300,8 +314,11 @@ nav {
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
   border-radius: 3rem;
-  margin: 2rem;
   padding: 2rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   overflow: hidden;
 }
@@ -675,6 +692,19 @@ nav {
   overflow-y: auto;
   flex: 1 1 auto;
   min-height: 0;
+/* ==========================================================================
+     USYNLIG SCROLLBAR (Men funktionaliteten bevares)
+     ========================================================================== */
+  scrollbar-width: none; /* Skjuler scrollbar i Firefox */
+  -ms-overflow-style: none; /* Skjuler scrollbar i ældre IE og Edge */
+}
+
+/* Skjuler scrollbar i Chrome, Safari, Opera og alle iOS browsere (iPhone/iPad) */
+.modal-body::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent;
 }
 
 .modal-body img {
@@ -2647,7 +2677,7 @@ footer.footer {
     });
   });
 
-  // --- MODAL LOGIK TIL PROJEKTER ---
+// --- MODAL LOGIK TIL PROJEKTER ---
   const projectItems = document.querySelectorAll('.project-item');
   const modals = document.querySelectorAll('.modal');
 
@@ -2704,7 +2734,21 @@ footer.footer {
         }
         const prev = window._lastFocusedElement;
         if (prev && typeof prev.focus === 'function') {
-          try { prev.focus({ preventScroll: true }); } catch (err) { prev.focus(); }
+          
+          // Slå smooth scroll fra på html-tagget for at undgå scroll-bevægelse ved fokus
+          document.documentElement.style.scrollBehavior = 'auto';
+          
+          try { 
+            prev.focus({ preventScroll: true }); 
+          } catch (err) { 
+            prev.focus(); 
+          }
+          
+          // Tænd for smooth scroll igen efter fokus er sat
+          setTimeout(() => {
+            document.documentElement.style.scrollBehavior = '';
+          }, 1);
+
         } else {
           document.body.setAttribute('tabindex', '-1');
           document.body.focus({ preventScroll: true });
@@ -2820,14 +2864,26 @@ footer.footer {
   }
 
   function unlockScroll() {
+    const scrollYPosition = _scrollY;
+
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.left = '';
     document.body.style.right = '';
     document.body.style.width = '';
+
+    // Deaktiver smooth scroll midlertidigt for det kontante hop tilbage til positionen
+    document.documentElement.style.scrollBehavior = 'auto';
+    
     if (typeof window.scrollTo === 'function') {
-      try { window.scrollTo({ top: _scrollY, left: 0, behavior: 'auto' }); } catch (err) { window.scrollTo(0, _scrollY); }
+      window.scrollTo(0, scrollYPosition || 0);
     }
+
+    // Gendan den oprindelige styling (så CSS-smooth scroll virker igen bagefter)
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = '';
+    }, 1);
+
     document.removeEventListener('touchmove', preventTouch, { passive: false });
   }
 
@@ -2962,6 +3018,29 @@ footer.footer {
   document.querySelectorAll('h2, h3').forEach(heading => {
     headingObserver.observe(heading);
   });
+
+
+
+ // --- NAV BAR - Hide on Scroll Down, Show on Scroll Up---  
+let lastScrollY = window.scrollY;
+const navbar = document.querySelector('nav'); // Nu fanger vi dit 'nav'-tag direkte
+
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  const isMenuOpen = document.body.classList.contains('menu-open');
+
+  // Hvis man scroller ned, er forbi toppen, og menuen IKKE er åben -> skjul
+  if (currentScrollY > lastScrollY && currentScrollY > 70 && !isMenuOpen) {
+    navbar.classList.add('nav-hidden');
+  } 
+  // Hvis man scroller op, eller menuen ER åben -> vis
+  else {
+    navbar.classList.remove('nav-hidden');
+  }
+
+  lastScrollY = currentScrollY;
+});
+
 
 });
 
