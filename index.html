@@ -58,13 +58,43 @@ body {
   font-family: "Special Gothic Expanded One", sans-serif;
   line-height: 1.6;
   background-color: #216b7c;
-  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
   cursor: url(images/mousecursor/mouse32x32.png) 0 0, auto;
   margin: 0;
   padding: 0;
   width: 100%;
   /* Fjern overflow-x herfra, hvis det lå på body! */
   overflow-x: clip;
+}
+
+/* pseudo-element for the background image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
+  
+  /* 2. Send it behind your text/content, and make sure it doesn't block clicks */
+  z-index: -1; 
+  pointer-events: none; 
+  
+  /* 3. Start completely invisible */
+  opacity: 0; 
+  
+  /* 4. Trigger the fade-in animation (Adjust '2s' to make it faster or slower) */
+  animation: fadeInBackground 3s ease-in-out forwards;
+}
+
+/* 5. Define the animation rules */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 
@@ -1149,6 +1179,10 @@ footer.footer {
     flex-direction: row;
     justify-content: space-between;
     padding: 0.1rem;
+    background-color: #ffffff60;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   }
 
   .logo {
@@ -1210,6 +1244,7 @@ footer.footer {
     flex-direction: column;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+    margin-top: 9rem;
   }
 
   .hero h1 {
