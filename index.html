@@ -15,7 +15,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jonas Albjerg | Teknisk, kreativ, god.</title>
-  <meta name="description" content="Portfolio for Jonas Albjerg. Cand.it og specialist i webudvikling, marketingteknologi og kreative digitale løsninger. Se mine seneste projekter her.">
+  <meta name="description" content="Portfolio for Jonas Albjerg. Cand.it og glad for webudvikling, marketing og kreative digitale løsninger. Se mine seneste projekter her.">
   <link rel="shortcut icon" type="image/svg" href="images/favicon/favicon.svg"/>
   <link rel="canonical" href="https://jonasalbjerg.dk/">
   <meta name="author" content="Jonas Albjerg">
@@ -200,11 +200,15 @@ button {
   animation: rotate 16s linear infinite;
 }
 
+.hero-title {
+  animation: fadeInRotate 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 /*h2 fade in animation on scroll*/
 h2.fade-in-up {
   animation: fadeInUp linear both;
   animation-timeline: view();
-  animation-range: entry 10% cover 10%;
+  animation-range: entry 10% cover 30%;
 }
 
 @keyframes fadeInUp {
@@ -221,11 +225,23 @@ h2.fade-in-up {
   }
 }
 
+@keyframes fadeInRotate {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(-4deg) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
 /*card animation*/
 .project-item {
   animation: projectReveal linear both;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  animation-range: entry 0% cover 90%;
 }
 @keyframes projectReveal {
   from {
@@ -244,12 +260,6 @@ h2.fade-in-up {
     filter: blur(0);
   }
 }
-
-
-
-
-
-
 
 /* ==========================================================================
    3. MARQUEE EFFEKT (RULLENDE TEKST)
@@ -347,6 +357,7 @@ body.menu-open nav {
   padding: 0.5rem 0.8rem;
   transition: background 0.5s;
   border-radius: 2rem;
+  font-size: 0.8rem;
 }
 
 .nav-links li a:hover {
@@ -424,6 +435,7 @@ body.menu-open nav {
 .hero img {
   width: 12rem;
 }
+
 
 .hero-button {
   margin: 2rem auto;
@@ -1422,6 +1434,10 @@ footer.footer {
     transform: translateY(0);
   }
 
+  .nav-links li a {
+  font-size: 1.5rem;
+}
+
   /* Fade-in delay på mobile links */
   .nav-links.active li:nth-child(1) { transition-delay: 0.3s; }
   .nav-links.active li:nth-child(2) { transition-delay: 0.4s; }
@@ -1662,7 +1678,7 @@ footer.footer {
       <img src="images/hero/jonas_hero.webp" alt="Hero billede" title="Jonas byder dig velkommen" class="rotate-scale" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-right">
-      <h1>DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1>
+      <h1 class="hero-title">DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1>
       <button class="hero-button" onclick="location.href='#projekter'">VIL DU SE?</button>
     </div>
   </section>
@@ -1764,7 +1780,7 @@ footer.footer {
 
      <!-- Projekt 41 -->
       <div class="project-item" data-modal="modal41">
-        <img src="images/projekt41/thumbnail.webp" alt="Nyt website til IT-virksomheden Velata IT" title="Velata ITs nye website byder på floating elements, full width hero sektioner og lækkert design.">
+        <img src="images/projekt41/thumbnail.webp" loading="lazy" alt="Nyt website til IT-virksomheden Velata IT" title="Velata ITs nye website byder på floating elements, full width hero sektioner og lækkert design.">
         <h3>Nyt digitalt fundament for Velata IT</h3>
         <h4>Website til IT-drift, support og Microsoft 365.</h4>
         <p>Webudvikling</p>
@@ -1773,7 +1789,7 @@ footer.footer {
 
       <!-- Projekt 40 -->
       <div class="project-item" data-modal="modal40">
-        <img src="images/projekt40/thumbnail.webp" alt="Morgenbusinessmøde ved Erhvervsnetværket Vestsjælland" title="Kom med når Erhvervsnetværket Vestsjælland byder til Morgenbusinessmøde">
+        <img src="images/projekt40/thumbnail.webp" loading="lazy" alt="Morgenbusinessmøde ved Erhvervsnetværket Vestsjælland" title="Kom med når Erhvervsnetværket Vestsjælland byder til Morgenbusinessmøde">
         <h3>Morgenbusinessmøder ved ENVS</h3>
         <h4>Highlightvideo fra ENVS' seneste netværksmøde.</h4>
         <p>Video</p>
@@ -1783,7 +1799,7 @@ footer.footer {
 
      <!-- Projekt 42 -->
       <div class="project-item" data-modal="modal42">
-        <img src="images/projekt42/thumbnail.webp" alt="Virksomhedsbesøg ved VVS-firmaet Urhøj på Vestsjælland" title="Rekrutteringsvideo i Urhøj VVS-firma.">
+        <img src="images/projekt42/thumbnail.webp" loading="lazy" alt="Virksomhedsbesøg ved VVS-firmaet Urhøj på Vestsjælland" title="Rekrutteringsvideo i Urhøj VVS-firma.">
         <h3>Virksomhedsbesøg ved Urhøj</h3>
         <h4>VVS-udstyr og droneflyvning på Vestsjælland.</h4>
         <p>Video</p>
@@ -1792,7 +1808,7 @@ footer.footer {
       
       <!-- Projekt 38 -->
       <div class="project-item" data-modal="modal38">
-        <img src="images/projekt38/thumbnail.webp" alt="En episk fortælling om et Open-by-Night-event" title="En episk fortælling om et Open-by-Night-event.">
+        <img src="images/projekt38/thumbnail.webp" loading="lazy" alt="En episk fortælling om et Open-by-Night-event" title="En episk fortælling om et Open-by-Night-event.">
         <h3>Sct Michaels Nat - promovideo</h3>
         <h4>En episk fortælling om et Open-by-Night-event.</h4>
         <p>Video</p>
@@ -1801,7 +1817,7 @@ footer.footer {
 
       <!-- Projekt 23 -->
       <div class="project-item" data-modal="modal23">
-        <img src="images/projekt23/thumbnail.webp" alt="Grafisk materiale til lipLid" title="liplid er den ny standard til to-go koppen.">
+        <img src="images/projekt23/thumbnail.webp" loading="lazy" alt="Grafisk materiale til lipLid" title="liplid er den ny standard til to-go koppen.">
         <h3>LIPLID</h3>
         <h4>Liplid er et nyt miljøvenligt låg til to go-kaffe og sodavandsbægre.</h4>
         <p>Video</p>
@@ -1813,7 +1829,7 @@ footer.footer {
 
       <!-- Projekt 33 -->
       <div class="project-item" data-modal="modal33">
-        <img src="images/projekt33/thumbnail.webp" alt="HECHT:RIGAS" title="Nyt website til HECHT:RIGAS">
+        <img src="images/projekt33/thumbnail.webp" loading="lazy" alt="HECHT:RIGAS" title="Nyt website til HECHT:RIGAS">
         <h3>Hecht:Rigas Advokatanparkselskab</h3>
         <h4>Udvikling af nyt website til HECHT:RIGAS.</h4>
         <p>UX</p>
@@ -1822,7 +1838,7 @@ footer.footer {
 
            <!-- Projekt 37 -->
       <div class="project-item" data-modal="modal37">
-        <img src="images/projekt37/thumbnail.webp" alt="Erhvervsnetværket Vestsjælland søger ny medarbejder" title="Det går op og ned i Fodbold - men for Erhvervsnetværket Vestsjælland går det godt.">
+        <img src="images/projekt37/thumbnail.webp" loading="lazy" alt="Erhvervsnetværket Vestsjælland søger ny medarbejder" title="Det går op og ned i Fodbold - men for Erhvervsnetværket Vestsjælland går det godt.">
         <h3>Erhvervsnetværket Vestsjælland</h3>
         <h4>Præsentationsvideo af netværk.</h4>
         <p>Video</p>
@@ -1833,7 +1849,7 @@ footer.footer {
 
       <!-- Projekt 39 -->
       <div class="project-item" data-modal="modal39">
-        <img src="images/projekt39/thumbnail.webp" alt="En kort præsentationsvideo af bureauet LUBI ApS, som blev vist ved SLagelse Erhvervs Nytårskur 2026.">
+        <img src="images/projekt39/thumbnail.webp" loading="lazy" alt="En kort præsentationsvideo af bureauet LUBI ApS, som blev vist ved SLagelse Erhvervs Nytårskur 2026.">
         <h3>Slagelse Erhverv - Nytårskur 2026</h3>
         <h4>Præsentationsvideo af LUBI ApS</h4>
         <p>Video</p>
@@ -1841,7 +1857,7 @@ footer.footer {
       
       <!-- Projekt 36 -->
       <div class="project-item" data-modal="modal36">
-        <img src="images/projekt36/thumbnail.webp" alt="Flyer til Administratormesse 2025" title="Flyer til Administratormessen 2025 afholdt af Ejendom Danmark">
+        <img src="images/projekt36/thumbnail.webp" loading="lazy" alt="Flyer til Administratormesse 2025" title="Flyer til Administratormessen 2025 afholdt af Ejendom Danmark">
         <h3>Messeflyer</h3>
         <h4>Design af flyer til Ejendom Danmarks Administratormesse 2025</h4>
         <p>Print</p>
@@ -1850,7 +1866,7 @@ footer.footer {
 
       <!-- Projekt 11 -->
       <div class="project-item" data-modal="modal11">
-        <img src="images/projekt11/thumbnail.webp" alt="scan-og-betal" title="UX-projekt, som løser Salling Groups Scan-og-betal-vanvid">
+        <img src="images/projekt11/thumbnail.webp" loading="lazy" alt="scan-og-betal" title="UX-projekt, som løser Salling Groups Scan-og-betal-vanvid">
         <h3>SCAN-OG-BETAL</h3>
         <h4>Redesign af Salling Groups scan-og-betal-koncept.</h4>
         <p>UX</p>
@@ -1859,7 +1875,7 @@ footer.footer {
 
       <!-- Projekt 12 -->
       <div class="project-item" data-modal="modal12">
-        <img src="images/projekt12/thumbnail.webp" alt="Kandidatspeciale" title="Går short-form-videoer hånd i hånd med træningscontent?">
+        <img src="images/projekt12/thumbnail.webp" loading="lazy" alt="Kandidatspeciale" title="Går short-form-videoer hånd i hånd med træningscontent?">
         <h3>Kandidatspeciale</h3>
         <h4>Anvendelsen af korte fitnessinstruktionsvideoer på sociale medier.</h4>
         <p>UX</p>
@@ -1870,7 +1886,7 @@ footer.footer {
 
        <!-- Projekt 21 -->
       <div class="project-item" data-modal="modal21">
-        <img src="images/projekt21/thumbnail.webp" alt="Video som viser Bonuskroner ved B Company" title="Spar op allerede nu!">
+        <img src="images/projekt21/thumbnail.webp" loading="lazy" alt="Video som viser Bonuskroner ved B Company" title="Spar op allerede nu!">
         <h3>OPTJEN BONUSKRONER</h3>
         <h4>Grafisk video som fremviser pointsystemet 'Bonuskroner' ved virksomheden B Company.</h4>
         <p>Video</p>
@@ -1881,7 +1897,7 @@ footer.footer {
 
         <!-- Projekt 35 -->
       <div class="project-item" data-modal="modal35">
-        <img src="images/projekt35/thumbnail.webp" alt="Plakat til Odense Squash Club" title="Spil Squash eller bliv squashed">
+        <img src="images/projekt35/thumbnail.webp" loading="lazy" alt="Plakat til Odense Squash Club" title="Spil Squash eller bliv squashed">
         <h3>Odense Squash Club</h3>
         <h4>Plakat til OSC, som informerer om den kommende sæson.</h4>
         <p>Grafisk design</p>
@@ -1889,7 +1905,7 @@ footer.footer {
 
       <!-- project 4 -->
       <div class="project-item" data-modal="modal4">
-        <img src="images/projekt4/thumbnail.webp" alt="livestreaming" title="Det er direkte!">
+        <img src="images/projekt4/thumbnail.webp" loading="lazy" alt="livestreaming" title="Det er direkte!">
         <h3>LIVESTREAMEVENT</h3>
         <h4>Afholdelse af livestreamevents på Facebook.</h4>
         <p>Video</p>
@@ -1898,7 +1914,7 @@ footer.footer {
 
       <!-- project 3 -->
        <div class="project-item" data-modal="modal3">
-        <img src="images/projekt3/thumbnail.webp" alt="skilte til virksomhedsfacade" title="Flotte facadeskilte.">
+        <img src="images/projekt3/thumbnail.webp" loading="lazy" alt="skilte til virksomhedsfacade" title="Flotte facadeskilte.">
         <h3>FACADESKILTE</h3>
         <h4>Design af nye skilte til virksomhedsfacade.</h4>
         <p>Grafisk design</p>
@@ -1906,7 +1922,7 @@ footer.footer {
 
       <!-- project 13 -->
        <div class="project-item" data-modal="modal13">
-        <img src="images/projekt13/thumbnail.webp" alt="SoMe-opslag" title="Musik og god grafik."> 
+        <img src="images/projekt13/thumbnail.webp" loading="lazy" alt="SoMe-opslag" title="Musik og god grafik."> 
         <h3>INTERVIEWS MED UP-AND-COMING MUSIKERE</h3>
         <h4>SoMe-opslag for MUSEIQ vedr. podcastinterview med musikere Mujjo og El Cappo.</h4>
         <p>Grafisk design</p>
@@ -1915,7 +1931,7 @@ footer.footer {
 
     <!-- project 5 -->
      <div class="project-item" data-modal="modal5">
-      <img src="images/projekt5/thumbnail.webp" alt="kundeklub" title="Fordelene er det største plus.">
+      <img src="images/projekt5/thumbnail.webp" loading="lazy" alt="kundeklub" title="Fordelene er det største plus.">
       <h3>KUNDEKLUB</h3>
       <h4>Implementering af nyt kundefordelsprogram.</h4>
       <p>Webudvikling</p>
@@ -1924,7 +1940,7 @@ footer.footer {
 
        <!-- project 14 -->
   <div class="project-item" data-modal="modal14">
-    <img src="images/projekt14/thumbnail.webp" alt="radiospot" title="Skru lige lidt op.">
+    <img src="images/projekt14/thumbnail.webp" loading="lazy" alt="radiospot" title="Skru lige lidt op.">
     <h3>RADIOSPOT</h3>
     <h4>Radiospot i lokalradio.</h4>
     <p>Lyd</p>
@@ -1932,7 +1948,7 @@ footer.footer {
 
      <!-- project 34 -->
   <div class="project-item" data-modal="modal34">
-    <img src="images/projekt34/thumbnail.webp" alt="Filippa Tårnet i Odense - animeret" title="Filippa Tårnet er Odenses højeste tårn">
+    <img src="images/projekt34/thumbnail.webp" loading="lazy" alt="Filippa Tårnet i Odense - animeret" title="Filippa Tårnet er Odenses højeste tårn">
     <h3>Filippa Tårnet</h3>
     <h4>Animation af Filippa Tårnet - Odenses højeste bygning.</h4>
     <p>Video</p>
@@ -1940,7 +1956,7 @@ footer.footer {
 
      <!-- project 2 -->
   <div class="project-item" data-modal="modal2">
-    <img src="images/projekt2/thumbnail.webp" alt="Pakkekort" title="Kortet til din pakke.">
+    <img src="images/projekt2/thumbnail.webp" loading="lazy" alt="Pakkekort" title="Kortet til din pakke.">
     <h3>PAKKEKORT</h3>
     <h4>Design af pakkekort ved udsendelse af vareordre.</h4>
     <p>Grafisk design</p>
@@ -1960,7 +1976,7 @@ footer.footer {
           <h2>Velata IT - Nyt website</h2>
           <div class="modal-body">
             <p>Velata IT er en IT-driftsvirksomhed, der leverer komplekse infrastrukturløsninger, IT-sikkerhed og cloud-løsninger til erhverv. Opgaven bestod i at skabe et moderne, troværdigt og overskueligt webdesign, der afspejler deres kerneværdier: struktur, ansvar og stabilitet. Da Velata IT selv fungerer som ekstern IT-administrator, var det en del af opgaven, at sitet føltes teknisk velfunderet, men samtidig brugervenligt for deres slutkunder.</p>
-            <img src="images/projekt41/1.webp" alt="Mobilview inkl. color palette">
+            <img src="images/projekt41/1.webp" loading="lazy" alt="Mobilview inkl. color palette">
             
             <h3>Design & Visuel Identitet</h3>
             <p>Designet er bygget op omkring et rent og professionelt udtryk. Jeg har arbejdet med en farvepalette, der domineres af dybe blå nuancer for at udstråle autoritet og sikkerhed, kombineret med white space for at gøre det tunge tekniske indhold letlæseligt.</p>
@@ -1969,8 +1985,8 @@ footer.footer {
               <li><b>Struktur:</b> Siden er bygget i WordPress ved hjælp af Elementor, hvilket har givet fuld kreativ frihed til at opbygge de komplekse grids, der præsenterer deres mange specialistområder.</li>            
             </ul>
             
-            <img src="images/projekt41/2.webp" alt="Sektion der viser USP'er">
-            <img src="images/projekt41/3.webp" alt="Footer, inkl. links til alle undersider, samt nyhedsbrev-embedding">
+            <img src="images/projekt41/2.webp" loading="lazy" alt="Sektion der viser USP'er">
+            <img src="images/projekt41/3.webp" loading="lazy" alt="Footer, inkl. links til alle undersider, samt nyhedsbrev-embedding">
 
             <h3>Funktionalitet & Konvertering</h3>
             <p>Da Velata IT lever af support og rådgivning, har det været vigtigt at gøre kontaktvejene synlige uden at være forstyrrende.</p>
@@ -1980,8 +1996,8 @@ footer.footer {
               <li><b>Sticky-elementer:</b>Ved afhjælpning af IT-problemer tæller hvert sekund. Derfor er "Fjernsupport" og telefonnummeret altid let tilgængeligt i navigationen.</li>
             </ul>
 
-            <img src="images/projekt41/4.webp" alt="Referencer og samarbejder">
-            <img src="images/projekt41/5.webp" alt="Ydelseslandingsside - sikkerhed og compliance ">
+            <img src="images/projekt41/4.webp" loading="lazy" alt="Referencer og samarbejder">
+            <img src="images/projekt41/5.webp" loading="lazy" alt="Ydelseslandingsside - sikkerhed og compliance ">
 
           <h3>Tekniske detaljer</h3>  
             <p>
@@ -2051,7 +2067,7 @@ footer.footer {
         <p>Til Morgenbusinessmødet den 21. maj 2026, var Henrik Dudek med for at fortælle om ambitionerne for Håndboldklubben TMS Ringsted i de kommende år.</p>
         <p>Link til <a href="https://envs.dk/morgenbusiness-maj/" target="_blank">artikel.</a></p>
 
-        <img src="images/projekt40/1.webp" alt="Jonas in-action" title="Jonas in-action ved optagelserne til ENVS' morgenbusinessmøde">
+        <img src="images/projekt40/1.webp" loading="lazy" alt="Jonas in-action" title="Jonas in-action ved optagelserne til ENVS' morgenbusinessmøde">
 
         <h3>Tekniske detaljer</h3>  
         <p>Videoen er filmet med Sony AX43 4K Handycam, hvor droneoptagelser er filmet med DJI Mini 2. Videoen er klippet i Premiere Pro.</p>   
@@ -2127,26 +2143,26 @@ footer.footer {
       <div class="modal-body">
         <p>Med en værdiansættelse på 100 mio. kr., er liplid kaffelåg til to-go kopper og andre engangskopper.</p>
         <video controls>
-          <source src="images/projekt23/7.mp4" type="video/mp4" alt="Explainervideo">
+          <source src="images/projekt23/7.mp4" loading="lazy"type="video/mp4" alt="Explainervideo">
         </video>
         <video controls>
-          <source src="images/projekt23/1.mp4" type="video/mp4" alt="Stemningsvideo">
+          <source src="images/projekt23/1.mp4" loading="lazy" type="video/mp4" alt="Stemningsvideo">
         </video>
         <p>Jeg har på egen hånd opbygget en masse grafik og videomateriale, til at brande og fremvise liplid på det danske marked.</p>
         <video controls>
-          <source src="images/projekt23/2.mp4" type="video/mp4" alt="Med på farten">
+          <source src="images/projekt23/2.mp4" loading="lazy" type="video/mp4" alt="Med på farten">
         </video>
         <video controls>
-          <source src="images/projekt23/8.mp4" type="video/mp4" alt="SoMe-opslag - udpakning af første sending Liplid-låg">
+          <source src="images/projekt23/8.mp4" loading="lazy" type="video/mp4" alt="SoMe-opslag - udpakning af første sending Liplid-låg">
         </video>
         <p>Jeg har produceret videomateriale til brug på SoMe-kanaler, samt infokataloger, visitkort, plakater m.m., som konsulenter har haft med i marken.</p>
         <p>Se f.eks. nogle af opslagene <a href="https://www.facebook.com/share/v/16BoYvEJpW/" target="_blank">her</a> eller <a href="https://www.linkedin.com/posts/b-company_hvert-%C3%A5r-produceres-mere-end-300-mia-plastik-activity-7192077951868252161-tokN?utm_source=share&utm_medium=member_desktop&rcm=ACoAACs1JMoBIsJC-LW-rkQl9dYrkRWvj98CVZw" target="_blank">her.</a></p>
-        <img src="images/projekt23/3.webp" alt="Brochure">
-        <img src="images/projekt23/4.webp" alt="Visitkort">
+        <img src="images/projekt23/3.webp" loading="lazy" alt="Brochure">
+        <img src="images/projekt23/4.webp" loading="lazy" alt="Visitkort">
         <p>Udover grafik og video, har jeg også opsat en <a href="https://bcompany.dk/liplid" target="_blank">landingsside</a>, som informerer om låget, unique selling points, ofte stillede spørgsmål og video guides.</p>
         <p>Både SEO og den synlige del af landingssiden er opsat i Magento Pagebuilder.</p>
-        <img src="images/projekt23/5.webp" alt="Landingsside - desktop">
-        <img src="images/projekt23/6.webp" alt="Landingsside - mobil">
+        <img src="images/projekt23/5.webp" loading="lazy" alt="Landingsside - desktop">
+        <img src="images/projekt23/6.webp" loading="lazy" alt="Landingsside - mobil">
         <p>Forud for produktionen har jeg researchet artikler om konceptet, samt studeret hvordan liplid selv brander sig.</p>
 
         <h3>Tekniske detaljer</h3>  
@@ -2168,7 +2184,7 @@ footer.footer {
           <div class="modal-body">
             <p>I sommeren 2025 designede og opsatte jeg en ny hjemmeside for advokatfirmaet Hecht:Rigas. Projektet blev udført i tæt dialog med kunden, hvor jeg bidrog med rådgivning om både struktur, layout og det visuelle udtryk.</p>
             <video controls>
-              <source src="images/projekt33/1.mp4" type="video/mp4" alt="Hecht:Rigas - startside">
+              <source src="images/projekt33/1.mp4" loading="lazy" type="video/mp4" alt="Hecht:Rigas - startside">
             </video>
             <h3>Mit arbejde omfattede bl.a.:</h3>
             <ul>
@@ -2180,10 +2196,10 @@ footer.footer {
               <li>Udvælgelse og opsætning af billeder og videoindhold.</li>
               <li>SEO-konfiguration via Yoast SEO inkl. meta-beskrivelser og titler.</li>
             </ul>
-            <img src="images/projekt33/2.webp" alt="Sektion der forklarer om virksomhedens grundlag">
-            <img src="images/projekt33/3.webp" alt="Udvalgte sider på mobil">
-            <img src="images/projekt33/4.gif" alt="Proces i skatteret">
-            <img src="images/projekt33/5.webp" alt="Et af specialernes landingsside">
+            <img src="images/projekt33/2.webp" loading="lazy" alt="Sektion der forklarer om virksomhedens grundlag">
+            <img src="images/projekt33/3.webp" loading="lazy" alt="Udvalgte sider på mobil">
+            <img src="images/projekt33/4.gif" loading="lazy" alt="Proces i skatteret">
+            <img src="images/projekt33/5.webp" loading="lazy" alt="Et af specialernes landingsside">
 
           <h3>Tekniske detaljer</h3>  
             <p>
@@ -2217,11 +2233,11 @@ footer.footer {
         </div>
 
         <p>Folkene bag netværket havde i længere tid eftersøgt en ny sælger, som skulle være med til at hverve nye B2B-medlemmer. Derfor tog jeg en dag ud af kalenderen, og optog en præsentationsvideo af netværkets hovedsæde i Slagelse.</p>
-        <img src="images/projekt37/1.webp" alt="Undertegnede som står og interviewer Sportschef og Formand, Mick Keller og Michael Birkedal">
+        <img src="images/projekt37/1.webp" loading="lazy" alt="Undertegnede som står og interviewer Sportschef og Formand, Mick Keller og Michael Birkedal">
         <p>Sammen med Sportschef, Mick Keller, samt formand Michael Birkedal, fik vi sat ord på Erhvervsnetværket Vestsjælland, miljøet i organisationen, og hvad det lige er de søger i en ny medarbejder.</p>
-        <img src="images/projekt37/2.webp" alt="Droneflyving på Harboe Arena Slagelse">
+        <img src="images/projekt37/2.webp" loading="lazy" alt="Droneflyving på Harboe Arena Slagelse">
         <p>Efterfølgende er videoen blevet distribueret på bl.a. LUBIs hjemmeside for jobopslag og rekruttering, samt organiske og betalte opslag på Facebook, Instagram og LinkedIn.</p>
-        <img src="images/projekt37/logo.webp" alt="Slagelse Boldklub og Idrætsforening og Erhvervsnetværket Vestsjælland">
+        <img src="images/projekt37/logo.webp" loading="lazy" alt="Slagelse Boldklub og Idrætsforening og Erhvervsnetværket Vestsjælland">
 
         <h3>Tekniske detaljer</h3>  
         <p>Videoen er filmet med Sony AX43 4K Handycam, hvor droneoptagelser er filmet med DJI Mini 2. Videoen er klippet i Premiere Pro.</p>   
@@ -2270,7 +2286,7 @@ footer.footer {
           <h2>Messeflyer</h2>
           <div class="modal-body">
             <p>Flyerdesign til Administratormessen 2025.</p>
-            <img src="images/projekt36/1.webp" alt="Forside og bagside af flyeren til Administratormessen">
+            <img src="images/projekt36/1.webp" loading="lazy" alt="Forside og bagside af flyeren til Administratormessen">
 
         <h3>Tekniske detaljer</h3>   
           <p>
@@ -2288,16 +2304,16 @@ footer.footer {
           <h2>SCAN-OG-BETAL</h2>
           <div class="modal-body">
             <p>En prototype som simplificerer anvendelsen af Scan-og-betal i Netto, Føtex og Bilka.</p>
-            <img src="images/projekt11/1.webp" alt="Mockup af en samlet Scan-og-betal-løsning">
+            <img src="images/projekt11/1.webp" loading="lazy" alt="Mockup af en samlet Scan-og-betal-løsning">
             <p>Scan-og-betal er en funktion som de seneste år er blevet en integreret del af dagligvarehandel i mange danske supermarkeder. Salling Groups butikker Netto, Føtex og Bilka har alle apps, som i forskellige grader inkorporerer scan-og-betal-konceptet.</p>
-            <img src="images/projekt11/2.webp" alt="Bilka, Føtex og Netto">
+            <img src="images/projekt11/2.webp" loading="lazy" alt="Bilka, Føtex og Netto">
             <p>Det overordnede design i de tre supermarkeders mobilapps er det samme - dog er der alligevel markante forskelle i, hvilke funktioner de enkelte apps har. Derfor har jeg i dette projekt samlet alle apps under én.</p>
-            <img src="images/projekt11/3.webp" alt="Tabel over funktioner">
-            <p>På tværs af de tre supermarkedskæder er der ikke mindre end 9 forskellige apps. Dog kan flere af dem de samme ting. For at konkretisere dette, lavede jeg en tabel for at vise applikationernes funktioner.</p>
-            <img src="images/projekt11/4.webp" alt="Appen kan også scanne flaskeboner">
+            <img src="images/projekt11/3.webp" loading="lazy" alt="Tabel over funktioner">
+            <p>På tværs af de tre supermarkedskæder er der ikke mindre end 9 forskellige apps. Dog can flere af dem de samme ting. For at konkretisere dette, lavede jeg en tabel for at vise applikationernes funktioner.</p>
+            <img src="images/projekt11/4.webp" loading="lazy" alt="Appen kan også scanne flaskeboner">
             <p>Udover at undersøge applikationernes UI og funktioner, valgte jeg også at optage en kundes anvendelse af Nettos Scan-og-betal-system, for at få eksempler på, hvad der fungerer og hvad der ikke fungerer.</p>
             <p>Ved at optage en kunde ville jeg have konkret data at gå ud fra, når prototypen af en ny app skulle designes.</p>
-            <img src="images/projekt11/5.webp" alt="Prototype">
+            <img src="images/projekt11/5.webp" loading="lazy" alt="Prototype">
             <p>I designet af en ny app har jeg lagt vægt på at brugeren kan tilgå alle funktioner i en app, fremfor 9 forskellige som brugeren skal have installeret på sin mobil.</p>
 
         <h3>Tekniske detaljer</h3>  
@@ -2318,15 +2334,15 @@ footer.footer {
       <h2>Kandidat-speciale</h2>
       <div class="modal-body">
         <p>Med en personlig interesse for fitness og sociale medier, valgte jeg at undersøge hvordan instruktionsvideoer på SoMe-platforme egentlig anvendes i praksis.</p>
-        <img src="images/projekt12/3.webp" alt="Short form videoer på TikTok, Instagram, Facebook og YouTube">
+        <img src="images/projekt12/3.webp" loading="lazy" alt="Short form videoer på TikTok, Instagram, Facebook og YouTube">
         <p>I specialet undersøger jeg dels UI på tværs af Facebook, Instagram, TikTok og YouTube, for at forstå hvordan platformene er sat op - overraskende minder alle platforme visuelt om hinanden - men for at interagere med interfacet, skal der forskellige handlinger til.</p>
-        <img src="images/projekt12/1.webp" alt="Brugerinteraktion med platformene">
+        <img src="images/projekt12/1.webp" loading="lazy" alt="Brugerinteraktion med platformene">
         <p>Udover UI, har jeg testet platformene og udvalgte videoinstruktioner på 4 forsøgspersoner, for at observere hvordan videoindholdet anvendes direkte, og om der opstår begrænsninger i interaktionen mellem bruger, video og platform.</p>
         <p>Problematikken valgte jeg at døbe start-og-stop-processen. Processen definerer brugerens skiften mellem at se videoinstruktioner, og selv prøve at udføre øvelserne fra videoerne. Men grundet det korte videoformat og få detaljer, er brugerne løbende nødt til at skfite frem og tilbage for at få fuld forståelse for øvelserne.</p>
-        <img src="images/projekt12/2.webp" alt="Figur der viser hvordan brugeren skal rundt om instruktøren, for at få det fulde billede af en øvelse">
+        <img src="images/projekt12/2.webp" loading="lazy" alt="Figur der viser hvordan brugeren skal rundt om instruktøren, for at få det fulde billede af en øvelse">
         <p>Gennem dialog med forsøgspersonerne og analyse af videooptagelserne, kom jeg frem til en række løsningsforslag.</p>
         <p>Den første løsning implementerer VR. Ved hjælp af VR-briller vil brugeren have mulighed for at se videoinstruktioner, mens der samtidig kan udføres øvelser.</p>
-        <img src="images/projekt12/4.webp" alt="Oculus VR-briller">
+        <img src="images/projekt12/4.webp" loading="lazy" alt="Oculus VR-briller">
         <p>Brugen af VR løser også et problem som flere brugere rapportede; muligheden for at se instruktørerne bedre. Med VR kan brugeren navigere rundt om instruktøren og se hvordan øvelser udføres. Dog kræver det at videoskaberen bag instruktionsvideoen, har VR-udstyr til rådighed.</p>
 
           <h3>Tekniske detaljer</h3>  
@@ -2347,7 +2363,7 @@ footer.footer {
           <div class="modal-body">
             <p>Grafisk video som kort formidler hvordan kunder ved B Company kan optjene rabatpoint på deres køb.</p>
             <video controls>
-            <source src="images/projekt21/1.mp4" type="video/mp4" alt="Bonuskroner-video">
+            <source src="images/projekt21/1.mp4" loading="lazy" type="video/mp4" alt="Bonuskroner-video">
             </video>
 
           <h3>Tekniske detaljer</h3>  
@@ -2367,7 +2383,7 @@ footer.footer {
           <h2>Odense Squash Club</h2>
           <div class="modal-body">
             <p>I sommeren 2025 udarbejdede jeg denne plakat til OSC, som informerede om træningstidspunkter for den kommende squash-sæson.</p>
-            <img src="images/projekt35/1.webp" alt="Odense Squash Club poster">
+            <img src="images/projekt35/1.webp" loading="lazy" alt="Odense Squash Club poster">
             
         <h3>Tekniske detaljer</h3>   
           <p>
@@ -2386,11 +2402,11 @@ footer.footer {
           <h2>LIVESTREAM</h2>
           <div class="modal-body">
             <p>Jeg var med til at planlægge og afholde et online event, live på Facebook.</p>
-            <img src="images/projekt4/1.webp" alt="">
-            <p>Jeg var vært for eventet, som strak sig over 2 dage. Derudover holdte jeg koordinerende møder med øvrige medvirkende forud for eventet.</p>
-            <img src="images/projekt4/2.webp" alt="">
+            <img src="images/projekt4/1.webp" loading="lazy" alt="Livestream til B Companys kunder">
+            <p>Jeg var vært for eventet, which strak sig over 2 dage. Derudover holdte jeg koordinerende møder med øvrige medvirkende forud for eventet.</p>
+            <img src="images/projekt4/2.webp" loading="lazy" alt="Livestream til B Companys kunder">
             <p>Jeg opsatte selv alt kameraudstyr og lys.</p>
-            <img src="images/projekt4/3.webp" alt="">
+            <img src="images/projekt4/3.webp" loading="lazy" alt="Livestream til B Companys kunder">
             <p>Ligeledes markedsførte jeg eventet gennem opslag på sociale medier, samt skilte i butikken.</p>
 
           <h3>Tekniske detaljer</h3>  
@@ -2411,13 +2427,13 @@ footer.footer {
           <h2>FACADESKILTE</h2>
           <div class="modal-body">
             <p>Da B Company flyttede i nye lokale i efteråret 2022, fik jeg æren af at designe nye skilte til virksomhedens facade.</p>
-            <img src="images/projekt3/1.webp" alt="">
+            <img src="images/projekt3/1.webp" loading="lazy" alt="Facadeskilte til B Companys nye lokale">
             <p>I alt designede jeg fem skilte, herunder logo, indgangsparti, lager, p-plads, åbningstider, samt flag</p>
-            <img src="images/projekt3/2.webp" alt="">
+            <img src="images/projekt3/2.webp" loading="lazy" alt="Facadeskilte til B Companys nye lokale">
             <p>Alle skilte er designet med B Companys velkendte grønne og grå farver.</p>
-            <img src="images/projekt3/3.webp" alt="">
-            <img src="images/projekt3/4.webp" alt="">
-            <img src="images/projekt3/5.webp" alt="">
+            <img src="images/projekt3/3.webp" loading="lazy" alt="Facadeskilte til B Companys nye lokale">
+            <img src="images/projekt3/4.webp" loading="lazy" alt="Facadeskilte til B Companys nye lokale">
+            <img src="images/projekt3/5.webp" loading="lazy" alt="ikoner til Facadeskilte">
 
         <h3>Tekniske detaljer</h3>   
           <p>
@@ -2436,7 +2452,7 @@ footer.footer {
           <h2>MUSEIQ</h2>
           <div class="modal-body">
             <p>Jeg kreerede grafik til et Instagram-opslag for streamingtjenesten MUSEIQ, som omhandlede et podcastinterview med fremadstormende musikere.</p>
-            <img src="images/projekt13/1.webp" alt="Grafik til Instagram-opslag">
+            <img src="images/projekt13/1.webp" loading="lazy" alt="Grafik til Instagram-opslag">
 
         <h3>Tekniske detaljer</h3>   
           <p>
@@ -2455,16 +2471,16 @@ footer.footer {
           <h2>KUNDEKLUB</h2>
           <div class="modal-body">
             <p>I maj 2022, gik B Companys Kundefordelsprogram Pluskunde i luften.</p>
-            <img src="images/projekt5/1.webp" alt="">
+            <img src="images/projekt5/1.webp" loading="lazy" alt="Pluskunde-programmet på B Companys webshop">
             <p>Pluskunde giver den tilbagevendende kunde fordele, som rabat og produktfavoritlister. Jeg var med til at udvikle og implementere programmet på webshop, samt opsætte infosider og guidevideoer, som informerer om programmet.</p>
-            <img src="images/projekt5/2.webp" alt="">
+            <img src="images/projekt5/2.webp" loading="lazy" alt="Pluskunde-programmet på B Companys webshop">
             <p>Løbende har jeg promoveret klubben gennem sociale medier og email-nyhedsbreve.</p>
             <p>Jeg har tilmed klippet videoguides sammen, som illustrerer hvordan kunden kan oprette sig som Pluskunde.</p>
             <video controls>
-              <source src="images/projekt5/4.mp4" type="video/mp4" alt="">
+              <source src="images/projekt5/4.mp4" type="video/mp4" loading="lazy" alt="Videoguide til Pluskunde-programmet">
             </video>
             <p>Jeg har designet ikoner og grafik til alle kanaler, i virksomhedens grå/grønne farver.</p>
-            <img src="images/projekt5/5.webp" alt="">
+            <img src="images/projekt5/5.webp" loading="lazy" alt="ikoner til Pluskunde-programmet">
 
         <h3>Tekniske detaljer</h3>   
           <p>
@@ -2484,7 +2500,7 @@ footer.footer {
           <div class="modal-body">
             <p>I samarbejde med produktionsselskabet Komo, udarbejdede jeg et radiospot i forlængelse af B Companys adresseflytning.</p>
             <audio controls>
-              <source src="images/projekt14/1.mp3" type="audio/mpeg" alt="Radiospot">
+              <source src="images/projekt14/1.mp3" loading="lazy"type="audio/mpeg" alt="Radiospot">
             </audio>
             <p>Radiospottet blev bragt på de lokale kanaler Classic FM, Skala FM, samt Rock FM.</p>
 
@@ -2506,7 +2522,7 @@ footer.footer {
           <div class="modal-body">
             <p>Filippa Tårnet er Odenses højeste bygning - og den har jeg været med til at bygge... jeg mente animere.</p>
             <video controls>
-              <source src="images/projekt34/1.mp4" type="video/mp4" alt="Filippa Tårnet bygget på få sekunder">
+              <source src="images/projekt34/1.mp4" type="video/mp4" loading="lazy" alt="Filippa Tårnet bygget på få sekunder">
             </video>
 
         <h3>Tekniske detaljer</h3>   
@@ -2525,7 +2541,7 @@ footer.footer {
           <h2>PAKKEKORT</h2>
           <div class="modal-body">
             <p>Design af pakkekort ved udsendelse af vareordre.</p>
-            <img src="images/projekt2/1.webp" alt="">
+            <img src="images/projekt2/1.webp" loading="lazy" alt="Pakkekort til B Companys kunder">
 
         <h3>Tekniske detaljer</h3>   
           <p>
@@ -2594,13 +2610,13 @@ footer.footer {
         <div class="slide" data-index="0">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/lubi.webp" alt="LUBI"/>Ny titel</h3>
+              <h3><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="LUBI"/>Ny titel</h3>
               <p>2026 blev året hvor jeg fik ny titel som Marketingansvarlig hos LUBI. En anerkendelse jeg er stotl af, hvor jeg til dagligt arbejder sammen med tre andre friske marketingkollegaer, hver med deres spidskompetencer. Derudover har jeg to gange årligt praktikforløb med studerende fra profesionshøjskoler og erhvervsakademier.</p>
-              <h3><img src="images/Tidslinje/lubi.webp" alt="Røde Kors"/>Erhvervsnetværk</h3>
+              <h3><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="Røde Kors"/>Erhvervsnetværk</h3>
               <p>Hvad er et erhvervsnetværk? Godt spørgsmål, for det er jeg også ved at finde ud af. I foråret og sommeren 2026 er blevet medlem af ny ikke ét, men to erhvervsnetværk - nemlig Erhvervsnetværket Vestsjælland, samt TMS Ringsteds 'Bagholdet'. Fælles for begge netværk er at jeg har været med til at danne partnerskab, hvor vi hjælper dem med at promovere sig selv gennem videoproduktion fra netværksmøder, samt udvikling af deres hjemmesider.</p>
             </div>
             <div>
-              <a href="https://www.envs.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/erhvervsnetværk.webp" alt="Erhvervsnetværk"></a>
+              <a href="https://www.envs.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/erhvervsnetværk.webp" loading="lazy" alt="Erhvervsnetværk"></a>
             </div>
           </div>
         </div>
@@ -2610,18 +2626,18 @@ footer.footer {
         <div class="slide" data-index="0">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/rodekors.webp" alt="Røde Kors"/>Rekrutterings-frivillig hos Røde Kors Odense</h3>
+              <h3><img src="images/Tidslinje/rodekors.webp" loading="lazy" alt="Røde Kors"/>Rekrutterings-frivillig hos Røde Kors Odense</h3>
               <p>Hos <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer">Røde Kors</a> er jeg sammen med andre frivillige i gang med at formidle om organisationens aktiviter i Odense.</p>
 
-              <h3><img src="images/Tidslinje/lubi.webp" alt="LUBI"/>Egen Marketingafdeling</h3>
+              <h3><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="LUBI"/>Egen Marketingafdeling</h3>
               <p>I sommeren 2025 var jeg i LUBI med til at starte en spritny marketingafdeling op - helt fra bunden. Så udover at lave marketing til rekrutteringsbranchen, skulle jeg nu også lave marketing til andre kunder, så som hjemmesider og videoproduktion.</p>
               
-              <h3><img src="images/Tidslinje/Gazelle.webp" alt="LUBI"/>Gazelle 2025</h3>
+              <h3><img src="images/Tidslinje/Gazelle.webp" loading="lazy" alt="LUBI"/>Gazelle 2025</h3>
               <p>Sammen med resten af mine LUBI-kollegaer vandt vi i oktober 2025 virksomhedens første <a href="https://lubijob.dk/lubi-er-kaaret-til-boersen-gazelle-2025/" target="_blank" rel="noopener noreferrer">Gazelle-pris</a> - og så oven købet som den 4. mest vækstende virksomhed i Region Sjælland og 39. i hele landet.</p>
 
             </div>
             <div>
-              <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/LUBI Gazelle.webp" alt="Røde Kors"></a>
+              <a href="https://www.rodekors.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/LUBI Gazelle.webp" loading="lazy" alt="Røde Kors"></a>
             </div>
           </div>
         </div>
@@ -2630,7 +2646,7 @@ footer.footer {
         <div class="slide" data-index="1">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/lubi.webp" alt="LUBI"/>Nyt Job ved LUBI</h3>
+              <h3><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="LUBI"/>Nyt Job ved LUBI</h3>
               <p>Ved rekrutteringsvirksomheden LUBI arbejder jeg med digital udvikling, hvor IT, marketing og forretning mødes. Mit fokus er at gøre komplekse systemer brugbare, strømline interne processer og udvikle løsninger, der sparer tid og reducerer afhængighed af enkeltpersoner.</p>
               <p>Jeg udvikler og implementerer interne AI-løsninger, herunder Custom GPT’er til CRM-support og overenskomster, som gør tung og specialiseret viden tilgængelig direkte i Microsoft Teams. Derudover arbejder jeg med automatisering af rekrutterings- og onboardingprocesser gennem HR-platforme og et digitalt onboarding-univers med video og quizzer.</p>
               <p>Jeg designer og udvikler websites i WordPress og Shopify og producerer foto- og videoindhold til rekruttering og markedsføring. Samtidig arbejder jeg med SEO, tracking og performance, så løsningerne ikke bare ser godt ud, men også virker.</p>
@@ -2638,7 +2654,7 @@ footer.footer {
 
             </div>
             <div>
-              <a href="https://lubijob.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/lubi.webp" alt="LUBI"></a>
+              <a href="https://lubijob.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="LUBI"></a>
             </div>
           </div>
         </div>
@@ -2647,7 +2663,7 @@ footer.footer {
         <div class="slide" data-index="2">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/bcompany.webp" alt="B Company"/>Mit første fuldtidsjob - ved B Company</h3>
+              <h3><img src="images/Tidslinje/bcompany.webp" loading="lazy" alt="B Company"/>Mit første fuldtidsjob - ved B Company</h3>
               <p>Efter jeg afsluttede min kandidat fik jeg job ved <a href="https://bcompany.dk" target="_blank" rel="noopener noreferrer">B Company</a>, hvor jeg fortsatte i samme rolle som da jeg var studentermedhjælper - men nu med endnu mere tid til at lave fede ting.</p>
               <p>I min tid hos B Company havde jeg ansvaret for virksomhedens udtryk - fysisk som digitalt. Det udmundede sig i at jeg opdaterede og vedligeholdte sociale medier, e-mail marketing og webshop med 7000 produkter.</p>
               <p>Blandt mine stolteste øjeblikke kan nævnes: e-mail marketing kampagner som i alt genererede meromsætning på <b>1.3 millioner kr.</b>, design af flag, skilte og bannere på butiksfacade, og en stigning i LinkedIn-følgere på næsten <b>1200 %</b> (der var givet vis næsten ingen følgere til at begynde med, men det er en anden snak *host host*)</p>
@@ -2658,7 +2674,7 @@ footer.footer {
               <p><a href="http://worldguidefoundation.org" target="_blank" rel="noopener noreferrer">World Guide Foundation</a> - Vedligeholdelse og udvikling af website</p>
               <p><a href="https://verdensboern.dk" target="_blank" rel="noopener noreferrer">Verdens Børn</a> - udvikling af grafik til SoMe-opslag</p>
               <div>
-                <img src="images/Tidslinje/frivilligjobs.webp" alt="Jonas i skole">
+                <img src="images/Tidslinje/frivilligjobs.webp" loading="lazy" alt="Jonas i skole">
               </div>
             </div>
           </div>
@@ -2669,14 +2685,14 @@ footer.footer {
         <div class="slide" data-index="3">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/bcompany.webp" alt="B Company"/>Mit første studierelevante job</h3>
+              <h3><img src="images/Tidslinje/bcompany.webp" loading="lazy" alt="B Company"/>Mit første studierelevante job</h3>
               <p>Ved grossistvirksomheden B Company. Et sted hvor jeg lærte en masse om marketing, e-commerce og grafisk design.</p>
             </div>
             <div>
               <h3>Videre på Kandidaten</h3>
               <p><a href="https://www.sdu.dk/da/uddannelse/kandidat/cand_it_webkommunikation" target="_blank" rel="noopener noreferrer">Cand.it. Webkommunikation</a> - jeg havde særligt fundet en interesse for medier og digitalisering gennem min bachelor, som førte mig til denne kandidat.</p>
               <p>Under uddannelsen har jeg f.eks. fået kompetencer indenfor webudvikling, som jeg også har brugt til at kode denne hjemmeside, UX-design, samt en dyb forståelse for sociale medier og logikkerne bag.</p>
-              <p>I mit <a href="#modal12">speciale</a> undersøgte jeg nemlig samspillet mellem sociale medier, og hvordan usability implementeres i korte videoer på f.eks. TikTok, Instagram og YouTube.</p>
+              <p>I mit speciale undersøgte jeg nemlig samspillet mellem sociale medier, og hvordan usability implementeres i korte videoer på f.eks. TikTok, Instagram og YouTube.</p>
             </div>
           </div>
         </div>
@@ -2685,12 +2701,12 @@ footer.footer {
         <div class="slide" data-index="4">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/UCL.webp" alt="UCL"/>CFU - Center for Undervisningsmidler (University College Lillebælt)</h3>
+              <h3><img src="images/Tidslinje/UCL.webp" loading="lazy" alt="UCL"/>CFU - Center for Undervisningsmidler (University College Lillebælt)</h3>
               <p>Under Corona fik jeg job hos UCL i deres afdeling som formidler og transporterer undervisningmidler til alle skoler i Syddanmark.</p>
               <p>Mit job bestod i at assistere afdelingens ansatte med at sortere og stukturere undervisningsmidler som kom retur, samt udsendelse af bestilte undervisningsmidler .</p>
             </div>
             <div>
-              <a href="https://www.ucl.dk/cfu" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/UCL.webp" alt="Center for Undervisningsmidler - UCL"></a>
+              <a href="https://www.ucl.dk/cfu" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/UCL.webp" loading="lazy" alt="Center for Undervisningsmidler - UCL"></a>
             </div>
           </div>
         </div>
@@ -2699,13 +2715,13 @@ footer.footer {
         <div class="slide" data-index="5">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/TexasMoreland.webp" alt="Texas og Moreland"/>Texas og Moreland</h3>
+              <h3><img src="images/Tidslinje/TexasMoreland.webp" loading="lazy" alt="Texas og Moreland"/>Texas og Moreland</h3>
               <p>Da jeg gik på 1. år af min bachelor fik jeg job ved Texas A/S - en grossist som sælger havemaskiner- og udstyr - og møbler gennem søstervirksomheden Moreland.</p>
               <p>Jeg var lagermedarbejder, med ansvar for pluk og pak af ordre gennem virksomhedens webshop.</p>
               <p>Igennem mine 3 år ved Texas fik jeg et godt kendskab til lagerstyring og systemet LOGIA WMS, og hvordan varer kan sættes i system på et lager.</p>
             </div>
             <div>
-              <a href="https://texas.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/TexasMoreland.webp" alt="Texas og Moreland"></a>
+              <a href="https://texas.dk" target="_blank" rel="noopener noreferrer"><img src="images/Tidslinje/TexasMoreland.webp" loading="lazy" alt="Texas og Moreland"></a>
             </div>
           </div>
         </div>
@@ -2729,13 +2745,13 @@ footer.footer {
         <div class="slide" data-index="7">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/kvickly.webp" alt="Kvickly"/>Job i Kvickly</h3>
+              <h3><img src="images/Tidslinje/kvickly.webp" loading="lazy" alt="Kvickly"/>Job i Kvickly</h3>
               <p>Jeg fik fritidsjob i Kvickly som Flaskedreng - eller 'Servicemedarbejder' som det blev kaldt.</p>
               <h3>Problemløsning, tunge løft og kundekontakt</h3>
               <p>Som Flaskedreng udviklede jeg kompetencer indenfor: <br><b>Problemløsning</b>; når flaskeautomaten ikke virkede. <br><b>Tunge løft</b>; når flaskeautomaten ikke virkede og jeg skulle fjerne store kar med flasker og dåser. <br><b>Kundekontakt</b>; når flaskeautomaten ikke virkede og jeg skulle forklare kunderne hvorfor deres kæmpe poser med flasker og dåser ikke kunne afleveres i automaten. </p>
             </div>
             <div>
-              <img src="images/Tidslinje/kvickly.webp" alt="Kvickly">
+              <img src="images/Tidslinje/kvickly.webp" loading="lazy" alt="Kvickly">
             </div>
           </div>
         </div>
@@ -2758,11 +2774,11 @@ footer.footer {
         <div class="slide" data-index="9">
           <div class="slide-grid">
             <div>
-              <h3><img src="images/Tidslinje/fk distribution.webp" alt="FK Distribution"/>Jeg fik mit første job</h3>
+              <h3><img src="images/Tidslinje/fk distribution.webp" loading="lazy" alt="FK Distribution"/>Jeg fik mit første job</h3>
               <p>Som omdeler ved <a href="https://fk.dk/virksomhed/" target="_blank" rel="noopener noreferrer">FK Distribution</a>. Hårdt optjente penge, men det udviklede en masse disciplin i unge Jonas - med god opbakning hjemmefra.</p>
             </div>
               <div>
-              <img src="images/Tidslinje/fk distribution.webp" alt="FK Distribution - job som omdeler">
+              <img src="images/Tidslinje/fk distribution.webp" loading="lazy" alt="FK Distribution - job som omdeler">
             </div>
           </div>
         </div>
@@ -2775,7 +2791,7 @@ footer.footer {
               <p>Bevares, kun en lille rolle, men et stort øjeblik for unge Jonas. Vil du se mit skuespiltalent? Så kan du se den lige <a href="https://filmcentralen.dk/grundskolen/film/lysvaagen" target="_blank" rel="noopener noreferrer">her</a> med UNI login.</p>
             </div>
             <div>
-              <img src="images/Tidslinje/lysvaagen.webp" alt="Lysvågen">
+              <img src="images/Tidslinje/lysvaagen.webp" loading="lazy" alt="Lysvågen">
             </div>
           </div>
         </div>
@@ -2788,7 +2804,7 @@ footer.footer {
               <p>... Og Jonas var ikke helt tilfreds...</p>
             </div>
             <div>
-              <img src="images/Tidslinje/jonasskole.webp" alt="Jonas i skole">
+              <img src="images/Tidslinje/jonasskole.webp" loading="lazy" alt="Jonas i skole">
             </div>
           </div>
         </div>
