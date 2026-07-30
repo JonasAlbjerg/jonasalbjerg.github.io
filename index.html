@@ -63,39 +63,8 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: clip;
-}
-
-/* pseudo-element for the background image */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("https://www.transparenttextures.com/patterns/grid-me.png");
-  
-  /* 2. Send it behind your text/content, and make sure it doesn't block clicks */
-  z-index: -1; 
-  pointer-events: none; 
-  
-  /* 3. Start completely invisible */
-  opacity: 0; 
-  
-  /* 4. Trigger the fade-in animation (Adjust '2s' to make it faster or slower) */
-  animation: fadeInBackground 3s ease-in-out forwards;
 }
-
-/* 5. Define the animation rules */
-@keyframes fadeInBackground {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 
 /* Samling af globale typografier */
 h1 {
@@ -200,9 +169,125 @@ button {
   animation: rotate 16s linear infinite;
 }
 
-.hero-title {
-  animation: fadeInRotate 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+/*h1 animation valgmulighed 1 on launch
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+
+50% {
+    opacity: 0;
+    transform: translateY(50%) rotate(45deg) scale(10);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
+
+.hero-title {
+  animation: revealUp 1.2s ease-in-out both;
+}
+
+
+
+
+
+/* h1 animation valgmulighed 2 on launch*/
+/* 1. Aktiver 3D-rummet i højre kolonne */
+.hero-right {
+  perspective: 1000px;
+}
+
+/* 2. Selve overskriften */
+.hero-title {
+  display: inline-block;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  position: relative;
+  
+  /* Animationen: Kører i 2.2 sekunder med en fed "fjedrende" kurve */
+  animation: chaoticFlipAndSnap 2.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* 3. Et lille lysglimt når teksten klikker på plads (valgfrit) */
+.hero-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transform: skewX(-30deg);
+  pointer-events: none;
+  animation: flashOnSnap 2.2s ease-out both;
+}
+
+/* ==========================================
+   KEYFRAMES: Fra Kaos til Knivskarp
+   ========================================== */
+
+@keyframes chaoticFlipAndSnap {
+  0% {
+    opacity: 0;
+    /* STARTER VENDT PÅ HOVEDET (180deg), helt oppe i hjørnet, skævvreddet og roteret i 3D */
+    transform: translate3d(-180px, -250px, 500px) rotateX(180deg) rotateY(-210deg) rotateZ(65deg) skew(30deg, 15deg) scale(0.3);
+    filter: blur(12px);
+    text-shadow: -20px 20px 0 rgba(255, 0, 100, 0.8);
+  }
+
+  35% {
+    opacity: 0.8;
+    /* Tumbler nedad, tættere på skærmen – stadig helt forkert vendt og skæv */
+    transform: translate3d(100px, 80px, 200px) rotateX(110deg) rotateY(-90deg) rotateZ(-35deg) skew(-20deg, -10deg) scale(1.2);
+    filter: blur(3px);
+  }
+
+  65% {
+    opacity: 1;
+    /* PISKER RUNDT! Vender sig lige akkurat om på retsiden, men OVERSHOOTER og står skævt til den anden side */
+    transform: translate3d(-30px, -15px, 30px) rotateX(-20deg) rotateY(25deg) rotateZ(18deg) skew(10deg, 5deg) scale(0.95);
+    filter: blur(0);
+    text-shadow: 10px -10px 0 rgba(0, 255, 200, 0.5);
+  }
+
+  82% {
+    /* Fjeder-reaktion: Retter sig op, men svinger lige -6 grader over modsat side */
+    transform: translate3d(8px, 0, 0) rotateX(8deg) rotateY(-8deg) rotateZ(-6deg) skew(-3deg, 0deg);
+    text-shadow: -2px 2px 0 rgba(255, 0, 100, 0.3);
+  }
+
+  92% {
+    /* Sidste mikro-justering */
+    transform: translate3d(-2px, 0, 0) rotateZ(2deg);
+    text-shadow: none;
+  }
+
+  100% {
+    opacity: 1;
+    /* LANDER VANDRET */
+    transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg) scale(1);
+  }
+}
+
+/* Lysglimt der stryger henover teksten i det sekund, den slår knuden op og lander */
+@keyframes flashOnSnap {
+  0%, 65% {
+    opacity: 0;
+    left: -100%;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: 200%;
+  }
+}
+
 
 /*h2 fade in animation on scroll*/
 h2.fade-in-up {
@@ -1682,6 +1767,7 @@ footer.footer {
       <button class="hero-button" onclick="location.href='#projekter'">VIL DU SE?</button>
     </div>
   </section>
+
 
 <!-- skills sektion med kompetencer -->
 <div class="marquee-wrapper">
