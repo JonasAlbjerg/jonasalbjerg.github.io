@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <meta charset="UTF-8">
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5S75WVRGW9"></script>
@@ -12,26 +13,58 @@
   gtag('config', 'G-5S75WVRGW9');
 </script>
 
-  <meta charset="UTF-8">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jonas Albjerg",
+  "url": "https://jonasalbjerg.dk",
+  "jobTitle": "Cand.it, Marketing & IT Specialist",
+  "knowsAbout": [
+    "Marketing",
+    "IT",
+    "Webudvikling",
+    "Digitale Løsninger",
+    "Frontend Development",
+    "Video Editing",
+    "UI/UX Design",
+    "Marketing Analytics",
+    "Kunstig Intelligens"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/jonashartmannalbjerg/",
+    "https://github.com/JonasAlbjerg/",
+    "https://www.instagram.com/cowboyderjones/",
+    "https://www.facebook.com/DrJooones/",
+    "https://www.youtube.com/@Cowboyderjones/"
+  ]
+}
+</script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonas Albjerg | Teknisk, kreativ, god.</title>
-  <meta name="description" content="Portfolio for Jonas Albjerg. Cand.it og glad for webudvikling, marketing og kreative digitale løsninger. Se mine seneste projekter her.">
+
+  <!-- Primære Meta Tags -->
+  <title>Jonas Albjerg | Cand.it, Marketing & IT Specialist</title>
+  <meta name="description" content="Portfolio for Jonas Albjerg. Cand.it med smag for webudvikling, marketing og kreative digitale løsninger. Se mineseneste projekter her.">
   <link rel="shortcut icon" type="image/svg" href="images/favicon/favicon_rund.svg"/>
   <link rel="canonical" href="https://jonasalbjerg.dk/">
   <meta name="author" content="Jonas Albjerg">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://jonasalbjerg.dk/">
 
+  <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jonasalbjerg.dk/">
-<meta property="og:title" content="Jonas Albjerg | Digitale Løsninger & Kreative Projekter">
-<meta property="og:description" content="Udforsk min portfolio med kreative digitale løsninger, frontend-projekter og videoproduktioner.">
-<meta property="og:image" content="https://jonasalbjerg.dk/images/hero/jonas_hero.webp"> <meta property="og:locale" content="da_DK">
+<meta property="og:title" content="Jonas Albjerg | Cand.it, Marketing & IT Specialist">
+<meta property="og:description" content="Udforsk portfolio for Jonas Albjerg med kreative digitale løsninger, webudvikling og marketingprojekter.">
+<meta property="og:image" content="https://jonasalbjerg.dk/images/hero/jonas_hero.webp">
+<meta property="og:locale" content="da_DK">
 
+
+<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://jonasalbjerg.dk/">
-<meta property="twitter:title" content="Jonas Albjerg | Digitale Løsninger & Kreative Projekter">
-<meta property="twitter:description" content="Udforsk min portfolio med kreative digitale løsninger, frontend-projekter og interaktive web-elementer.">
+<meta property="twitter:title" content="Jonas Albjerg | Cand.it, Marketing & IT Specialist">
+<meta property="twitter:description" content="Udforsk portfolio for Jonas Albjerg med kreative digitale løsninger, webudvikling og marketingprojekter.">
 <meta property="twitter:image" content="https://jonasalbjerg.dk/images/hero/jonas_hero.webp">
   
 <style>
@@ -67,10 +100,10 @@ body {
 }
 
 /* Samling af globale typografier */
-h1 {
+#hero-title {
   color: #fff;
-  padding: 0.5rem;
-  font-size: 2rem;
+  padding: 0.1rem;
+  font-size: 3rem;
 }
 
 h2 {
@@ -80,6 +113,15 @@ h2 {
   margin-top: 2rem;
   margin-bottom: 2rem;
   font-size: 2rem;
+  color: #fff;
+}
+
+#hero-subtitle {
+  font-family: "Raleway";
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
   color: #fff;
 }
 
@@ -164,40 +206,13 @@ button {
   animation: rotate 16s linear infinite;
 }
 
-/*h1 animation valgmulighed 1 on launch
-@keyframes revealUp {
-  0% {
-    opacity: 0;
-    transform: translateY(200%);
-  }
-
-50% {
-    opacity: 0;
-    transform: translateY(50%) rotate(45deg) scale(10);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
-.hero-title {
-  animation: revealUp 1.2s ease-in-out both;
-}
-
-
-
-
-
-/* h1 animation valgmulighed 2 on launch*/
 /* 1. Aktiver 3D-rummet i højre kolonne */
 .hero-right {
   perspective: 1000px;
 }
 
 /* 2. Selve overskriften */
-.hero-title {
+#hero-title {
   display: inline-block;
   transform-style: preserve-3d;
   backface-visibility: visible;
@@ -208,7 +223,7 @@ button {
 }
 
 /* 3. Et lille lysglimt når teksten klikker på plads (valgfrit) */
-.hero-title::after {
+#hero-title::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1552,6 +1567,12 @@ footer.footer {
     padding: 0;
   }
 
+  #hero-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0;
+  }
+
   .hero button {
     display: flex;
     justify-content: center;
@@ -1731,9 +1752,8 @@ footer.footer {
   }
 }
 </style>
-
-
 </head>
+
 <body>
   <!-- Navigation med sticky og burger-menu -->
   <nav id="navbar">
@@ -1762,7 +1782,9 @@ footer.footer {
       <img src="images/hero/jonas_hero.webp" alt="Hero billede" title="Jonas byder dig velkommen" class="rotate-scale" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-right">
-      <h1 class="hero-title">DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h1><br>
+      <h1 id="hero-title">JONAS ALBJERG</h1>
+      <h2 id="hero-subtitle">DIGITALE LØSNINGER OG KREATIVE PROJEKTER</h2>
+      <br>
       <button class="hero-button" onclick="location.href='#projekter'">VIL DU SE?</button>
     </div>
   </section>
@@ -2716,7 +2738,7 @@ footer.footer {
           <div class="slide-grid">
             <div>
               <h3><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="LUBI"/>Ny titel</h3>
-              <p>2026 blev året hvor jeg fik ny titel som Marketingansvarlig hos LUBI. En anerkendelse jeg er stotl af, hvor jeg til dagligt arbejder sammen med tre andre friske marketingkollegaer, hver med deres spidskompetencer. Derudover har jeg to gange årligt praktikforløb med studerende fra profesionshøjskoler og erhvervsakademier.</p>
+              <p>2026 blev året hvor jeg fik ny titel som Marketingansvarlig hos LUBI. En anerkendelse jeg er stolt af, hvor jeg til dagligt arbejder sammen med tre andre friske marketingkollegaer, hver med deres spidskompetencer. Derudover har jeg to gange årligt praktikforløb med studerende fra profesionshøjskoler og erhvervsakademier.</p>
               <h3><img src="images/Tidslinje/lubi.webp" loading="lazy" alt="Røde Kors"/>Erhvervsnetværk</h3>
               <p>Hvad er et erhvervsnetværk? Godt spørgsmål, for det er jeg også ved at finde ud af. I foråret og sommeren 2026 er blevet medlem af ny ikke ét, men to erhvervsnetværk - nemlig Erhvervsnetværket Vestsjælland, samt TMS Ringsteds 'Bagholdet'. Fælles for begge netværk er at jeg har været med til at danne partnerskab, hvor vi hjælper dem med at promovere sig selv gennem videoproduktion fra netværksmøder, samt udvikling af deres hjemmesider.</p>
             </div>
