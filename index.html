@@ -500,10 +500,7 @@ body.menu-open nav {
   font-weight: bolder;
   display: flex;
   align-items: center;
-  background: url(images/hero/background_hero.svg), linear-gradient(to bottom, #ff6f00, #ff8c00);
-  background-size: cover, contain;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
+  background: url(https://www.transparenttextures.com/patterns/foggy-birds.png), linear-gradient(to bottom, #ff6f00, #ff8c00);
   border-radius: 3rem;
   padding: 2rem;
   margin-top: 6rem;
@@ -1406,8 +1403,18 @@ body.menu-open nav {
    12. FOOTER SEKTION
    ========================================================================== */
 footer.footer {
+  position: relative;
   color: #fff;
   text-align: center;
+}
+
+footer.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/logoer/logo.svg") center / contain no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .footer h2 {
